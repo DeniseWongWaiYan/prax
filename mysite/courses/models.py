@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from studentmemberships.models import EnglishStudentMembershipType, FutureStudentMembershipType
 
@@ -11,6 +12,13 @@ class EnglishCourse(models.Model):
     
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('courses:englishdetail', kwargs={'slug': self.slug})
+    
+    @property 
+    def englishlesson(self):
+        return self.englishlesson_set.all().order_by('position')
     
 class EnglishLesson(models.Model):
     slug = models.SlugField()
@@ -34,6 +42,13 @@ class FutureCourse(models.Model):
     
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('courses:futuredetail', kwargs={'slug': self.slug})
+    
+    @property 
+    def futurelesson(self):
+        return self.futurelesson_set.all().order_by('position')
     
 class FutureLesson(models.Model):
     slug = models.SlugField()

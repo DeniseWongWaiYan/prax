@@ -4,8 +4,10 @@
     <body>
         <h1>Course List View Page</h1>
             {% for object in object_list %}
-                
-            
+                <a href="{{ object.get_absolute_url }}"> {{ object.title }} </a>
+        
             {% endfor %}
+    
     </body>    
+    
 </html>
