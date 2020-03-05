@@ -4,7 +4,7 @@
     <body>
          {{ object.title }} <br><br>
             {% for lesson in object.futurelesson %}
-                <a href="{{ lesson.get_absolute_url}}"> {{lesson.title}}</a><br>
+                <a href="{{ lesson.url}}"> {{lesson.title}}</a><br>
             
             {% endfor %}
         

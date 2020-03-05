@@ -2,10 +2,12 @@
 <html>
     <head><title>English Course Detail</title></head>
     <body>
+                <h1>English Course Detail</h1>
+        
          {{ object.title }} <br> <br>
             {% for lesson in object.englishlesson %}
-                <a href="{{ lesson.get_absolute_url}}"> {{lesson.title}}</a><br>
-            
+                <a href="{{ lesson.url }}"> {{lesson.title}}</a><br>
+            {{ lesson.lesson_url }}
             {% endfor %}
     </body>    
     

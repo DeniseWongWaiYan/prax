@@ -33,6 +33,12 @@ class EnglishLesson(models.Model):
     
     def __str__(self):
         return self.title
+    
+    def url(self):
+        return reverse('courses:englishlessondetail', 
+                       kwargs={
+                           'course_slug': self.course.slug, 
+                           'lesson_slug': self.slug })
 
 class FutureCourse(models.Model):
     slug = models.SlugField()
@@ -47,7 +53,7 @@ class FutureCourse(models.Model):
         return reverse('courses:futuredetail', kwargs={'slug': self.slug})
     
     @property 
-    def futurelesson(self):
+    def futurelessons(self):
         return self.futurelesson_set.all().order_by('position')
     
 class FutureLesson(models.Model):
@@ -63,3 +69,9 @@ class FutureLesson(models.Model):
     
     def __str__(self):
         return self.title
+    
+    def url(self):
+        return reverse('courses:futurelessondetail', 
+                       kwargs={
+                           'course_slug': self.course.slug, 
+                           'lesson_slug': self.slug })

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import EnglishCourseListView, EnglishCourseDetailView, FutureCourseListView, FutureCourseDetailView, EnglishLessonDetailView
+from .views import EnglishCourseListView, EnglishCourseDetailView, FutureCourseListView, FutureCourseDetailView, EnglishLessonDetailView, FutureLessonDetailView
 app_name = 'courses'
 
 urlpatterns = [
@@ -9,4 +9,5 @@ urlpatterns = [
     path('english/<slug>', EnglishCourseDetailView.as_view(), name='englishdetail'),
     path('future/<slug>', FutureCourseDetailView.as_view(), name='futuredetail'),
     path('english/<course_slug>/<lesson_slug>', EnglishLessonDetailView.as_view(), name='englishlessondetail'), 
+    path('future/<course_slug>/<lesson_slug>', FutureLessonDetailView.as_view(), name='futurelessondetail'), 
 ]

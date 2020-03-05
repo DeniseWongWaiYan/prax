@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head><title>English Course List</title></head>
+    <body>
+        <h1>Lesson View Page</h1>
+         {{ object.title }}
+            {% for lesson in object.lessons %}
+                <a href="{{ lesson.get_absolute_url }}"> {{ lesson.title }} </a>
+            {% endfor %}
+    
+    </body>    
+    
+</html>

@@ -25,7 +25,7 @@ class EnglishLessonDetailView(View):
         if course_qs.exists():
             englishcourse = course_qs.first()
             
-        lesson_qs = englishlesson.lessons.filter(slug=lesson_slug)
+        lesson_qs = englishcourse.englishlesson.filter(slug=lesson_slug)
         if lesson_qs.exists():
             englishlesson = lesson_qs.first()
             
@@ -43,7 +43,7 @@ class FutureLessonDetailView(View):
         if course_qs.exists():
             futurecourse = course_qs.first()
             
-        lesson_qs = englishlesson.lessons.filter(slug=lesson_slug)
+        lesson_qs = futurecourse.futurelessons.filter(slug=lesson_slug)
         if lesson_qs.exists():
             futurelesson = lesson_qs.first()
             
