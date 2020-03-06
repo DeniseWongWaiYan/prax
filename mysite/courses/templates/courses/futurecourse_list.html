@@ -1,5 +1,7 @@
-<!DOCTYPE html>
-<html>
+{% extends 'courses/base.html' %}
+
+{% block content %}
+
     <head><title>Future Course List</title></head>
     <body>
         <h1>Course List View Page</h1>
@@ -7,6 +9,7 @@
                 <a href="{{ object.get_absolute_url }}"> {{ object.title }} </a>
         
             {% endfor %}
+{% endblock %}
     
     </body>    
     

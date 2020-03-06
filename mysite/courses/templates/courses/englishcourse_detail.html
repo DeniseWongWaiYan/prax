@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html>
+{% extends 'courses/base.html' %}
+
+{% block content %}
     <head><title>English Course Detail</title></head>
     <body>
                 <h1>English Course Detail</h1>
@@ -9,6 +10,9 @@
                 <a href="{{ lesson.url }}"> {{lesson.title}}</a><br>
             {{ lesson.lesson_url }}
             {% endfor %}
+    
+{% endblock %}
+
     </body>    
     
 </html>

@@ -1,13 +1,18 @@
-<!DOCTYPE html>
-<html>
+{% extends 'courses/base.html' %}
+
+{% block content %}
     <head><title>English Course List</title></head>
     <body>
         <h1>Lesson View Page</h1>
+         {% if object is not None %}
          {{ object.title }}
-            {% for lesson in object.lessons %}
-                <a href="{{ lesson.get_absolute_url }}"> {{ lesson.title }} </a>
-            {% endfor %}
-    
+            {{ object.description }}
+        
+        {% else %}
+            <h3> Upgrade membership </h3>
+        
+        {% endif %}
+{% endblock %}    
     </body>    
     
 </html>

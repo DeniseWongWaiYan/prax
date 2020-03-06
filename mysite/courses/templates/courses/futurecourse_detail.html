@@ -1,13 +1,18 @@
-<!DOCTYPE html>
-<html>
-    <head><title>English Course Detail</title></head>
+{% extends 'courses/base.html' %}
+
+{% block content %}
+    <head><title>Future Course Detail</title></head>
     <body>
-         {{ object.title }} <br><br>
-            {% for lesson in object.futurelesson %}
-                <a href="{{ lesson.url}}"> {{lesson.title}}</a><br>
-            
-            {% endfor %}
+        <h1>Future Course Detail</h1>
         
+          {{ object.title }} <br> 
+            {% for lesson in object.futurelessons %}
+                <a href="{{ lesson.url }}"> {{lesson.title}}</a><br>
+            {{ lesson.lesson_url }}
+            {% endfor %}
+    
+{% endblock %}
     </body>    
+}
     
 </html>

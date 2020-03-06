@@ -3,6 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.views.generic import ListView, DetailView, View
 from . models import EnglishCourse, FutureCourse 
+from studentmemberships.models import EnglishStudentMembershipType, StudentMembership
 
 class EnglishCourseListView(ListView):
     model = EnglishCourse
@@ -29,11 +30,21 @@ class EnglishLessonDetailView(View):
         if lesson_qs.exists():
             englishlesson = lesson_qs.first()
             
+        user_membership = StudentMembership.objects.filter(user=request.user).first()
+        user_membership_type = user_membership.englishmembership.english_membership_type
+        
+        course_allowed_mem_types = englishcourse.allowed_memberships.all()
+            
         context = {
-            'object': englishlesson
+            'object': None,            
         }
         
+        if course_allowed_mem_types.filter(english_membership_type=user_membership_type).exists():
+            context = { 'object': englishlesson, }
+        
         return render(request, "courses/englishlesson_detail.html", context)
+    
+    
 
 class FutureLessonDetailView(View):
     
@@ -47,8 +58,18 @@ class FutureLessonDetailView(View):
         if lesson_qs.exists():
             futurelesson = lesson_qs.first()
             
+        user_membership = StudentMembership.objects.filter(user=request.user).first()
+        user_membership_type = user_membership.futuremembership.future_membership_type
+        
+        course_allowed_mem_types = futurecourse.allowed_memberships.all()
+            
         context = {
-            'object': futurelesson
+            'object': None,            
         }
         
+        if course_allowed_mem_types.filter(future_membership_type=user_membership_type).exists():
+            context = {
+                'object': futurelesson
+            }
+
         return render(request, "courses/futurelesson_detail.html", context)
