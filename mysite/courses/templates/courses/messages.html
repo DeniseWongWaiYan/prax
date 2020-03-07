@@ -12,7 +12,7 @@
 
 	<div class='messages'>
 		<ul class='messages'>
-			{%  message in messages %}
+			{% for message in messages %}
 			<li {% if message.tags %} class="{{ message.tags }}" {% endif %}> 
 				{% if "html_safe%" in message.tags %}
 					{{ message|safe}}
@@ -20,8 +20,7 @@
 					{{ message }}
 				{% endif %}
 			</li>
-			dfsd
-			{% endfor %}
+            {% endfor %}
 		</ul>
 	</div>
-
+{% endif %}
