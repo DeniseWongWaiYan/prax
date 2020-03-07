@@ -9,14 +9,14 @@
 			<h2>{{ object.english_membership_type }}</h2>
             <p>Price: RMB {{ object.price }}<small>/3 months</small></p>
             
-            <form method'POST' action="{% url 'studentmemberships:selectengstudentmem' %}">
+            <form method='POST' action="{% url 'studentmemberships:engpay' %}">
                 {% csrf_token %}
                 {% if object.english_membership_type != current_membership %}
                     <button class="btn btn-warning">Select</button>
                 {% else %}
                     <small>This is your current membership.</small>
                 {% endif %}
-                <input type="hidden" name="english_membership_type" value="{{objet.english_membership_type}}">
+                <input type="hidden" name="english_membership_type" value="{{object.english_membership_type}}">
                 
             
             </form>

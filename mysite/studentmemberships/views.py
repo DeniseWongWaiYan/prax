@@ -1,8 +1,11 @@
 from django.shortcuts import render
+from django.conf import settings
 
 from django.views.generic import ListView, View
 
 from .models import EnglishStudentMembershipType, FutureStudentMembershipType, StudentMembership, StudentEnglishSubscription
+ 
+import stripe 
 
 def get_user_eng_mem(request):
     eng_mem_qs = StudentMembership.objects.filter(user=request.user)
@@ -31,6 +34,7 @@ def get_user_future_subscription(request):
         return user_sub_qs
     return None
 
+
 class StudentEnglishMembershipSelectView(ListView):
     model = EnglishStudentMembershipType
     
@@ -41,23 +45,43 @@ class StudentEnglishMembershipSelectView(ListView):
         return context
         
     def post(self, request, **kwargs):
-        selected_membership = request.POST.get('english_membership_type')
         eng_membership = get_user_eng_mem(request)
         eng_subscription = get_user_eng_subscription(request)
+        selected_membership_type = request.POST.get('english_membership_type')
         
-        selected_membership_qs = EnglishStudentMembershipType.objects.filter(english_membership_type=selected_membership_type)
+        selected_membership = EnglishStudentMembershipType.objects.get(english_membership_type=selected_membership_type)
         
-#        validation
-        
+        #        validation
         if eng_membership.englishmembership == selected_membership:
             if eng_subscription != None:
-                messages.info(request, 'You already have this membership. Your next payment is die {}'.format('get this valeu from stripe'))
+                messages.info(request, 'You already have this membership. Your next payment is die {}'.format('get this value from stripe'))
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         
-        request.session['selected_membership_type'] = selected_membership.english_membership_type
-        
+        #assign
+        request.session['selected_eng_membership_type'] = selected_membership.english_membership_type
+
         return HttpResponseRedirect(reverse('studentmemberships:paymenteng'))
-         
+
+def get_sel_eng_mem(request):
+    membership_type = EnglishStudentMembershipType.objects.get(english_membership_type=request.POST.get('english_membership_type'))
+    selected_mem_qs = EnglishStudentMembershipType.objects.filter(english_membership_type = membership_type)
+    if selected_mem_qs.exists():
+        return selected_mem_qs.first()
+    return None
+    
+def EngPaymentView(request):    
+    eng_mem = get_user_eng_mem(request)
+    eng_sel_mem = get_sel_eng_mem(request)
+    publishKey = settings.STRIPE_PUBLISHABLE_KEY
+    
+    context = {
+        'publishKey': publishKey,
+        'selected_membership': eng_sel_mem,
+    }
+    
+    return render(request, 'studentmemberships/studentengpay.html', context)
+
+    
 class StudentFutureMembershipSelectView(ListView):
     model = FutureStudentMembershipType
     
@@ -72,7 +96,7 @@ class StudentFutureMembershipSelectView(ListView):
         fut_membership = get_user_fut_mem(request)
         fut_subscription = get_user_fut_subscription(request)
         
-        selected_membership_qs = FutureStudentMembershipType.objects.filter(future_membership_type=selected_membership_type)
+        selected_membership_qs = FutureStudentMembershipType.objects.filter(future_membership_type=selected_membership)
         
 #        validation
         
@@ -81,6 +105,6 @@ class StudentFutureMembershipSelectView(ListView):
                 messages.info(request, 'You already have this membership. Your next payment is die {}'.format('get this valeu from stripe'))
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         
-        request.session['selected_membership_type'] = selected_membership.future_membership_type
+        request.session['selected_membership'] = selected_membership.future_membership_type
         
         return HttpResponseRedirect(reverse('studentmemberships:paymentfuture'))
