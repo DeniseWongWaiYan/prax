@@ -68,7 +68,7 @@ class StudentEnglishSubscription(models.Model):
         return self.englishmembershiptype.user.username
 
 class StudentFutureSubscription(models.Model):
-    englishfututretype = models.ForeignKey(FutureStudentMembershipType, on_delete=models.CASCADE)
+    futuremembershiptype = models.ForeignKey(FutureStudentMembershipType, on_delete=models.CASCADE)
     stripe_subscription_id = models.CharField(max_length=40)
     active = models.BooleanField(default=False)
 

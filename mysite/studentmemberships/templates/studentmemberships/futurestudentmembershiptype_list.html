@@ -9,14 +9,14 @@
 			<h2>{{ object.future_membership_type }}</h2>
             <p>Price: RMB {{ object.price }}<small>/3 months</small></p>
             
-            <form method='POST' action="{% url 'studentmemberships:selectfutstudentmem' %}">
+            <form method='POST' action="{% url 'studentmemberships:futurepay' %}">
                 {% csrf_token %}
                 {% if object.future_membership_type != current_membership %}
                     <button class="btn btn-warning">Select</button>
                 {% else %}
                     <small>This is your current membership.</small>
                 {% endif %}
-                <input type="hidden" name="future_membership_type" value="{{objet.future_membership_type}}">
+                <input type="hidden" name="future_membership_type" value="{{object.future_membership_type}}">
                 
             
             </form>
