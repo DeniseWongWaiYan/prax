@@ -60,7 +60,7 @@ def post_save_studentmembership_create(sender, instance, created, *args, **kwarg
 post_save.connect(post_save_studentmembership_create, sender=settings.AUTH_USER_MODEL)
     
 class StudentEnglishSubscription(models.Model):
-    englishmembershiptype = models.ForeignKey(EnglishStudentMembershipType, on_delete=models.CASCADE)
+    englishmembershiptype = models.ForeignKey(StudentMembership, on_delete=models.CASCADE)
     stripe_subscription_id = models.CharField(max_length=40)
     active = models.BooleanField(default=False)
 
@@ -68,7 +68,7 @@ class StudentEnglishSubscription(models.Model):
         return self.englishmembershiptype.user.username
 
 class StudentFutureSubscription(models.Model):
-    futuremembershiptype = models.ForeignKey(FutureStudentMembershipType, on_delete=models.CASCADE)
+    futuremembershiptype = models.ForeignKey(StudentMembership, on_delete=models.CASCADE)
     stripe_subscription_id = models.CharField(max_length=40)
     active = models.BooleanField(default=False)
 
