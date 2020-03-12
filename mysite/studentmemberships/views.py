@@ -82,14 +82,13 @@ def EngPaymentView(request):
 
     if request.method == "POST":
                         
-            print("1")
             customer = stripe.Customer.retrieve(eng_mem.stripe_customer_id)
             token = request.POST['stripeToken']
-            print("2")
+            
             customer.source = token # 4242424242424242
             customer.save()
             
-            print("3")
+            
             subscription = stripe.Subscription.create(
                 customer=eng_mem.stripe_customer_id,
                 items=[
@@ -97,7 +96,6 @@ def EngPaymentView(request):
                 ]
             )
                 
-
             return redirect(reverse('studentmemberships:updatetransactioneng',
                            kwargs={'subscription_id': subscription.id }))
             
@@ -152,12 +150,14 @@ class StudentFutureMembershipSelectView(ListView):
         return context
     
     def post(self, request, **kwargs):
-        selected_membership = request.sessions('future_membership_type')
         fut_membership = get_user_fut_mem(request)
         fut_subscription = get_user_future_subscription(request)
+        selected_membership_type = request.POST.get('future_membership_type')
         
-        selected_membership_qs = FutureStudentMembershipType.objects.filter(future_membership_type=selected_membership)
         
+        selected_membership = FutureStudentMembershipType.objects.get(future_membership_type=selected_membership_type)
+        
+
 #        validation
         
         if fut_membership.futuremembership == selected_membership:
@@ -165,12 +165,13 @@ class StudentFutureMembershipSelectView(ListView):
                 messages.info(request, 'You already have this membership. Your next payment is die {}'.format('get this valeu from stripe'))
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         
-        request.session['selected_membership'] = selected_membership 
-        
+
+        request.session['selected_future_membership'] = selected_membership.future_membership_type
+
         return HttpResponseRedirect(reverse('studentmemberships:futurepay'))
 
 def get_sel_fut_mem(request):
-    membership_type = request.session('future_membership_type')
+    membership_type = request.session['selected_future_membership']
     #    FutureStudentMembershipType.objects.get(future_membership_type=request.POST.get('future_membership_type'))
     selected_mem_qs = FutureStudentMembershipType.objects.filter(future_membership_type = membership_type)
     if selected_mem_qs.exists():
@@ -183,29 +184,47 @@ def FutPaymentView(request):
     publishKey = settings.STRIPE_PUBLISHABLE_KEY
     
     if request.method == "POST":
-        try:
+        
             customer = stripe.Customer.retrieve(fut_mem.stripe_customer_id)
-            print('1')
-            customer.source = request.post['stripeToken'] # 4242424242424242
-            print('2')
+            
+            customer.source = request.POST['stripeToken'] # 4242424242424242
+            
             customer.save()
                         
-            print('subscription')
             subscription = stripe.Subscription.create(
-                    customer= fut_mem.stripe_customer_id,
-                    items = [
-                    {"plan": fut_sel_mem.stripe_plan_id },
-                ])
-            
-            return redirect(reverse('studentmemberships:update-transaction-eng'),
-                           kwargs={'subscription_id': subscription.id })
+                customer=fut_mem.stripe_customer_id,
+                items=[
+                    { "plan": fut_sel_mem.stripe_plan_id },
+                ]
+            )
+            return redirect(reverse('studentmemberships:updatetransactionfut',
+                           kwargs={'subscription_id': subscription.id }))
 
-        except:
-            messages.info(request, "Your card has been declined." )
-    
+            
     context = {
         'publishKey': publishKey,
         'selected_membership': fut_sel_mem,
     }
     
     return render(request, 'studentmemberships/studentfutpay.html', context)
+
+def updateFutTransaction(request, subscription_id):
+    fut_mem = get_user_fut_mem(request)
+    fut_sel_mem = get_sel_fut_mem(request)
+    
+    fut_mem.futuremembership = fut_sel_mem
+    fut_mem.save()
+    
+    sub, created = StudentFutureSubscription.objects.get_or_create(futuremembershiptype=fut_mem)
+    sub.stripe_subscription_id = subscription_id
+    sub.active = True
+    sub.save()
+    
+    try:
+        del request.session['selected_future_membership']
+    except:
+        pass
+    
+    messages.info(request, "succesfully created {} membership".format(fut_sel_mem))
+    
+    return redirect('/courses/future')

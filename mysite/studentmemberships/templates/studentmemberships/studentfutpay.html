@@ -19,7 +19,7 @@
   <!-- can't do this -->
   <!-- <script src="{% static 'js/stripeV3.js' %}"></script> -->
 
-  <form action="." method="post" id="payment-form">
+  <form action="{% url 'studentmemberships:futurepay' %}" method="POST" id="payment-form">
     {% csrf_token %}
     <div id="checkoutMethods">
       <div style="margin: 10px;">
