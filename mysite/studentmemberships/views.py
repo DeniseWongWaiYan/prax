@@ -10,6 +10,21 @@ from .models import EnglishStudentMembershipType, FutureStudentMembershipType, S
  
 import stripe 
 
+def profile_view(request):
+    user_eng = get_user_eng_mem(request)
+    user_eng_sub = get_user_eng_subscription(request)
+    user_future = get_user_fut_mem(request)
+    user_future_sub = get_user_future_subscription(request)
+    
+    context = {
+        'user_eng': user_eng,
+        'user_eng_sub': user_eng_sub,
+        'user_future': user_future,
+        'user_future_sub': user_future_sub
+        
+    }
+    
+    return render(request, "studentmemberships/profile.html", context)
 
 
 def get_user_eng_mem(request):

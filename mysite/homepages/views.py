@@ -4,9 +4,10 @@ from django.template import loader
 from django.urls import reverse_lazy
 from django.contrib.auth import authenticate, login, logout
 from homepages.forms import LoginForm, StudentRegistrationForm
+from homepages.models import StudentProfile
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.shortcuts import redirect
+from django.shortcuts import redirect, reverse
 
 def index(request):
     return render(request, 'homepage/index.html')
@@ -48,7 +49,7 @@ def signin(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return redirect(student_profile_view)
+                    return redirect(reverse('studentmemberships:profile'))
 
                 else:
                     return HttpResponse("You're like the limit in this function. DNE!")

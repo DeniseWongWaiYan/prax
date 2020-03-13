@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.conf import settings
+import datetime
 
 import stripe
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -66,7 +67,17 @@ class StudentEnglishSubscription(models.Model):
 
     def __str__(self):
         return self.englishmembershiptype.user.username
-
+    
+    @property
+    def get_created_date(self):
+        subscription = stripe.Subscription.retrieve(self.stripe_subscription_id)
+        return datetime.datetime.fromtimestamp(subscription.created)
+    
+    @property
+    def get_next_billing_date(self):
+        subscription = stripe.Subscription.retrieve(self.stripe_subscription_id)
+        return datetime.datetime.fromtimestamp(subscription.current_period_end)
+        
 class StudentFutureSubscription(models.Model):
     futuremembershiptype = models.ForeignKey(StudentMembership, on_delete=models.CASCADE)
     stripe_subscription_id = models.CharField(max_length=40)
@@ -74,3 +85,13 @@ class StudentFutureSubscription(models.Model):
 
     def __str__(self):
         return self.englishfututretype.user.username
+
+    @property
+    def get_created_date(self):
+        subscription = stripe.Subscription.retrieve(self.stripe_subscription_id)
+        return datetime.datetime.fromtimestamp(subscription.created)
+    
+    @property
+    def get_next_billing_date(self):
+        subscription = stripe.Subscription.retrieve(self.stripe_subscription_id)
+        return datetime.datetime.fromtimestamp(subscription.current_period_end)
