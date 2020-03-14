@@ -1,18 +1,20 @@
 {% extends 'courses/base.html' %}
 
 {% block content %}
+<div class="container">
     <head><title>English Course Detail</title></head>
     <body>
                 <h1>English Course Detail</h1>
         
-         {{ object.title }} <br> <br>
+         <h3>{{ object.title }}</h3>  
             {% for lesson in object.englishlesson %}
-                <a href="{{ lesson.url }}"> {{lesson.title}}</a><br>
+        <ul> <a href="{{ lesson.url }}"> {{lesson.title}}</a></ul>
             {{ lesson.lesson_url }}
             {% endfor %}
     
-{% endblock %}
-
+        </div>
     </body>    
     
 </html>
+
+{% endblock %}

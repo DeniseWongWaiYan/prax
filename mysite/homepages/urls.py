@@ -16,14 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from . import views
+from .views import index, joinus, aboutus, studentsignup, signin, signout
 
+app_name = 'homepages'
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('joinus/', views.joinus, name='joinus'),
-    path('aboutus', views.aboutus, name='aboutus'),
-    path('signup', views.studentsignup, name='signup'),
-    path('signin', views.signin, name='signin')
+    path('', index, name='index'),
+    path('joinus/', joinus, name='joinus'),
+    path('aboutus', aboutus, name='aboutus'),
+    path('signup', studentsignup, name='signup'),
+    path('signin', signin, name='signin'),
+    path('signout', signout, name='signout')
     
 ]

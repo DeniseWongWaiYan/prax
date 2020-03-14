@@ -1,18 +1,20 @@
 {% extends 'courses/base.html' %}
 
 {% block content %}
+<div class="container">
     <head><title>Future Course Detail</title></head>
     <body>
         <h1>Future Course Detail</h1>
         
-          {{ object.title }} <br> 
+         <h3> {{ object.title }} </h3> 
             {% for lesson in object.futurelessons %}
-                <a href="{{ lesson.url }}"> {{lesson.title}}</a><br>
+             <ul>   <a href="{{ lesson.url }}"> {{lesson.title}}</a></ul>
             {{ lesson.lesson_url }}
             {% endfor %}
     
 {% endblock %}
+        </div>
     </body>    
-}
+
     
 </html>

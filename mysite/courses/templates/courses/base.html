@@ -11,17 +11,23 @@
 <!-- navigation bar -->
 	
 		<ol class="breadcrumb">
-			<li><a href = '/'>Home</a></li>
+			<li><a href = '{% url 'homepages:index' %}'>Home</a></li>
+            {% if request.user.is_authenticated %}
 			<li><a href = '{% url 'studentmemberships:profile' %}'>Profile</a></li>
+            <li><a href = '{% url 'courses:englishlist' %}'>English Courses</a></li>
+            <li><a href = '{% url 'courses:futurelist' %}'>Future Courses</a></li>
+            
 			{% block post_detail_link %}
 			{% endblock %}
 
-			{% if not request.user.is_authenticated %}
-			<li class='pull-right'><a href='/register'>Register</a></li>
-			<li class='pull-right'><a href='/login'>Sign In</a></li>
-			{% else %}
-			<li class='pull-right'><a href='/studentmemberships'>Student Memberships</a></li>
+			<li class='pull-right'> Hello {{request.user}} </li>    
+            <li class='pull-right'><a href='{% url 'homepages:signout' %}'>Sign Out</a></li>
+            
+            {% else %}
+			<li class='pull-right'><a href='{% url 'homepages:signup' %}'>Register</a></li>
+			<li class='pull-right'><a href='{% url 'homepages:signin' %}'>Sign In</a></li>
 			{% endif %}
+            
 
 		</ol>
 

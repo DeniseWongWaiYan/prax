@@ -3,7 +3,9 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <h1>My Profile</h1>
+        <h1>{{request.user }}'s Profile</h1>
+        
+        
         <div class="col-sm-4 col-md-4">
         
             <h4>Current English Membership: </h4>
@@ -24,6 +26,7 @@
             <br> 
             
         {% endif %}
+            <a href="{% url 'studentmemberships:selectengstudentmem' %}"> Change membership </a>
             
         </div>
         <div class="col-sm-4 col-md-4">
@@ -45,6 +48,7 @@
             <br> 
             
         {% endif %}   
+            <a href="{% url 'studentmemberships:selectfutstudentmem' %}"> Change membership </a>
             
         </div>
     </div>

@@ -60,3 +60,8 @@ def signin(request):
         form = LoginForm()
     return render(request, 'homepage/signin.html', {'form': form})
 
+def signout(request):
+    logout(request)
+    return redirect(reverse('homepages:index'))
+        
+ 
