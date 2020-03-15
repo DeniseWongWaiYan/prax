@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'homepages',
     'studentmemberships',
-    'courses'
+    'courses',
+    'tutors',
+    
 ]
 
 SESSION_ENGINE = "django.contrib.sessions.backends.db"

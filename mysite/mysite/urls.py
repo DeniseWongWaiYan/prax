@@ -23,6 +23,9 @@ urlpatterns = [
     path('', include('homepages.urls')),
     path('courses/', include('courses.urls')),
     path('studentmembership/', include('studentmemberships.urls')),
+    path('tutors/', include('tutors.urls')),
+    
+    
 ]
 
 if settings.DEBUG:

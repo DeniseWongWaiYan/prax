@@ -4,7 +4,7 @@ from django.template import loader
 from django.urls import reverse_lazy
 from django.contrib.auth import authenticate, login, logout
 from homepages.forms import LoginForm, StudentRegistrationForm
-from homepages.models import StudentProfile
+from homepages.models import UserProfile
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, reverse
@@ -29,7 +29,7 @@ def studentsignup(request):
                 create_user_form.cleaned_data['password'])
             
             new_user.save()
-            profile = StudentProfile.objects.create(user=new_user)
+            profile = UserProfile.objects.create(user=new_user)
 
             return render(request, 'homepage/register_done.html', {'new_user': new_user})
         
