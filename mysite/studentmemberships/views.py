@@ -10,6 +10,12 @@ from .models import EnglishStudentMembershipType, FutureStudentMembershipType, S
  
 import stripe 
 
+
+from django.http import HttpResponse,StreamingHttpResponse, HttpResponseServerError
+from django.views.decorators import gzip
+import cv2
+import time
+
 def profile_view(request):
     user_eng = get_user_eng_mem(request)
     user_eng_sub = get_user_eng_subscription(request)
@@ -243,3 +249,36 @@ def updateFutTransaction(request, subscription_id):
     messages.info(request, "succesfully created {} membership".format(fut_sel_mem))
     
     return redirect('/courses/future')
+
+
+def get_frame():
+    camera =cv2.VideoCapture(0) 
+    while True:
+        _, img = camera.read()
+        imgencode=cv2.imencode('.jpg',img)[1]
+        stringData=imgencode.tostring()
+        yield (b'--frame\r\n'b'Content-Type: text/plain\r\n\r\n'+stringData+b'\r\n')
+    del(camera)
+    
+def indexscreen(request, videoslug): 
+     student = StudentMembership.objects.get(user=request.user)
+     videoslug = student.videoslug
+
+     context = {
+        'videoslug': videoslug,
+     }
+
+     return render(request, "tutors/screens.html", context)
+    # try:
+    #   template = "screens.html"
+    #   return render(request, template)
+    # except:
+    #     pass
+
+@gzip.gzip_page
+def dynamic_stream(request,stream_path="video"):
+    try :
+        return StreamingHttpResponse(get_frame(),content_type="multipart/x-mixed-replace;boundary=frame")
+    except :
+        return "error"
+

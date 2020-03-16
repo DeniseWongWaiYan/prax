@@ -12,6 +12,7 @@
 	
 		<ol class="breadcrumb">
 			<li><a href = '{% url 'homepages:index' %}'>Home</a></li>
+            
             {% if request.user.is_authenticated %}
 			<li><a href = '{% url 'studentmemberships:profile' %}'>Profile</a></li>
             <li><a href = '{% url 'courses:englishlist' %}'>English Courses</a></li>

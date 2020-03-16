@@ -5,8 +5,8 @@ from django.conf import settings
 class Tutors(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length=50, null=True)
-    slug = models.CharField(max_length=30, null=True)
-    videoslug = models.CharField(max_length=30, null=True)
+    slug = models.SlugField()
+    videoslug = models.SlugField()
     qualifications = models.CharField(max_length=500, null=True)
     university = models.CharField(max_length=50, null=True)
 

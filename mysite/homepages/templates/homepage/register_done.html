@@ -2,6 +2,6 @@
 {% block content %}
 
 <h1>Welcome {{ new_user.first_name }}!</h1>
-<p>Your account has been successfully created. Now you can <a href="{% url "signin" %}">log in</a></p>
+<p>Your account has been successfully created. Now you can <a href="{% url "homepages:signin" %}">log in</a></p>
 
 {% endblock %}

@@ -50,7 +50,7 @@ class StudentMembership(models.Model):
         FutureStudentMembershipType, on_delete=models.SET_NULL, null=True)
     englishtutor = models.ForeignKey(
         Tutors, on_delete=models.SET_NULL, null=True)
-    
+    videoslug = models.SlugField()
     
     def __str__(self):
         return self.user.username
