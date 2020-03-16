@@ -22,6 +22,18 @@ class StudentRegistrationForm(forms.ModelForm):
             raise forms.ValidationError('The passwords you have entered are like Trump and dignity... they don\'t match')
         return cd['confirmpassword']
 
+class ParentRegistrationForm(forms.ModelForm):
+    password = forms.CharField(label='Password', widget=forms.PasswordInput)
+    confirmpassword = forms.CharField(label='Repeat Password', widget=forms.PasswordInput)
+    
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'email')
 
+    def clean_confirmpassword(self):
+        cd = self.cleaned_data
+        if cd['password'] != cd['confirmpassword']:
+            raise forms.ValidationError('The passwords you have entered are like Trump and dignity... they don\'t match')
+        return cd['confirmpassword']
     
 

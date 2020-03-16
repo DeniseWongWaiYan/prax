@@ -4,6 +4,7 @@ from django.conf import settings
 import datetime
 
 from tutors.models import Tutors
+from parents.models import Parent
 
 import stripe
 
@@ -51,6 +52,8 @@ class StudentMembership(models.Model):
     englishtutor = models.ForeignKey(
         Tutors, on_delete=models.SET_NULL, null=True)
     videoslug = models.SlugField()
+    parents = models.ForeignKey(
+        Parent, on_delete=models.SET_NULL, null=True)
     
     def __str__(self):
         return self.user.username

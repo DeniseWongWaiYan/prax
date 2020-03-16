@@ -1,0 +1,60 @@
+{% extends 'courses/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h1>{{request.user }}'s Profile</h1>
+        
+        
+        <div class="col-sm-4 col-md-4">
+        
+            <h4>Current English Membership: </h4>
+            {% if user_eng_sub != None %}
+                {% if user_eng.englishmembership.english_membership_type == 'No Smile School English' %}
+            <h4>
+                <p style="color:red">No subscription. Please consider joining us. </p>
+                {% else %}
+                {{ user_eng.englishmembership.english_membership_type }} </h4>
+            <small>Since {{user_eng_sub.get_created_date}} </small>
+            
+            {% if user_eng_sub.active != False %}
+                <p>Next payment due: {{ user_eng_sub.get_next_billing_date}} </p>
+            {% endif %}
+            {% endif %}
+            {% else %}
+                <p style="color:red">No subscription. Please consider joining us. </p>
+            <br> 
+            
+        {% endif %}
+            <a href="{% url 'studentmemberships:selectengstudentmem' %}"> Change membership </a>
+            
+        </div>
+        <div class="col-sm-4 col-md-4">
+        <h4>Current Future Membership: </h4>
+            {% if user_future_sub != None %}
+                {% if user_future.futuremembership.future_membership_type == 'No Smile School English' %}
+            <h4>
+                <p style="color:red">No subscription. Please consider joining us. </p>
+                {% else %}
+                {{ user_future.futuremembership.future_membership_type }} </h4>
+            <small>Since {{user_future_sub.get_created_date}} </small>
+            
+            {% if user_future_sub.active != False %}
+                <p>Next payment due: {{ user_future_sub.get_next_billing_date}} </p>
+            {% endif %}
+            {% endif %}
+            {% else %}
+                <p style="color:red">No subscription. Please consider joining us. </p>
+            <br> 
+            
+        {% endif %}   
+            <a href="{% url 'studentmemberships:selectfutstudentmem' %}"> Change membership </a>
+            
+        </div>
+    </div>
+
+
+</div>
+
+
+{% endblock %}

@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from .views import index, joinus, aboutus, studentsignup, signin, signout
+from .views import index, joinus, aboutus, studentsignup, signin, signout, parentsignup
 
 app_name = 'homepages'
 
@@ -25,6 +25,7 @@ urlpatterns = [
     path('joinus/', joinus, name='joinus'),
     path('aboutus', aboutus, name='aboutus'),
     path('signup', studentsignup, name='signup'),
+    path('parentsignup', parentsignup, name='parentsignup'),
     path('signin', signin, name='signin'),
     path('signout', signout, name='signout')
     

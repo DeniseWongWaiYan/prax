@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'studentmemberships',
     'courses',
     'tutors',
-    
+    'parents'
 ]
 
 SESSION_ENGINE = "django.contrib.sessions.backends.db"
