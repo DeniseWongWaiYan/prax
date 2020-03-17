@@ -1,0 +1,23 @@
+{% extends 'courses/base.html' %}
+
+{% block content %}
+<div class="container">
+    
+        <h1>{{ request.user }}'s Grades</h1>
+        
+
+        {% for grade in grades %}
+            <h4>{{grade.lesson }}</h4>
+            <li> Vocab: <big> {{grade.vocab}}</big> /10</li>
+            <li> Grammar: <big> {{grade.grammar}} </big>/10</li>
+            <li> Content:<big> {{grade.content}}</big>/10</li>
+             <li> Creativity: <big> {{grade.creativity}}</big> /10</li>
+        {% endfor %}
+            
+        </div>
+        
+        
+</div>
+
+
+{% endblock %}
