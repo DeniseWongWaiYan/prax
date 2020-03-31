@@ -1,0 +1,154 @@
+{% extends 'courses/base.html' %}
+
+{% block content %}
+  
+<script src="https://rtcmulticonnection.herokuapp.com/dist/RTCMultiConnection.min.js"></script>
+<script src="https://rtcmulticonnection.herokuapp.com/socket.io/socket.io.js"></script>
+
+<!-- another CDN -->
+<script src="https://cdn.jsdelivr.net/npm/rtcmulticonnection@latest/dist/RTCMultiConnection.min.js"></script>
+
+<!-- another CDN -->
+<script src="https://unpkg.com/rtcmulticonnection@latest/dist/RTCMultiConnection.min.js"></script>
+
+<!-- bundle CDN -->
+
+
+
+<button id="btn-open-room">Open Room</button>
+<button id="btn-join-room">Join Room</button> 
+<button id="btn-sync">Sync</button> 
+
+<script type="application/javascript">
+
+
+</script>
+
+<!-- 1st step -->
+<script src="https://www.webrtc-experiment.com/Canvas-Designer/canvas-designer-widget.js"></script>
+
+<!-- 2nd step -->
+<script type="application/javascript">
+var webrtc = new RTCMultiConnection();
+
+// this line is VERY_important
+webrtc.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
+webrtc.socketMessageEvent = 'canvas-designer';
+
+
+// all below lines are optional; however recommended.
+//
+
+var predefinedRoomId = 'denisetutor';
+
+document.getElementById('btn-open-room').onclick = function() {
+//    this.disabled = true;
+    webrtc.open(predefinedRoomId, function(isRoomOpened, roomid, error) {
+    if(error) {
+        alert(error);
+    }
+        
+    if(isRoomOpened === true) {
+        alert('Successfully created the room.');
+                webrtc.onmessage = function(event) {
+                designer.syncData(event.data);
+            };
+    }
+});
+
+};
+
+document.getElementById('btn-join-room').onclick = function() {
+//    this.disabled = true;
+    webrtc.join(predefinedRoomId, function(isJoined, roomid, error) {
+    if(isJoined === false) {
+        alert(error); // maybe room doesn't exist or room is full or password is invalid
+    }
+    else {
+        alert('Successfully joined the room.');
+        designer.addSyncListener(function(data) {
+        webrtc.send(data);
+        });
+    }
+    
+});
+};
+        
+document.getElementById('btn-sync').onclick = function(event, data) {
+    webrtc.onmessage = function(event){
+    designer.syncData(event.data); };
+    
+    designer.addSyncListener(function(data){
+        webrtc.send(data); 
+        alert(data);
+                             });
+    
+};
+
+    
+webrtc.session = {
+    data: true,
+    audio: false,
+    video: false,
+};
+
+var div = document.createElement('div');
+var designer = new CanvasDesigner();
+
+designer.widgetHtmlURL = 'https://www.webrtc-experiment.com/Canvas-Designer/widget.html'; // you can place this file anywhere
+designer.widgetJsURL = 'https://www.webrtc-experiment.com/Canvas-Designer/widget.js';     // you can place this file anywhere
+
+designer.appendTo(document.body);
+designer.iframe.style.height = '1000px';
+    
+webrtc.onmessage = function(event) {
+    document.body.innerHTML = event.data;
+    designer.syncData(event.data);
+    webrtc.send(event.data);
+    designer.sync();
+//
+};
+ 
+
+designer.addSyncListener(function(data) {
+    webrtc.send(data);
+});    
+
+
+designer.setSelected('pencil');
+
+designer.setTools({
+    pencil: true,
+    text: true, 
+    images: true,
+    pdf: true,
+    undo: true,
+    eraster: true,
+    line: true,
+    
+    
+});
+
+    
+
+    
+ 
+ 
+</script>
+
+
+<!--
+
+{% load static %}
+
+<script src="{% static "js/webrtc-handler.js" %}"> 
+
+</script>
+-->
+
+
+
+ 
+
+
+{% endblock content %}

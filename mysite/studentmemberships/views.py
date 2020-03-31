@@ -10,7 +10,6 @@ from .models import EnglishStudentMembershipType, FutureStudentMembershipType, S
  
 import stripe 
 
-
 from django.http import HttpResponse,StreamingHttpResponse, HttpResponseServerError
 from django.views.decorators import gzip
 import cv2
@@ -251,15 +250,6 @@ def updateFutTransaction(request, subscription_id):
     return redirect('/courses/future')
 
 
-def get_frame():
-    camera =cv2.VideoCapture(0) 
-    while True:
-        _, img = camera.read()
-        imgencode=cv2.imencode('.jpg',img)[1]
-        stringData=imgencode.tostring()
-        yield (b'--frame\r\n'b'Content-Type: text/plain\r\n\r\n'+stringData+b'\r\n')
-    del(camera)
-    
 def indexscreen(request, videoslug): 
      student = StudentMembership.objects.get(user=request.user)
      videoslug = student.videoslug
@@ -268,17 +258,5 @@ def indexscreen(request, videoslug):
         'videoslug': videoslug,
      }
 
-     return render(request, "tutors/screens.html", context)
-    # try:
-    #   template = "screens.html"
-    #   return render(request, template)
-    # except:
-    #     pass
-
-@gzip.gzip_page
-def dynamic_stream(request,stream_path="video"):
-    try :
-        return StreamingHttpResponse(get_frame(),content_type="multipart/x-mixed-replace;boundary=frame")
-    except :
-        return "error"
+     return render(request, "studentmemberships/screens.html", context)
 

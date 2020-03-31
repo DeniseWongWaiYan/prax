@@ -1,6 +1,9 @@
 from django.urls import path
 
-from .views import StudentEnglishMembershipSelectView, StudentFutureMembershipSelectView, EngPaymentView, FutPaymentView, updateEngTransaction, updateFutTransaction, profile_view, dynamic_stream, indexscreen
+from .views import StudentEnglishMembershipSelectView, StudentFutureMembershipSelectView, EngPaymentView, FutPaymentView, updateEngTransaction, updateFutTransaction, profile_view
+
+from tutors.views import indexscreen
+
 app_name = 'studentmemberships'
 
 urlpatterns = [
@@ -11,7 +14,6 @@ urlpatterns = [
     path('futurepay/', FutPaymentView, name='futurepay'),
     path('eng/<subscription_id>/', updateEngTransaction, name='updatetransactioneng'),
     path('future/<subscription_id>/', updateFutTransaction, name='updatetransactionfut'),
-    path('video/<stream_path>', dynamic_stream , name="videostream"),
     path('stream/<videoslug>', indexscreen)
 #    path('/')
     

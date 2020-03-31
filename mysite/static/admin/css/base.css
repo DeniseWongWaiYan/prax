@@ -645,6 +645,7 @@ div.system-message p.system-message-title {
 
 /* BREADCRUMBS */
 
+/*
 div.breadcrumbs {
     background: #79aec8;
     padding: 10px 40px;
@@ -653,6 +654,8 @@ div.breadcrumbs {
     color: #c4dce8;
     text-align: left;
 }
+*/
+
 
 div.breadcrumbs a {
     color: #fff;

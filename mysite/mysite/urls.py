@@ -26,7 +26,8 @@ urlpatterns = [
     path('tutors/', include('tutors.urls')),
     path('parents/', include('parents.urls')),
     path('grades/', include('grades.urls')),
-    
+    path('vocab/', include('vocab.urls')),
+    path('messages/', include('postman.urls')),
     
 ]
 

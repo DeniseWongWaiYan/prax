@@ -1,0 +1,37 @@
+
+  
+<script src="https://rtcmulticonnection.herokuapp.com/dist/RTCMultiConnection.min.js"></script>
+<script src="https://rtcmulticonnection.herokuapp.com/socket.io/socket.io.js"></script>
+helo
+<script>
+
+var connection = new RTCMultiConnection();
+
+// this line is VERY_important
+connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
+
+// if you want audio+video conferencing
+connection.session = {
+    audio: false,
+    video: false,
+    data: true
+};
+
+    connection.onopen = function(event) {
+    connection.send('hello everyone');
+};
+
+    connection.onmessage = function(event) {
+    alert(event.userid + ' said: ' + event.data);
+};
+
+
+
+connection.openOrJoin('{{videoslug}}');
+    
+    
+</script>
+    
+    
+</body>
+</html>

@@ -1,43 +1,66 @@
 <!DOCTYPE html>
 
 <html>
-	<head><title></title>
+	<head><title>Smile School</title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	</head>
+	<script></script>
+<!--
+    <style>
+     .breadcrumb {
+/*    background-color: #60A677;*/
+}    
+            .breadcrumb-item + .breadcrumb-item::before {
+        content: ">";
+    }
+        
+    </style> 
+-->
+    </head>
 
 <body>
 	{% include 'courses/messages.html' %}
 <!-- navigation bar -->
 	
+    
+    <script src="https://use.fontawesome.com/ebae4c6b9c.js"></script>
+
+    
 		<ol class="breadcrumb">
-			<li><a href = '{% url 'homepages:index' %}'>Home</a></li>
+			<li><a href = '{% url 'homepages:index' %}'> <i class="fa fa-home" style="color:blue"></i> Home</a></li>
             
             {% if request.user.is_authenticated %}
-			<li><a href = '{% url 'studentmemberships:profile' %}'>Profile</a></li>
-            <li><a href = '{% url 'courses:englishlist' %}'>English Courses</a></li>
-            <li><a href = '{% url 'courses:futurelist' %}'>Future Courses</a></li>
+<!--			<li><a href = '{% url 'studentmemberships:profile' %}'>Profile</a></li>-->
+            <li><a href = '{% url 'courses:englishlist' %}'><i class="fa fa-leanpub" style="color:blue"></i> English Courses</a></li>
+            <li><small><a href = '{% url 'vocab:vocab_list' %}'>Word List</a></small></li>
+            <li><a href = '{% url 'courses:futurelist' %}'><i class="fa fa-rocket" style="color:blue"></i>  Future Courses</a></li>
             
 			{% block post_detail_link %}
 			{% endblock %}
 
-			<li class='pull-right'> Hello {{request.user}} </li>    
-            <li class='pull-right'><a href='{% url 'homepages:signout' %}'>Sign Out</a></li>
+			<li class='ml-auto'> Hello <a href = '{% url 'studentmemberships:profile' %}'>{{request.user}}</a>!  </li>    
+            <li align='ml-auto'><a href='{% url 'homepages:signout' %}'>Sign Out</a></li>
             
             {% else %}
-			<li class='pull-right'><a href='{% url 'homepages:signup' %}'>Register</a></li>
-			<li class='pull-right'><a href='{% url 'homepages:signin' %}'>Sign In</a></li>
+			<li class='ml-auto'><a href='{% url 'homepages:signup' %}'>Register</a></li>
+			<li class='ml-auto'><a href='{% url 'homepages:signin' %}'>Sign In</a></li>
 			{% endif %}
             
 
 		</ol>
 
+    
+  {% block postman_menu %}
 
+{% endblock %}  
 
 <!-- block content -->
 	{% block content %}
 	{% endblock content %}
+    
 	
+
+    
 <!-- jquery + Bootstrap -->
 	<script
 	  src="https://code.jquery.com/jquery-3.4.1.js"
@@ -45,7 +68,9 @@
 	  crossorigin="anonymous"></script>
 
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
 
 </body>
 </html>

@@ -37,12 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'postman',
     'homepages',
     'studentmemberships',
     'courses',
     'tutors',
     'parents',
-    'grades'
+    'grades',
+    'vocab'
 ]
 
 SESSION_ENGINE = "django.contrib.sessions.backends.db"
@@ -135,3 +137,8 @@ MEDIA_ROOT = os.path.join(VENV_PATH, 'media_root')
 
 STRIPE_SECRET_KEY = 'sk_test_7DmaE9YJA0RmbV3Se4qHVzCL00ttEV560V'
 STRIPE_PUBLISHABLE_KEY = 'pk_test_H4LNjuI7tJpoS0xYkzWXLBYE00Dc6V6avU'
+
+POSTMAN_I18N_URLS = True  # default is False
+POSTMAN_DISALLOW_ANONYMOUS = True  # default is False
+POSTMAN_DISALLOW_MULTIRECIPIENTS = False  
+POSTMAN_AUTO_MODERATE_AS = True

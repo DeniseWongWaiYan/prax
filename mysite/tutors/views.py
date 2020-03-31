@@ -3,6 +3,8 @@ from django.shortcuts import render
 from studentmemberships.models import StudentMembership
 from .models import Tutors
 
+from grades.models import EnglishGrades
+
 from django.http import HttpResponse,StreamingHttpResponse, HttpResponseServerError
 from django.views.decorators import gzip
 import cv2
@@ -51,34 +53,17 @@ def tutor_login(request):
         form = LoginForm()
     return render(request, 'homepage/signin.html', {'form': form})
 
-def get_frame():
-    camera =cv2.VideoCapture(0) 
-    while True:
-        _, img = camera.read()
-        imgencode=cv2.imencode('.jpg',img)[1]
-        stringData=imgencode.tostring()
-        yield (b'--frame\r\n'b'Content-Type: text/plain\r\n\r\n'+stringData+b'\r\n')
-    del(camera)
+def indexscreen(request, videoslug):
+    student = StudentMembership.objects.get(user=request.user)
+    tutor = student.englishtutor
+    try:
+        videoslug = tutor.videoslug
+    except:
+        videoslug = Tutors.objects.get(user=request.user).videoslug
     
-def indexscreen(request, videoslug): 
-	 student = StudentMembership.objects.get(user=request.user)
-	 tutor = student.englishtutor
-	 videoslug = tutor.videoslug
-
-	 context = {
+    context = {
 	 	'videoslug': videoslug,
 	 }
-
-	 return render(request, "tutors/screens.html", context)
-    # try:
-    # 	template = "screens.html"
-    # 	return render(request, template)
-    # except:
-    #     pass
-
-@gzip.gzip_page
-def dynamic_stream(request,stream_path="video"):
-    try :
-        return StreamingHttpResponse(get_frame(),content_type="multipart/x-mixed-replace;boundary=frame")
-    except :
-        return "error"
+    
+    return render(request, "tutors/index.html", context)
+     

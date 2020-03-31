@@ -27,6 +27,7 @@ class EnglishLesson(models.Model):
     position = models.IntegerField()
     video_url = models.CharField(max_length=200)
     readinglist_url = models.CharField(max_length=200)
+    assignment = models.TextField(blank=True)
     thumbnail = models.ImageField()
     description = models.TextField()
     allowed_memberships = models.ManyToManyField(EnglishStudentMembershipType)

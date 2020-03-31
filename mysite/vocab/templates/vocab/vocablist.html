@@ -1,0 +1,24 @@
+{% extends 'courses/base.html' %}
+
+{% block content %}
+<div class="container">
+{% include 'courses/messages.html' %}
+    <h3>{{wordcount}} Words </h3> <h4><a href = '{% url 'vocab:addvocab' %}'>Add words</a></h4> <br>
+
+<div class="card-deck">
+    
+{% for word in words %}
+
+<div class="card mb-4">
+  <div class="card-body style="width: 18rem;"">
+    <h5 class="card-title"> {{ word.new_word }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ word.definition }}</h6>
+    <p class="card-text">{{ word.comments }}</p>
+  </div>
+</div>
+    
+{% endfor %}
+    </div>
+
+
+{% endblock content %}
