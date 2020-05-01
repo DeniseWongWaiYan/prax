@@ -106,3 +106,6 @@ class StudentFutureSubscription(models.Model):
     def get_next_billing_date(self):
         subscription = stripe.Subscription.retrieve(self.stripe_subscription_id)
         return datetime.datetime.fromtimestamp(subscription.current_period_end)
+    
+
+

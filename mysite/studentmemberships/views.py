@@ -3,6 +3,12 @@ from django.conf import settings
 from django.contrib import messages
 from django.urls import reverse
 from django.http import HttpResponseRedirect
+from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_exempt
+
+
+
+import json
 
 from django.views.generic import ListView, View
 
@@ -122,12 +128,52 @@ def EngPaymentView(request):
         
         
             # messages.info(request, "Your card has been declined." )
-
+    
     context = {
         'publishKey': publishKey,
-        'selected_membership': eng_sel_mem,
-    }
+        'selected_membership': eng_sel_mem, }
+        
     return render(request, 'studentmemberships/studentengpay.html', context)
+
+
+@csrf_exempt
+def EngAlipayView(request):         
+    eng_sel_mem = get_sel_eng_mem(request)
+#    @require_POST
+    
+#    def webhook(request):
+    source = stripe.Source.create(
+      type='alipay',
+      currency='CNY',
+      amount=eng_sel_mem.price, 
+      redirect= {'return_url': "http://127.0.0.1:8000/studentmembership/english"},
+#      customer=eng_mem.stripe_customer_id,
+#      items=[
+#                    { "plan": eng_sel_mem.stripe_plan_id },
+#                ]
+
+    )
+
+    response = json.loads(str(source))
+    redirect_url = response['redirect']['url']
+        
+    webhook = stripe.WebhookEndpoint.create(
+        url='http://ht127.0.0.1:8000/studentmembership/engalipay',
+        enabled_events=[
+         "source.chargeable",
+          ],
+        )
+    
+    webhook_response = json.loads(str(webhook))
+
+    if webhook_response['enabled_events'] == 'source.chargeable':
+#        charge = 
+        stripe.Charge.create(
+          amount=eng_sel_mem.price,
+          currency='CNY',
+          source = json.loads(str(response))['id'])
+        
+    return redirect(redirect_url)
 
     # return render(request, 'studentmemberships/studentengpay.html', context)
 
@@ -182,7 +228,7 @@ class StudentFutureMembershipSelectView(ListView):
         
         if fut_membership.futuremembership == selected_membership:
             if fut_subscription != None:
-                messages.info(request, 'You already have this membership. Your next payment is die {}'.format('get this valeu from stripe'))
+                messages.info(request, 'You already have this membership. Your next payment is die {}'.format('get this value from stripe'))
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         
 
