@@ -5,28 +5,40 @@ from .forms import DocumentForm
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
-from .models import EnglishGrades
+from .models import EnglishGrades, FutureGrades
 
 # Create your views here.
-def englishgrades(request):
+def grades(request):
     
-    grades = EnglishGrades.objects.filter(student = request.user).all()
+    enggrades = EnglishGrades.objects.filter(student = request.user).all()
+    futgrades = FutureGrades.objects.filter(student = request.user).all()
      
     context = {
-     'grades': grades,
+     'enggrades': enggrades,
+     'futuregrades': futgrades,
     }
     
     return render(request, "grades/gradeslist.html", context)
-
-def futuregrades(request):
-    
-    grades = FutureGrades.objects.filter(student = request.user).all()
-     
-    context = {
-     'grades': grades,
-    }
-    
-    return render(request, "grades/gradeslist.html", context)
+#
+#def englishgrades(request):
+#    
+#    grades = EnglishGrades.objects.filter(student = request.user).all()
+#     
+#    context = {
+#     'grades': grades,
+#    }
+#    
+#    return render(request, "grades/gradeslist.html", context)
+#
+#def futuregrades(request):
+#    
+#    grades = FutureGrades.objects.filter(student = request.user).all()
+#     
+#    context = {
+#     'futuregrades': grades,
+#    }
+#    
+#    return render(request, "grades/gradeslist.html", context)
 
 def model_form_upload(request):
     if request.method == 'POST':

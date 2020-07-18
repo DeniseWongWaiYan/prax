@@ -3,11 +3,12 @@
 {% block content %}
 <div class="container">
     
-        <h1>{{request.user }}'s Profile</h1>
-        <small> <a href="{% url 'grades:englishgrades' %}"> Link to grades </a>  </small>
-        <br><br>
+        <h1>{{request.user }}'s Profile</h1> <h2 class="float-right"> Your tutor is {{request.user.studentmembership.futuretutor}} </h2>
     
+        <small> <a href="{% url 'grades:grades' %}"> Link to grades </a>  </small>
+        <br><br>
     <div class="row">    
+        
         <div class="col-sm-6 col-md-6">
         
             <h4>Current English Membership: </h4>
@@ -42,7 +43,8 @@
             <small>Since {{user_future_sub.get_created_date}} </small>
             
             {% if user_future_sub.active != False %}
-                <p>Next payment due: {{ user_future_sub.get_next_billing_date}} </p>
+            <p>Payment began: {{ user_future_sub.get_begin_billing_date}} </p>    
+            <p>Next payment due: {{ user_future_sub.get_next_billing_date}} </p>
             {% endif %}
             {% endif %}
             {% else %}

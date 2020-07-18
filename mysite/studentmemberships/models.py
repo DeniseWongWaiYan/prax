@@ -3,7 +3,7 @@ from django.db.models.signals import post_save
 from django.conf import settings
 import datetime
 
-from tutors.models import Tutors
+from tutors.models import EnglishTutors, FutureTutors
 from parents.models import Parent
 
 import stripe
@@ -20,7 +20,8 @@ STUDENT_ENGLISH_MEMBERSHIP_CHOICES = (
 )
 
 STUDENT_FUTURE_MEMBERSHIP_CHOICES = (
-    ('Smile School Future', 'Future'),
+    ('Smile School Future Full', 'Future Full'),
+    ('Smile School Future Basic', 'Future Basic'),
     ('No Smile School Future', 'Future No')
 )
 
@@ -50,10 +51,10 @@ class StudentMembership(models.Model):
     futuremembership = models.ForeignKey(
         FutureStudentMembershipType, on_delete=models.SET_NULL, null=True)
     englishtutor = models.ForeignKey(
-        Tutors, on_delete=models.SET_NULL, null=True)
+        EnglishTutors, on_delete=models.SET_NULL, null=True)
+    futuretutor = models.ForeignKey(
+        FutureTutors, on_delete=models.SET_NULL, null=True)
     videoslug = models.SlugField()
-    parents = models.ForeignKey(
-        Parent, on_delete=models.SET_NULL, null=True)
     
     def __str__(self):
         return self.user.username
@@ -88,6 +89,11 @@ class StudentEnglishSubscription(models.Model):
     def get_next_billing_date(self):
         subscription = stripe.Subscription.retrieve(self.stripe_subscription_id)
         return datetime.datetime.fromtimestamp(subscription.current_period_end)
+    
+    @property
+    def get_begin_billing_date(self):
+        subscription = stripe.Subscription.retrieve(self.stripe_subscription_id)
+        return datetime.datetime.fromtimestamp(subscription.current_period_start)
         
 class StudentFutureSubscription(models.Model):
     futuremembershiptype = models.ForeignKey(StudentMembership, on_delete=models.CASCADE)
@@ -107,5 +113,8 @@ class StudentFutureSubscription(models.Model):
         subscription = stripe.Subscription.retrieve(self.stripe_subscription_id)
         return datetime.datetime.fromtimestamp(subscription.current_period_end)
     
-
+    @property
+    def get_begin_billing_date(self):
+        subscription = stripe.Subscription.retrieve(self.stripe_subscription_id)
+        return datetime.datetime.fromtimestamp(subscription.current_period_start)
 

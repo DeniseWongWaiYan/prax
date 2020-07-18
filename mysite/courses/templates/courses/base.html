@@ -31,14 +31,20 @@
             
             {% if request.user.is_authenticated %}
 <!--			<li><a href = '{% url 'studentmemberships:profile' %}'>Profile</a></li>-->
+            <li><a href = '{% url 'courses:futurelist' %}'><i class="fa fa-rocket" style="color:blue"></i>  Future Courses</a></li>
+
+<!--
             <li><a href = '{% url 'courses:englishlist' %}'><i class="fa fa-leanpub" style="color:blue"></i> English Courses</a></li>
             <li><small><a href = '{% url 'vocab:vocab_list' %}'>Word List</a></small></li>
-            <li><a href = '{% url 'courses:futurelist' %}'><i class="fa fa-rocket" style="color:blue"></i>  Future Courses</a></li>
+-->
             
+<!--
 			{% block post_detail_link %}
 			{% endblock %}
+-->
+            <li class='ml-auto'> <a href = '{% url 'postman:inbox' %}'>Messages</a></li>    
+			<li align='ml-auto'> Hello <a href = '{% url 'studentmemberships:profile' %}'>{{request.user}}</a>! </li>
 
-			<li class='ml-auto'> Hello <a href = '{% url 'studentmemberships:profile' %}'>{{request.user}}</a>!  </li>    
             <li align='ml-auto'><a href='{% url 'homepages:signout' %}'>Sign Out</a></li>
             
             {% else %}

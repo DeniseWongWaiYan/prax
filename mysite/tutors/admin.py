@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Tutors
+from .models import EnglishTutors, FutureTutors
 
-admin.site.register(Tutors)
+admin.site.register(EnglishTutors)
+admin.site.register(FutureTutors)

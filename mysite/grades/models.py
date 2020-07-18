@@ -27,10 +27,14 @@ class EnglishGrades(models.Model):
 class FutureGrades(models.Model):
     student = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING, null=True)
     lesson = models.ForeignKey(FutureLesson, on_delete=models.DO_NOTHING)
-    vocab = models.IntegerField()
-    grammar = models.IntegerField()
-    content = models.IntegerField()
-    creativity = models.IntegerField()
+    critical_thinking = models.IntegerField(null=True)
+    creativity = models.IntegerField(null=True)
+    communication = models.IntegerField(null=True)
+    collaboration = models.IntegerField(null=True)
+    leadership = models.IntegerField(null=True)
+    social_cultural_awareness = models.IntegerField(null=True)
+    comments = models.TextField(null=True)
+
     
     def __str__(self):
         template = '{0.student} {0.lesson}'

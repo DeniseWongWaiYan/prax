@@ -2,7 +2,9 @@
 
 {% block content %}
 <div class="container">
-    
+        <h1>{{ request.user }}'s Certifications</h1>
+        None, so far. <br>
+    <br>
         <h1>{{ request.user }}'s Grades</h1>
         
 
@@ -11,11 +13,21 @@
             <li> Vocab: <big> {{grade.vocab}}</big> /10</li>
             <li> Grammar: <big> {{grade.grammar}} </big>/10</li>
             <li> Content:<big> {{grade.content}}</big>/10</li>
+    {% endfor %}
+    
+    {% for grade in futuregrades %}
+        <h4>{{grade.lesson}}</h4>
+             <li> Critical Thinking: <big> {{grade.critical_thinking}}</big> /10</li>
              <li> Creativity: <big> {{grade.creativity}}</big> /10</li>
-        {% endfor %}
-            
-        </div>
-        
+             <li> Communication: <big> {{grade.communication}}</big> /10</li>
+             <li> Collaboration: <big> {{grade.collaboration}}</big> /10</li>
+            <li> Leadership: <big> {{grade.leadership}}</big> /10</li>
+            <li> Social and Cultural Awarness: <big> {{grade.social_cultural_awareness}}</big> /10</li>
+    
+    <br> <h5>Comments: </h5> <br>
+    {{ grade.comments }}
+    {% endfor %}
+                        
         
 </div>
 

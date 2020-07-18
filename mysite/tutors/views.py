@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from studentmemberships.models import StudentMembership
-from .models import Tutors
+from .models import EnglishTutors, FutureTutors
 
 from grades.models import EnglishGrades
 

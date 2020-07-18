@@ -4,17 +4,32 @@
 <div class="container">
     <head><title>English Course List</title></head>
     <body>
-        <h1>Lesson View Page</h1>
-         {% if object is not None %}
-         {{ object.title }}
-            {{ object.description }}
+        
+        {% if object is not None %}
+        <h1> {{ object.title }}</h1>
+        {{object.position}}/<small>52</small> <br> 
+    {{ object.description }}   <br>   
+        <iframe src='{{object.video_url}}'> </iframe> <br> 
+        
+<!--        {{object.video_url}} <br> -->
+        <a href ="{{object.readinglist_url}}">Reading list: <small>read this for more resources</small> </a> <br>
+        
+        
+        
+        {{ object.assignment }} <br>
+        
+        <a href='{% url 'grades:enghwupload' %}'>Hand in work</a> <br>
+        <a href='{% url 'grades:grades' %}'>Grades</a> <br>
+        
+        
         
         {% else %}
             <h3> Upgrade membership </h3>
         
         {% endif %}
+        
+{% endblock %}
 
-{% endblock %}  
         </div>
     </body>    
     
