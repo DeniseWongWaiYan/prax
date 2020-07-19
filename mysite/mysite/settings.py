@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import dj_database_url
-import django_heroku
+
 
 import os
 
@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'j^2&5wyuh@ber(o8(kv+#osc3nxhq$k-uhqdrlw*h=b4gv-*!0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS =  ['127.0.0.1', '.herokuapp.com']
 
@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'djangogirls',
+        'NAME': 'smileschool',
         'USER': 'name',
         'PASSWORD': '',
         'HOST': 'localhost',
@@ -169,4 +169,4 @@ POSTMAN_AUTO_MODERATE_AS = True
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
-django_heroku.settings(locals())
+
