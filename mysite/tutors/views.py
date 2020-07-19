@@ -7,7 +7,7 @@ from grades.models import EnglishGrades
 
 from django.http import HttpResponse,StreamingHttpResponse, HttpResponseServerError
 from django.views.decorators import gzip
-import cv2
+
 import time
 
 

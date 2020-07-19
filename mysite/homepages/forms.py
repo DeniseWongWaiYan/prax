@@ -3,10 +3,12 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.contrib.auth.forms import UserCreationForm
 
+from django.utils.translation import gettext as _
+
 class LoginForm(forms.Form):
 
-    username = forms.CharField(max_length=20, label='', initial='Username')
-    password = forms.CharField(max_length=20, widget=forms.PasswordInput(render_value=True), label='', initial='Password')
+    username = forms.CharField(max_length=20, label='', initial=_('Username'))
+    password = forms.CharField(max_length=20, widget=forms.PasswordInput(render_value=True), label='', initial=_('Password'))
 
 class StudentRegistrationForm(forms.ModelForm):
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
@@ -14,7 +16,7 @@ class StudentRegistrationForm(forms.ModelForm):
     
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email')
+        fields = (_('username'), _('first_name'), _('last_name'), _('email'))
 
     def clean_confirmpassword(self):
         cd = self.cleaned_data
@@ -28,7 +30,7 @@ class ParentRegistrationForm(forms.ModelForm):
     
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email')
+        fields = (_('username'), _('first_name'), _('last_name'), _('email'))
 
     def clean_confirmpassword(self):
         cd = self.cleaned_data

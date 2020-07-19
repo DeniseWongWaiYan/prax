@@ -1,16 +1,16 @@
 {% extends 'courses/base.html' %}
 {% block content %}
+{% load i18n %}
 
-<html>
 
-
-  <h2>Sign in</h2>
+<div class="container">
+  <h2>{% trans "Sign in" %}</h2>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Login</button>
+    <button type="submit">{% trans "Login" %} </button>
   </form>
-
+    </div>
     
-</html>
+
 {% endblock %}

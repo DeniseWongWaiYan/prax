@@ -18,7 +18,7 @@ import stripe
 
 from django.http import HttpResponse,StreamingHttpResponse, HttpResponseServerError
 from django.views.decorators import gzip
-import cv2
+#import cv2
 import time
 
 def profile_view(request):

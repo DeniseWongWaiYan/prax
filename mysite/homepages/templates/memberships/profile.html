@@ -3,18 +3,18 @@
 		<h1>{{ name }}'s Profile</h1>
 		<div class="col-sm-4 col-md-4">
 			{% if student_membership != None %}
-				<h4>Current Membership: {{ student_membership.membership.membership_type }} <small>since {{ student_subscription.get_created_date }}</small></h4>
+				<h4>{% trans "Current Membership: " %}  {{ student_membership.membership.membership_type }} <small>since {{ student_subscription.get_created_date }}</small></h4>
 
 				{% if student_subscription.active != False %}
-					<p>Next payment due: {{ student_subscription.get_next_billing_date }}</p>
+					<p> {% trans "Next payment due:" %}   {{ student_subscription.get_next_billing_date }}</p>
 
 				{% else %}
-					<p>You don't have an active membership plan. Check them out here 
+					<p> {% trans "You don't have an active membership plan. Check them out here." %} 
 						
 					</p>
 				{% endif %}
             {% else %}
-                <p> No subscriptions at all. </p> 
+                <p>{% trans " No subscriptions at all." %}   </p> 
 			{% endif %}
 		</div>
 	</div>

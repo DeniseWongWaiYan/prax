@@ -2,19 +2,19 @@
 
 {% block content %}
 <div class="container">
-	<h1>Select a Student Membership </h1>
+	<h1>{% trans "Select a Student Membership " %} </h1>
 	<div class="row">
 		{% for object in object_list %}
 			<div class="col-sm-4 col-md-4">
 			<h2>{{ object.future_membership_type }}</h2>
-            <p>Price: RMB {{ object.price }}<small>/3 months</small></p>
+            <p>Price: RMB {{ object.price }}<small>/{% trans "3 months" %}</small></p>
             
             <form method='POST' action="{% url 'studentmemberships:selectfutstudentmem' %}">
                 {% csrf_token %}
                 {% if object.future_membership_type != current_membership %}
                     <button class="btn btn-warning">Select</button>
                 {% else %}
-                    <small>This is your current membership.</small>
+                    <small> {% trans "This is your current membership." %} </small>
                 {% endif %}
                 <input type="hidden" name="future_membership_type" value="{{object.future_membership_type}}">
                 

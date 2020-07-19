@@ -8,7 +8,7 @@ from parents.models import Parent
 
 import stripe
 
-
+#from django.utils.translation import gettext as _
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 

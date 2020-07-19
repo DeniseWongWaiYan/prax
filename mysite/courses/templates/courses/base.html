@@ -4,34 +4,44 @@
 	<head><title>Smile School</title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<script></script>
-<!--
-    <style>
-     .breadcrumb {
-/*    background-color: #60A677;*/
-}    
-            .breadcrumb-item + .breadcrumb-item::before {
-        content: ">";
-    }
+	
         
+    {% load i18n %}
+
+
+    <style>
+ button {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: black;
+}
+
+
+
     </style> 
--->
     </head>
 
 <body>
 	{% include 'courses/messages.html' %}
+    
 <!-- navigation bar -->
 	
-    
-    <script src="https://use.fontawesome.com/ebae4c6b9c.js"></script>
+<script src="https://use.fontawesome.com/ebae4c6b9c.js"></script>
 
-    
-		<ol class="breadcrumb">
-			<li><a href = '{% url 'homepages:index' %}'> <i class="fa fa-home" style="color:blue"></i> Home</a></li>
+
+
+
+<ol class="breadcrumb" style="font-size:20px">
+
+ 
+            
+			<li><a href = '{% url 'homepages:index' %}'> <i class="fa fa-home" style="color:black;"></i>  {% trans "Home" %} </a></li>
+            
             
             {% if request.user.is_authenticated %}
 <!--			<li><a href = '{% url 'studentmemberships:profile' %}'>Profile</a></li>-->
-            <li><a href = '{% url 'courses:futurelist' %}'><i class="fa fa-rocket" style="color:blue"></i>  Future Courses</a></li>
+            <li><a href = '{% url 'courses:futurelist' %}'><i class="fa fa-rocket" style="color:black"></i> {% trans " Future Courses" %} </a></li>
 
 <!--
             <li><a href = '{% url 'courses:englishlist' %}'><i class="fa fa-leanpub" style="color:blue"></i> English Courses</a></li>
@@ -42,19 +52,72 @@
 			{% block post_detail_link %}
 			{% endblock %}
 -->
-            <li class='ml-auto'> <a href = '{% url 'postman:inbox' %}'>Messages</a></li>    
-			<li align='ml-auto'> Hello <a href = '{% url 'studentmemberships:profile' %}'>{{request.user}}</a>! </li>
+            <li class='ml-auto'> <a href = '{% url 'postman:inbox' %}'><i class="fa fa-comments" style="color:black" aria-hidden="true"></i>
+ {% trans " Messages " %}  </a></li>    
+			<li align='ml-auto'> {% trans " Hello" %}  <a href = '{% url 'studentmemberships:profile' %}'>{{request.user}}</a>! <i class="fa fa-cog fa-spin fa-fw"></i>
 
-            <li align='ml-auto'><a href='{% url 'homepages:signout' %}'>Sign Out</a></li>
+ </li>
+
+            <li align='ml-auto'><a href='{% url 'homepages:signout' %}'> {% trans "Sign Out" %} </a></li>
             
             {% else %}
-			<li class='ml-auto'><a href='{% url 'homepages:signup' %}'>Register</a></li>
-			<li class='ml-auto'><a href='{% url 'homepages:signin' %}'>Sign In</a></li>
+			<li class='ml-auto'><a href='{% url 'homepages:signup' %}'> {% trans " Register" %} </a></li>
+			<li class='ml-auto'><a href='{% url 'homepages:signin' %}'> {% trans " Sign In " %} </a></li>
 			{% endif %}
+<!--        <li ><a href=#>🇬🇧 🇨🇳</a></li>-->
+
+    <form action="{% url 'set_language' %}" method="post" style="padding-left:10px;">
             
+    {% csrf_token %}
+                
+            <li class='ml-auto'>
+                <button type="submit", name="language"
+                        value="en">
+                   🇬🇧
+                </button>
+            </li>
+        
+    
+</form>
+    <form action="{% url 'set_language' %}" method="post" style="padding-left:10px;">
+            
+    {% csrf_token %}
+                
+            <li class='ml-auto'>
+                <button type="submit", name="language"
+                        value="zh-hans">
+                   🇨🇳
+                </button>
+            </li>
+        
+    
+</form>
+    
+        
+<!--
+        <form action="{% url 'set_language' %}" method="post" style="padding-left:10px; font-size: 5px;">
+            
+    {% csrf_token %}
+    
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+            
+            <li class='ml-auto'>
+                <button type="submit", name="language"
+                        value="{{ language.code }}"
+                        class="{% if language.code == LANGUAGE_CODE %}selected{% endif %}"
+                        >
+                    {{ language.name_local }}
+                </button>
+            </li>
+        {% endfor %}
+    
+</form>
+-->
 
 		</ol>
-
     
   {% block postman_menu %}
 

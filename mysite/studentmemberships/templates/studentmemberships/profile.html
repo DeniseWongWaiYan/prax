@@ -1,17 +1,17 @@
 {% extends 'courses/base.html' %}
-
+ {% load i18n %} 
 {% block content %}
 <div class="container">
     
-        <h1>{{request.user }}'s Profile</h1> <h2 class="float-right"> Your tutor is {{request.user.studentmembership.futuretutor}} </h2>
+        <h1>{{request.user }}'s {% trans "Profile" %} </h1> <h2 class="float-right"> Your tutor is {{request.user.studentmembership.futuretutor}} </h2>
     
-        <small> <a href="{% url 'grades:grades' %}"> Link to grades </a>  </small>
+        <small> <a href="{% url 'grades:grades' %}"> {% trans "Link to grades" %}  </a>  </small>
         <br><br>
     <div class="row">    
         
         <div class="col-sm-6 col-md-6">
         
-            <h4>Current English Membership: </h4>
+            <h4>{% trans "Current English Membership: " %} </h4>
             {% if user_eng_sub != None %}
                 {% if user_eng.englishmembership.english_membership_type == 'No Smile School English' %}
             <h4>
@@ -25,34 +25,34 @@
             {% endif %}
             {% endif %}
             {% else %}
-                <p style="color:red">No subscription. Please consider joining us. </p>
+                <p style="color:red"> {% trans "No subscription. Please consider joining us." %}  </p>
             <br> 
             
         {% endif %}
-            <a href="{% url 'studentmemberships:selectengstudentmem' %}"> Change membership </a>
+            <a href="{% url 'studentmemberships:selectengstudentmem' %}"> {% trans "Change membership" %}  </a>
             
         </div>
         <div class="col-sm-6 col-md-6">
-        <h4>Current Future Membership: </h4>
+        <h4>{% trans "Current Future Membership:" %}  </h4>
             {% if user_future_sub != None %}
                 {% if user_future.futuremembership.future_membership_type == 'No Smile School English' %}
             <h4>
-                <p style="color:red">No subscription. Please consider joining us. </p>
+                <p style="color:red"> {% trans "No subscription. Please consider joining us." %}  </p>
                 {% else %}
                 {{ user_future.futuremembership.future_membership_type }} </h4>
             <small>Since {{user_future_sub.get_created_date}} </small>
             
             {% if user_future_sub.active != False %}
-            <p>Payment began: {{ user_future_sub.get_begin_billing_date}} </p>    
-            <p>Next payment due: {{ user_future_sub.get_next_billing_date}} </p>
+            <p>{% trans "Payment began:" %}  {{ user_future_sub.get_begin_billing_date}} </p>    
+            <p> {% trans "Next payment due: " %}{{ user_future_sub.get_next_billing_date}} </p>
             {% endif %}
             {% endif %}
             {% else %}
-                <p style="color:red">No subscription. Please consider joining us. </p>
+                <p style="color:red"> {% trans "No subscription. Please consider joining us." %}  </p>
             <br> 
             
         {% endif %}   
-            <a href="{% url 'studentmemberships:selectfutstudentmem' %}"> Change membership </a>
+            <a href="{% url 'studentmemberships:selectfutstudentmem' %}">{% trans " Change membership " %}</a>
             
         </div>
     </div>

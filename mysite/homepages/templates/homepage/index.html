@@ -2,15 +2,14 @@
 
 {% block content %}
 <div class="container">
+ {% load i18n %}   
+    <a href="{% url 'homepages:aboutus' %}">{% trans "About our team" %}</a><br>
+    <a href="{% url 'homepages:joinus' %}">{% trans "Join our team" %} <br></a>
     
-    <a href="{% url 'homepages:aboutus' %}">About our team</a><br>
-    <a href="{% url 'homepages:joinus' %}">Join our team<br></a>
     
-    
-    <a href="{% url 'homepages:signup' %}">I am a student - Sign up <br></a>
-    <a href="{% url 'homepages:signin' %}">Sign in <br></a>
+    <a href="{% url 'homepages:signup' %}">{% trans "I am a student - Sign up" %}  <br></a>
+    <a href="{% url 'homepages:signin' %}"> {% trans "Sign in" %} <br></a>
     </div>    
-
 
 
 {% endblock %}

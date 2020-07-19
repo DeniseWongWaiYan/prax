@@ -13,23 +13,43 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+from django.conf.urls.i18n import i18n_patterns
+from django.urls import include, path
+
 from django.contrib import admin
-from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings 
+from django.utils.translation import gettext_lazy as _
 
-urlpatterns = [
+#
+urlpatterns =[
+#    path('admin/', admin.site.urls),
+    path('i18n/', include('django.conf.urls.i18n')),]
+
+urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
-    path('', include('homepages.urls')),
+    path('rosetta/', include('rosetta.urls')),
+    path('home/', include('homepages.urls')),
     path('courses/', include('courses.urls')),
     path('studentmembership/', include('studentmemberships.urls')),
     path('tutors/', include('tutors.urls')),
     path('parents/', include('parents.urls')),
     path('grades/', include('grades.urls')),
     path('vocab/', include('vocab.urls')),
-    path('messages/', include('postman.urls')),
-    
-]
+    path('messages/', include('postman.urls')), prefix_default_language=True)
+#
+#
+#urlpatterns = i18n_patterns(
+#    path(_('home'), include('homepages.urls')),
+#    path(_('courses/'), include('courses.urls')),
+#    path(_('studentmembership/'), include('studentmemberships.urls')),
+#    path(_('tutors/'), include('tutors.urls')),
+#    path(_('parents/'), include('parents.urls')),
+#    path(_('grades/'), include('grades.urls')),
+#    path(_('vocab/'), include('vocab.urls')),
+#    path(_('messages/'), include('postman.urls')),
+#)
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL,

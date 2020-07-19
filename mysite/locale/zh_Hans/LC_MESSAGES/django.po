@@ -1,0 +1,223 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-19 14:38+0800\n"
+"PO-Revision-Date: 2020-07-19 06:38+0000\n"
+"Last-Translator: b'  <>'\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Translated-Using: django-rosetta 0.9.4\n"
+
+#: courses/templates/courses/base.html:39
+msgid "Home"
+msgstr "首页"
+
+#: courses/templates/courses/base.html:44
+msgid " Future Courses"
+msgstr "学笑未来课"
+
+#: courses/templates/courses/base.html:56
+msgid " Messages "
+msgstr "訊息"
+
+#: courses/templates/courses/base.html:57
+msgid " Hello"
+msgstr "您好"
+
+#: courses/templates/courses/base.html:61
+#| msgid "Sign in"
+msgid "Sign Out"
+msgstr "登出"
+
+#: courses/templates/courses/base.html:64
+msgid " Register"
+msgstr "注册"
+
+#: courses/templates/courses/base.html:65
+#| msgid "Sign in"
+msgid " Sign In "
+msgstr "登录"
+
+#: homepages/forms.py:10
+#| msgid "username"
+msgid "Username"
+msgstr "用户名"
+
+#: homepages/forms.py:11
+msgid "Password"
+msgstr "密码"
+
+#: homepages/forms.py:19 homepages/forms.py:33
+msgid "username"
+msgstr "用户名"
+
+#: homepages/forms.py:19 homepages/forms.py:33
+msgid "first_name"
+msgstr "名字"
+
+#: homepages/forms.py:19 homepages/forms.py:33
+msgid "last_name"
+msgstr "姓名"
+
+#: homepages/forms.py:19 homepages/forms.py:33
+msgid "email"
+msgstr "电邮"
+
+#: homepages/templates/homepage/aboutus.html:9
+msgid ""
+"\n"
+"    \n"
+"    about us\n"
+"\n"
+msgstr ""
+"\n"
+"关于我们\n"
+
+#: homepages/templates/homepage/edit.html:3
+#: homepages/templates/homepage/index.html:10
+msgid "I am a student - Sign up"
+msgstr "我是个学生 - 注册"
+
+#: homepages/templates/homepage/index.html:6
+msgid "About our team"
+msgstr "关于我们"
+
+#: homepages/templates/homepage/index.html:7
+msgid "Join our team"
+msgstr "加入我们"
+
+#: homepages/templates/homepage/index.html:11
+#: homepages/templates/homepage/signin.html:7
+msgid "Sign in"
+msgstr "登录"
+
+#: homepages/templates/homepage/joinus.html:9
+msgid ""
+"\n"
+"    \n"
+"    join us\n"
+"\n"
+msgstr ""
+"\n"
+"加入我们\n"
+
+#: homepages/templates/homepage/register_done.html:5
+msgid "Welcome"
+msgstr "欢迎👏"
+
+#: homepages/templates/homepage/register_done.html:8
+msgid "Your account has been successfully created. Now you can"
+msgstr "您的账户已经成功的建立了。您现在可以"
+
+#: homepages/templates/homepage/register_done.html:8
+msgid "log in"
+msgstr "登录"
+
+#: homepages/templates/homepage/signin.html:11
+msgid "Login"
+msgstr "登录"
+
+#: homepages/templates/memberships/profile.html:6
+msgid "Current Membership: "
+msgstr "现在的订阅"
+
+#: homepages/templates/memberships/profile.html:9
+msgid "Next payment due:"
+msgstr "付款到期"
+
+#: homepages/templates/memberships/profile.html:12
+msgid "You don't have an active membership plan. Check them out here."
+msgstr "您没有可用的订阅。查看更多。"
+
+#: homepages/templates/memberships/profile.html:17
+msgid " No subscriptions at all."
+msgstr "没有订阅"
+
+#: mysite/settings.py:123
+msgid "English"
+msgstr "🇬🇧 英文"
+
+#: mysite/settings.py:124
+msgid "Chinese"
+msgstr "🇨🇳 中文"
+
+#: studentmemberships/templates/studentmemberships/futurestudentmembershiptype_list.html:5
+msgid "Select a Student Membership "
+msgstr "选择学生订阅"
+
+#: studentmemberships/templates/studentmemberships/futurestudentmembershiptype_list.html:10
+#: studentmemberships/templates/studentmemberships/studentfutpay.html:13
+msgid "3 months"
+msgstr "三个月"
+
+#: studentmemberships/templates/studentmemberships/futurestudentmembershiptype_list.html:17
+msgid "This is your current membership."
+msgstr "您现用的订阅"
+
+#: studentmemberships/templates/studentmemberships/profile.html:6
+msgid "Profile"
+msgstr "个人资料"
+
+#: studentmemberships/templates/studentmemberships/profile.html:8
+msgid "Link to grades"
+msgstr "成绩"
+
+#: studentmemberships/templates/studentmemberships/profile.html:14
+msgid "Current English Membership: "
+msgstr "您现用的学笑英文订阅"
+
+#: studentmemberships/templates/studentmemberships/profile.html:28
+#: studentmemberships/templates/studentmemberships/profile.html:40
+#: studentmemberships/templates/studentmemberships/profile.html:51
+msgid "No subscription. Please consider joining us."
+msgstr "没有订阅。请参加我们。"
+
+#: studentmemberships/templates/studentmemberships/profile.html:32
+msgid "Change membership"
+msgstr "转订阅"
+
+#: studentmemberships/templates/studentmemberships/profile.html:36
+msgid "Current Future Membership:"
+msgstr "现用的学笑未来订阅"
+
+#: studentmemberships/templates/studentmemberships/profile.html:46
+msgid "Payment began:"
+msgstr "付款"
+
+#: studentmemberships/templates/studentmemberships/profile.html:47
+msgid "Next payment due: "
+msgstr "付款到期"
+
+#: studentmemberships/templates/studentmemberships/profile.html:55
+msgid " Change membership "
+msgstr "转订阅"
+
+#: studentmemberships/templates/studentmemberships/studentfutpay.html:11
+msgid "Payment"
+msgstr "付款"
+
+#: studentmemberships/templates/studentmemberships/studentfutpay.html:13
+msgid "Price:"
+msgstr "价钱"
+
+#: studentmemberships/templates/studentmemberships/studentfutpay.html:25
+msgid "Checkout with Stripe"
+msgstr "用信用卡"
+
+#: studentmemberships/templates/studentmemberships/studentfutpay.html:28
+msgid "Credit or debit card"
+msgstr "卡"
+
+#: studentmemberships/templates/studentmemberships/studentfutpay.html:38
+msgid "Submit Payment"
+msgstr "付钱"
