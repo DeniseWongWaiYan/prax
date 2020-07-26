@@ -3,7 +3,11 @@
 {% block content %}
 <div class="container">
     
-        <h1>{{request.user }}'s {% trans "Profile" %} </h1> <h2 class="float-right"> Your tutor is {{request.user.studentmembership.futuretutor}} </h2>
+        <h1>{{request.user }}'s {% trans "Profile" %} </h1> <h2 class="float-right"> 
+    
+ {% if request.user.studentmembership is not None or request.user.studentmembership.futuretutor is not None %}
+    Your tutor is <a href="{% url 'tutors:profile' request.user.studentmembership.futuretutor  %}">{{request.user.studentmembership.futuretutor }}  </a> </h2>
+{% endif %}
     
         <small> <a href="{% url 'grades:grades' %}"> {% trans "Link to grades" %}  </a>  </small>
         <br><br>
