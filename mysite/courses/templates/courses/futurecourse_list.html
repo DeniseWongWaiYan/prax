@@ -6,11 +6,13 @@
     <body>
         <h1>Future Course List View Page</h1>
             {% for object in object_list %}
-                <a href="{{ object.get_absolute_url }}"> {{ object.title }} </a>
+                <h3><a href="{{ object.get_absolute_url }}"> {{ object.title }} </a> </h3> <br>
         
-            {% endfor %}
+            {% endfor %}                                                    
+                                                                                     
 {% endblock %}
-    </div>
+        </div>
     </body>    
     
-</html>
+
+

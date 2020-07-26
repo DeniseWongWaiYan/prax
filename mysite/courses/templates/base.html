@@ -10,13 +10,14 @@
 
 
     <style>
- 
-button.flag {
+/*
+.flag {
   background: none!important;
   border: none;
   padding: 0!important;
-  color: none;
+  color: black;
 }
+*/
 
 
 
@@ -57,7 +58,7 @@ button.flag {
 -->
             <li class='ml-auto'> <a href = '{% url 'postman:inbox' %}'><i class="fa fa-comments" style="color:black" aria-hidden="true"></i>
  {% trans " Messages " %}  </a></li>    
-			<li align='ml-auto'> {% trans " Hello" %}  <a href = '{% url 'studentmemberships:profile' %}'>{{request.user}}</a>! <i class="fa fa-grav fa-spin fa-fw"></i>
+			<li align='ml-auto'> {% trans " Hello" %}  <a href = '{% url 'studentmemberships:profile' %}'>{{request.user}}</a>! <i class="fa fa-grav fa-grav fa-grav"></i>
 
  </li>
 
@@ -67,14 +68,13 @@ button.flag {
 			<li class='ml-auto'><a href='{% url 'homepages:signup' %}'> {% trans " Register" %} </a></li>
 			<li class='ml-auto'><a href='{% url 'homepages:signin' %}'> {% trans " Sign In " %} </a></li>
 			{% endif %}
-<!--        <li ><a href=#>🇬🇧 🇨🇳</a></li>-->
 
     <form action="{% url 'set_language' %}" method="post" style="padding-left:10px;">
             
     {% csrf_token %}
                 
-            <li class='ml-auto'>
-                <button class="flag"  type="submit", name="language"
+            <li class='flag ml-auto'>
+                <button type="submit", name="language"
                         value="en">
                    🇬🇧
                 </button>
@@ -86,8 +86,8 @@ button.flag {
             
     {% csrf_token %}
                 
-            <li class='ml-auto'>
-                <button class="flag" type="submit", name="language"
+            <li class='flag ml-auto'>
+                <button type="submit", name="language"
                         value="zh-hans">
                    🇨🇳
                 </button>

@@ -2,35 +2,70 @@
 
 {% block content %}
 <div class="container">
-    <head><title>English Course List</title></head>
-    <body>
+    <head><title>Future Course List</title></head>
+
+    <body>  
+
+<style>
+
+    .lessoncontent{
+        padding-bottom:15px;
+        padding-top: 5px;
+        
+    }         
+
+</style>
+
+   {% load i18n %}
         
         {% if object is not None %}
-        <h1> {{ object.title }}</h1>
-        {{object.position}}/<small>52</small> <br> 
-    {{ object.description }}   <br>   
-        <iframe src='{{object.video_url}}'> </iframe> <br> 
+        <div class='lessoncontent'>
+         <h1 style="display:inline; padding-right:10px;"> {{ object.title }}</h1>  {{object.position}}/<small>52</small>  
+            
+            {% if request.user.studentmembership.futuretutor is not None %} <h4 class="float-right"> Your tutor is <a href="{% url 'tutors:profile' request.user.studentmembership.futuretutor.user_id %}">{{request.user.studentmembership.futuretutor}}  </a>  </h4> {% endif %}
+            <br> 
+        </div> 
         
-<!--        {{object.video_url}} <br> -->
-        <a href ="{{object.readinglist_url}}">Reading list: <small>read this for more resources</small> </a> <br>
+        <div class='lessoncontent border-top'> <h4><i class="fa fa-map-signs" aria-hidden="true"></i><a href="#">  Class Description </a> <small>The map. Read me first. </small>  </h4>
+        {{ object.description }}   <br>   
+        
+            </div> 
+ 
+        <div class='lessoncontent border-top'>  <h4><i class="fa fa-play" aria-hidden="true"></i> <a href="#"> Lecture </a>  <small> Lecture. Try not to fall asleep. </small> </h4>        
+       {% if object.video_url != "n/a" %} <iframe src='{{object.video_url}}'> </iframe> <br> {% endif %}
+        </div> 
+
+        {% if object.readinglist_url != "n/a" %}
+        <div class='lessoncontent border-top'> <h4><i class="fa fa-book" aria-hidden="true"></i> <a href ="{{object.readinglist_url}}"> Reading list </a>  <small> Read this for more resources. For the nerds. </small> <br> </h4>
+        </div>
+        {% endif %}
         
         
+        <div class='lessoncontent border-top'>  <h4><i class="fa fa-pencil" aria-hidden="true"></i> <a href="#"> Assignment </a> <small> Do this, please. </small> <br> </h4>
+        {{ object.assignment|linebreaks  }}  <br>
+    </div>
+    
+    
         
-        {{ object.assignment }} <br>
+        <div class='lessoncontent border-top'>  <h4><i class="fa fa-lightbulb-o" aria-hidden="true"></i> <a href="#"> Parent's Tips </a>  <small> {% trans "We're a team. Together, we help your child." %}  </small> <br> </h4>
+
+        {{ object.parentstips|linebreaks  }} <br>
         
-        <a href='{% url 'grades:enghwupload' %}'>Hand in work</a> <br>
-        <a href='{% url 'grades:grades' %}'>Grades</a> <br>
+        </div>
+<!--        <a href='{% url 'grades:futurehwupload' %}'>Hand in work</a> <br>-->
+<!--        <a href='{% url 'grades:grades' %}'>Grades</a> <br>-->
         
-        
+
         
         {% else %}
             <h3> Upgrade membership </h3>
         
         {% endif %}
-        
+</div>
+
 {% endblock %}
 
-        </div>
+        
     </body>    
     
 </html>
