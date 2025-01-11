@@ -1,52 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.views.generic import ListView, DetailView, View
-from . models import EnglishCourse, FutureCourse 
-from studentmemberships.models import EnglishStudentMembershipType, StudentMembership
+from courses.models import FutureCourse, Forum, Discussion, FutureLesson
+from studentmemberships.models import FutureStudentMembershipType, StudentMembership
+from grades.models import FutureGrades
+from vocab.models import VocabularyWord
+from homepages.models import Group
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import DiscussionForm
 
-class EnglishCourseListView(ListView):
-    model = EnglishCourse
+class FutureCourseListView(LoginRequiredMixin, ListView):
+    model = FutureCourse
+#    redirect_field_name = 'en/courses/future'
 
-class EnglishCourseDetailView(DetailView):
-    model = EnglishCourse
 
-class FutureCourseListView(ListView):
+class FutureCourseDetailView(LoginRequiredMixin, DetailView):
     model = FutureCourse
 
-class FutureCourseDetailView(DetailView):
-    model = FutureCourse
-    
-#lesson view
-class EnglishLessonDetailView(View):
-    
-    def get(self, request, course_slug, lesson_slug, *args, **kwargs):
-        
-        course_qs = EnglishCourse.objects.filter(slug=course_slug)
-        if course_qs.exists():
-            englishcourse = course_qs.first()
-            
-        lesson_qs = englishcourse.englishlesson.filter(slug=lesson_slug)
-        if lesson_qs.exists():
-            englishlesson = lesson_qs.first()
-            
-        user_membership = StudentMembership.objects.filter(user=request.user).first()
-        user_membership_type = user_membership.englishmembership.english_membership_type
-        
-        course_allowed_mem_types = englishcourse.allowed_memberships.all()
-            
-        context = {
-            'object': None,            
-        }
-        
-        if course_allowed_mem_types.filter(english_membership_type=user_membership_type).exists():
-            context = { 'object': englishlesson, }
-        
-        return render(request, "courses/englishlesson_detail.html", context)
-    
-    
-
-class FutureLessonDetailView(View):
+class FutureLessonDetailView(LoginRequiredMixin, View):
     
     def get(self, request, course_slug, lesson_slug, *args, **kwargs):
         
@@ -59,17 +31,86 @@ class FutureLessonDetailView(View):
             futurelesson = lesson_qs.first()
             
         user_membership = StudentMembership.objects.filter(user=request.user).first()
+#        if user_membership.futuremembership is not None:
         user_membership_type = user_membership.futuremembership.future_membership_type
+#        else:
+#            user_membership_type = 'Future No'
+        
         
         course_allowed_mem_types = futurecourse.allowed_memberships.all()
-            
+        
+        
         context = {
-            'object': None,            
+            'object': None, 
         }
         
+        
         if course_allowed_mem_types.filter(future_membership_type=user_membership_type).exists():
+            words = VocabularyWord.objects.filter(student__isnull=True, lesson = futurelesson)
+            
+            secrets = VocabularyWord.objects.filter(student=request.user, lesson = futurelesson)
+            
+            students_in_group = StudentMembership.objects.filter(group=request.user.studentmembership.group).exclude(user=request.user)
+            
+            forum = Forum.objects.filter(group=request.user.studentmembership.group, lesson=futurelesson) 
+            
+
             context = {
-                'object': futurelesson
-            }
+                'object': futurelesson,
+                'words': words,
+                'students_in_group': students_in_group,
+                'secrets': secrets,  
+                'forum': forum
+            } 
 
         return render(request, "courses/futurelesson_detail.html", context)
+    
+
+def ForumList(request):
+    
+    forumlist = Forum.objects.filter(group=request.user.studentmembership.group).order_by('-date_created')
+    
+        
+    context = {
+        'forumlist': forumlist,
+        
+    }
+    
+    return render(request, "courses/forumlist.html", context)
+    
+def ForumView(request, lesson_slug, group_slug, topic_slug):
+    lesson = FutureLesson.objects.get(slug=lesson_slug)
+    
+    forum = Forum.objects.get(topicslug=topic_slug, group=request.user.studentmembership.group, lesson=lesson) 
+    
+    discussion = Discussion.objects.filter(forum=forum).order_by('date_created')
+    
+    if request.method == "POST":
+        form = DiscussionForm(request.POST)
+        
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.student = request.user
+            post.forum = forum
+            post.save()
+
+            return redirect(request.path)
+
+
+        else:
+            form = DiscussionForm()
+    
+    
+    context = {
+        'lesson': lesson,
+        'forum': forum,
+        'discussion': discussion,
+        'form': DiscussionForm,
+    }
+    
+    return render(request, "courses/forum.html", context)
+
+
+        
+
+    

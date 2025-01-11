@@ -1,71 +1,155 @@
 {% extends 'courses/base.html' %}
 
 {% block content %}
+
+
+
 <div class="container">
     <head><title>Future Course List</title></head>
-
-    <body>  
 
 <style>
 
     .lessoncontent{
         padding-bottom:15px;
         padding-top: 5px;
-        
+    }
+    
+    .vertical-center {
+      min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+      min-height: 100vh; /* These two lines are counted as one :-)       */
+      
+      display: flex;
+      align-items: center;
+    
     }         
 
 </style>
-
-   {% load i18n %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         
-        {% if object is not None %}
+   {% load static %}
+    {% load i18n %}
+        
+    {% if object != None %}
+
         <div class='lessoncontent'>
-         <h1 style="display:inline; padding-right:10px;"> {{ object.title }}</h1>  {{object.position}}/<small>52</small>  
-            
-            {% if request.user.studentmembership.futuretutor is not None %} <h4 class="float-right"> Your tutor is <a href="{% url 'tutors:profile' request.user.studentmembership.futuretutor.user_id %}">{{request.user.studentmembership.futuretutor}}  </a>  </h4> {% endif %}
+         <h1 style="display:inline; padding-right:10px;"> {{ object.title|safe }}</h1>  {{object.position}}/<small>52</small>  
+
             <br> 
         </div> 
         
-        <div class='lessoncontent border-top'> <h4><i class="fa fa-map-signs" aria-hidden="true"></i><a href="#">  Class Description </a> <small>The map. Read me first. </small>  </h4>
-        {{ object.description }}   <br>   
-        
+        <div class='lessoncontent border-top'> <h3> 🗺 Mission Description  <small>The map. Read me first. </small>  </h3>
+       <p style="font-size:13px;">Agent {{request.user}} - welcome to this week's mission. <br>  {{ object.description|safe }} </p>  <br>   
+            
+            
             </div> 
  
-        <div class='lessoncontent border-top'>  <h4><i class="fa fa-play" aria-hidden="true"></i> <a href="#"> Lecture </a>  <small> Lecture. Try not to fall asleep. </small> </h4>        
-       {% if object.video_url != "n/a" %} <iframe src='{{object.video_url}}'> </iframe> <br> {% endif %}
-        </div> 
-
         {% if object.readinglist_url != "n/a" %}
-        <div class='lessoncontent border-top'> <h4><i class="fa fa-book" aria-hidden="true"></i> <a href ="{{object.readinglist_url}}"> Reading list </a>  <small> Read this for more resources. For the nerds. </small> <br> </h4>
+        <div class='lessoncontent border-top'> <h3> 📂 Mission Briefing  <small> Cheat sheet. Summary of our lesson content. </small> <br> </h3>
+            
+            <div class = "row">
+                
+            {% for word in words %} 
+            <div class ="col-4">
+            <div class="card bg-light">
+              <div class="card-body">
+                <h5 class="card-title"> {{ word.new_word }}</h5>
+                <h6 class="card-subtitle">{{ word.definition }}</h6>
+                <p class="card-text">{{ word.comments }}</p>
+              </div>
+            </div></div>
+            {% endfor %}
+                <div class ="col-4">
+                    <a href ="{{object.readinglist_url}}"> <img src="{% static 'files.png' %}" style="width:100%"> </a>
+                </div>
+                
+                </div>
+            
+            <br><h3>Sh.... for your own eyes only - use this information carefully</h3>
+            
+            <div class = "row">
+            {% for secret in secrets %} 
+            <div class ="col-4">
+            <div class="card bg-dark text-white">
+              <div class="card-body">
+                <h5 class="card-title"> {{ secret.new_word }}</h5>
+                <h6 class="card-subtitle">{{ word.definition }}</h6>
+                <p class="card-text">{{ secret.comments }}</p>
+              </div>
+            </div></div>
+            {% endfor %}
+                
+                </div>
+            
+            
         </div>
         {% endif %}
-        
-        
-        <div class='lessoncontent border-top'>  <h4><i class="fa fa-pencil" aria-hidden="true"></i> <a href="#"> Assignment </a> <small> Do this, please. </small> <br> </h4>
-        {{ object.assignment|linebreaks  }}  <br>
+    
+    
+        <div class='lessoncontent border-top'>  <h3> ✅ Pre-Deployment Check In <small> Do this, if you want to. </small> <br> </h3>
+            
+             {% for f in forum %}
+            <li>Required discussion: <a href="{% url 'courses:forum' lesson_slug=f.lesson.slug group_slug=f.group.slug topic_slug=f.topicslug %}"> {{f}}</a></li>
+            {% endfor %}
+          
     </div>
-    
-    
-        
-        <div class='lessoncontent border-top'>  <h4><i class="fa fa-lightbulb-o" aria-hidden="true"></i> <a href="#"> Parent's Tips </a>  <small> {% trans "We're a team. Together, we help your child." %}  </small> <br> </h4>
 
-        {{ object.parentstips|linebreaks  }} <br>
+
+        
+        {% if object.assignment != "n/a" %}
+        <div class='lessoncontent border-top'>  <h3> 🕵️‍♀️ The Mission <small> Agent {{request.user}}'s eyes only. </small> <br> </h3>
+            <div class="row">
+            <div class = "col-9">
+            
+                 <p style="font-size:18px;">{{ object.assignment|safe  }}</p> 
+                 <b>       {% if request.user.studentmembership.group %} You are part of <span id="room">{{request.user.studentmembership.group}}</span>. Your teammates are {% for student in students_in_group %}{{student}} {% endfor %}.   You set off at {{request.user.studentmembership.group.next_lesson}}. </b>
+                        <br><br>
+                        {% endif %}
+            
+                        
+                        {% if request.user.studentmembership.futuretutor.user_id %}  <br><br>Signed, your spymaster, <br> <a href="{% url 'tutors:profile' request.user.studentmembership.futuretutor.user_id %}">{{request.user.studentmembership.futuretutor}}  </a>   {% endif %}
+            </div>
+                <div class="col-3">
+                <img src="{% static 'agent.png' %}" style = height:300px>
+                </div>
+
+            </div>
+    </div>
+    {% endif %}
+
+    {% if object.parentstips != "n/a" %}
+        <div class="alert alert-success alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <h3 class="alert-heading" style="color:black"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> {% trans "Parent's Tips" %} <small> {% trans "We're a team. Together, we help your child." %}  </small> </h3>
+<hr>
+        <p class="mb-0" style="font-size:18px; color:black;"> {{ object.parentstips|safe }}</p>
         
         </div>
+     {% endif %}
+</div>
 <!--        <a href='{% url 'grades:futurehwupload' %}'>Hand in work</a> <br>-->
 <!--        <a href='{% url 'grades:grades' %}'>Grades</a> <br>-->
         
 
         
         {% else %}
-            <h3> Upgrade membership </h3>
+        
+        <div class="h-100 row align-items-center">
+  <div class="container container-table">
+    <div class="row vertical-center-row">
+        <div class="text-center col-md-6 col-md-offset-3 vertical-center " >
+            <h3> You don't have a membership. Please <a href='{% url "studentmemberships:profile" %}' > upgrade your membership. </a> </h3>
+        </div>
+    </div>
+</div>
+
+            
         
         {% endif %}
+        
 </div>
+
 
 {% endblock %}
 
-        
-    </body>    
-    
-</html>

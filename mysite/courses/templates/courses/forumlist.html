@@ -1,0 +1,68 @@
+{% extends 'courses/base.html' %}
+
+{% block content %}
+<div class="container">
+    <head><title>Future Course List</title></head>
+
+<style>
+
+    .lessoncontent{
+        padding-bottom:15px;
+        padding-top: 5px;
+    }
+    
+    .vertical-center {
+      min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+      min-height: 100vh; /* These two lines are counted as one :-)       */
+      
+      display: flex;
+      align-items: center;
+    
+    }   
+    
+    form.comment {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+    
+    textarea, button {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+}
+    div.comment{
+    background-color: #eee;
+    padding: 8px 20px 1px 20px;
+    margin: 8px 0px 1px 8px;
+    border-left: 5px solid #a1c3fc;
+        
+    }
+
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        
+   {% load static %}
+    {% load i18n %}
+        
+    {% for f in forumlist %}
+    <div class="comment">
+    
+    <div class="float-right" style="font-size:15px;">
+        
+        <a href="{% url 'courses:futuredetail'  slug=f.lesson.course.slug %}">{{ f.lesson.course }} </a>/ <a href="{% url 'courses:futurelessondetail'  course_slug=f.lesson.course.slug lesson_slug=f.lesson.slug %}"> {{ f.lesson}}</a></div> 
+        <br>
+    <p style="font-size:20px;"><a href="{% url 'courses:forum' lesson_slug=f.lesson.slug group_slug=f.group.slug topic_slug=f.topicslug %}"> {{f}}</a></p>
+     </div>     
+    
+    {{ f. }}
+    
+    {% endfor %}
+
+<br> <br>
+{% endblock %}
+

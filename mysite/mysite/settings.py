@@ -19,7 +19,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -27,30 +26,33 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'j^2&5wyuh@ber(o8(kv+#osc3nxhq$k-uhqdrlw*h=b4gv-*!0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS =  ['127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS =  ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'postman',
     'rosetta',
     'homepages',
     'studentmemberships',
     'courses',
     'tutors',
-    'parents',
     'grades',
-    'vocab'
+    'vocab',  
 ]
+
+SITE_ID = 2
+
+
 
 SESSION_ENGINE = "django.contrib.sessions.backends.db"
 
@@ -64,15 +66,19 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+
 ]
+
+
+
 
 ROOT_URLCONF = 'mysite.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,10 +87,17 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'sekizai.context_processors.sekizai',
+
+                
             ],
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
@@ -93,19 +106,20 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-#    'default': {
-#                'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #
 #    }
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'smileschool',
-        'USER': 'name',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '',
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'smileschool',
+#        'USER': 'name',
+#        'PASSWORD': '',
+#        'HOST': 'localhost',
+#        'PORT': '',
 
-}
+
+}}
 
 
 # Password validation
@@ -132,10 +146,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 from django.utils.translation import gettext_lazy as _
 
+
 LANGUAGES = (
 ('en', _('English')),
 ('zh-hans', _('Chinese')),
 )
+
 
 LANGUAGE_CODE = 'en'
 
@@ -156,11 +172,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_root'), ]
 VENV_PATH = os.path.dirname(BASE_DIR)
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(VENV_PATH, 'media_root')
 
@@ -174,5 +190,19 @@ POSTMAN_AUTO_MODERATE_AS = True
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
-
+#
 django_heroku.settings(locals())
+
+LOGIN_URL = '/en/signin'
+
+TODO_STAFF_ONLY = False
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'denisewongwaiyan@gmail.com'
+EMAIL_HOST_PASSWORD = 'zkwuxytaydwsfuhv'
+DEFAULT_FROM_EMAIL = 'denisewongwaiyan@gmail.com'
+
+

@@ -3,11 +3,13 @@ from django.http import HttpResponse
 from django.template import loader
 from django.urls import reverse_lazy
 from django.contrib.auth import authenticate, login, logout
-from homepages.forms import LoginForm, StudentRegistrationForm, ParentRegistrationForm
+from homepages.forms import LoginForm, StudentRegistrationForm 
 from homepages.models import UserProfile
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, reverse
+from django.core.cache import cache
+
 
 def index(request):
     return render(request, 'homepage/index.html')
@@ -29,7 +31,10 @@ def studentsignup(request):
                 create_user_form.cleaned_data['password'])
             
             new_user.save()
+            
             profile = UserProfile.objects.create(user=new_user, usertype='Child')
+            profile.referredby = create_user_form.cleaned_data['referred_by']
+            profile.save()
 
             return render(request, 'homepage/register_done.html', {'new_user': new_user})
         
@@ -49,21 +54,45 @@ def signin(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return redirect(reverse('studentmemberships:profile'))
+                    next_url = request.GET.get('next')
+                    
+                    if next_url:
+                        return redirect(next_url) 
+        
+                    else:
+                        return redirect(reverse('studentmemberships:profile'))
 
                 else:
-                    return HttpResponse("You're like the limit in this function. DNE!")
+                    return redirect(reverse('homepages:signin'))
+#                    return HttpResponse("You're like the limit in this function. DNE!")
             else:
-                return HttpResponse("If at first you don't succeed, try, try, try again. (Your login is invalid.)")
+                return redirect(reverse('homepages:signin'))
+#                return HttpResponse("If at first you don't succeed, try, try, try again. (Your login is invalid.)")
 
     else:
         form = LoginForm()
     return render(request, 'homepage/signin.html', {'form': form})
 
+
 def signout(request):
     logout(request)
     return redirect(reverse('homepages:index'))
 
+def mission(request):
+    return render(request, 'homepage/mission.html')
+
+def how(request):
+    return render(request, 'homepage/how.html')
+
+def ourstory(request):
+    return render(request, 'homepage/ourstory.html')
+
+
+def credits(request):
+    return render(request, 'homepage/credits.html')
+
+def terms(request):
+    return render(request, 'homepage/terms.html')
 
 def parentsignup(request):
     if request.method == 'POST':

@@ -8,91 +8,565 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-19 14:38+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-09-06 22:59+0800\n"
+"PO-Revision-Date: 2020-08-01 09:35+0000\n"
+"Last-Translator: b'  <>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Translated-Using: django-rosetta 0.9.4\n"
 
-#: courses/templates/courses/base.html:39
-msgid "Home"
-msgstr ""
-
-#: courses/templates/courses/base.html:44
-msgid " Future Courses"
-msgstr ""
-
-#: courses/templates/courses/base.html:56
-msgid " Messages "
-msgstr ""
-
-#: courses/templates/courses/base.html:57
-msgid " Hello"
-msgstr ""
-
-#: courses/templates/courses/base.html:61
-msgid "Sign Out"
-msgstr ""
-
-#: courses/templates/courses/base.html:64
-msgid " Register"
-msgstr ""
-
-#: courses/templates/courses/base.html:65
-msgid " Sign In "
-msgstr ""
-
-#: homepages/forms.py:10
-msgid "Username"
-msgstr ""
-
-#: homepages/forms.py:11
-msgid "Password"
-msgstr ""
-
-#: homepages/forms.py:19 homepages/forms.py:33
-msgid "username"
-msgstr ""
-
-#: homepages/forms.py:19 homepages/forms.py:33
-msgid "first_name"
-msgstr ""
-
-#: homepages/forms.py:19 homepages/forms.py:33
-msgid "last_name"
-msgstr ""
-
-#: homepages/forms.py:19 homepages/forms.py:33
-msgid "email"
-msgstr ""
-
-#: homepages/templates/homepage/aboutus.html:9
-msgid ""
-"\n"
-"    \n"
-"    about us\n"
-"\n"
-msgstr ""
-
-#: homepages/templates/homepage/edit.html:3
-#: homepages/templates/homepage/index.html:10
-msgid "I am a student - Sign up"
-msgstr ""
-
-#: homepages/templates/homepage/index.html:6
-msgid "About our team"
-msgstr ""
-
-#: homepages/templates/homepage/index.html:7
+#: courses/templates/base.html:69 courses/templates/courses/base.html:69
 msgid "Join our team"
 msgstr ""
 
-#: homepages/templates/homepage/index.html:11
-#: homepages/templates/homepage/signin.html:7
-msgid "Sign in"
+#: courses/templates/base.html:72 courses/templates/courses/base.html:72
+#: studentmemberships/templates/studentmemberships/profile.html:12
+msgid "Profile"
+msgstr ""
+
+#: courses/templates/base.html:73 courses/templates/courses/base.html:73
+#: studentmemberships/templates/studentmemberships/profile.html:30
+msgid "Courses"
+msgstr ""
+
+#: courses/templates/base.html:75 courses/templates/courses/base.html:75
+#: studentmemberships/templates/studentmemberships/profile.html:31
+msgid "Vocabulary List"
+msgstr ""
+
+#: courses/templates/base.html:88 courses/templates/courses/base.html:88
+msgid " Messages "
+msgstr ""
+
+#: courses/templates/base.html:99 courses/templates/courses/base.html:99
+msgid " Sign In "
+msgstr ""
+
+#: courses/templates/base.html:100 courses/templates/courses/base.html:100
+msgid "REGISTER FOR A FREE TRIAL"
+msgstr ""
+
+#: courses/templates/courses/footer.html:54
+msgid "Our method"
+msgstr ""
+
+#: courses/templates/courses/footer.html:55
+msgid "Our team"
+msgstr ""
+
+#: courses/templates/courses/footer.html:56
+msgid "Our mission"
+msgstr ""
+
+#: courses/templates/courses/footer.html:57
+msgid "Our story"
+msgstr ""
+
+#: courses/templates/courses/footer.html:66
+msgid "Feedback"
+msgstr ""
+
+#: courses/templates/courses/footer.html:70
+msgid "Give Visual Feedback"
+msgstr ""
+
+#: courses/templates/courses/footer.html:74
+msgid "Give Development Feedback"
+msgstr ""
+
+#: courses/templates/courses/footer.html:84
+msgid "Legal"
+msgstr ""
+
+#: courses/templates/courses/footer.html:87
+msgid "Credits"
+msgstr ""
+
+#: courses/templates/courses/footer.html:90
+msgid "Terms and Conditions"
+msgstr ""
+
+#: courses/templates/courses/footer.html:101
+msgid "Contact"
+msgstr ""
+
+#: courses/templates/courses/futurelesson_detail.html:65
+msgid "Parent's Tips"
+msgstr ""
+
+#: courses/templates/courses/futurelesson_detail.html:65
+msgid "We're a team. Together, we help your child."
+msgstr ""
+
+#: essay/models.py:26
+msgid "Essay style question"
+msgstr ""
+
+#: essay/models.py:27
+msgid "Essay style questions"
+msgstr ""
+
+#: homepages/forms.py:9
+msgid "Username"
+msgstr ""
+
+#: homepages/forms.py:10 homepages/forms.py:13
+msgid "Password"
+msgstr ""
+
+#: homepages/forms.py:14
+msgid "Repeat Password"
+msgstr ""
+
+#: homepages/forms.py:44
+msgid "username"
+msgstr ""
+
+#: homepages/forms.py:44
+msgid "first_name"
+msgstr ""
+
+#: homepages/forms.py:44
+msgid "last_name"
+msgstr ""
+
+#: homepages/forms.py:44
+msgid "email"
+msgstr ""
+
+#: homepages/templates/homepage/aboutus.html:21
+msgid "Advisors and Mentors"
+msgstr ""
+
+#: homepages/templates/homepage/aboutus.html:29
+msgid "Baroness Janet Royall of Blaisdon "
+msgstr ""
+
+#: homepages/templates/homepage/aboutus.html:31
+msgid "Principal of Oxford University (Somerville College)"
+msgstr ""
+
+#: homepages/templates/homepage/aboutus.html:32
+msgid "Ex-Leader of the House of Lords"
+msgstr ""
+
+#: homepages/templates/homepage/aboutus.html:33
+msgid "Ex-Lord President of the Council"
+msgstr ""
+
+#: homepages/templates/homepage/aboutus.html:42
+msgid ""
+"Hons.B.Sc., Human Biology; M.Sc., Physiology (University of Toronto), PCEd; "
+"PCPsy; Ph.D., Educational Psychology (University of Hong Kong"
+msgstr ""
+
+#: homepages/templates/homepage/aboutus.html:54
+msgid "Core Team and Tutors"
+msgstr ""
+
+#: homepages/templates/homepage/aboutus.html:63
+msgid "Denise Wong"
+msgstr ""
+
+#: homepages/templates/homepage/aboutus.html:66
+msgid ""
+"Oxford 🇬🇧 Law, Hong Kong Scholarship for Excellence Scholar (government "
+"scholar)"
+msgstr ""
+
+#: homepages/templates/homepage/aboutus.html:67
+msgid ""
+"Youngest founder, of the first faculty-independent, student run venture "
+"capital in the UK"
+msgstr ""
+
+#: homepages/templates/homepage/aboutus.html:68
+msgid ""
+"Oxford University Student Union Access and Outreach Certificate of "
+"Recognition (for university admission work) "
+msgstr ""
+
+#: homepages/templates/homepage/aboutus.html:69
+msgid "3+ years experience in tutoring"
+msgstr ""
+
+#: homepages/templates/homepage/aboutus.html:81
+msgid "Oxford French and Italian"
+msgstr ""
+
+#: homepages/templates/homepage/aboutus.html:82
+msgid "2+ years tutoring languages"
+msgstr ""
+
+#: homepages/templates/homepage/aboutus.html:83
+msgid "First in her school to attend Oxford in a decade"
+msgstr ""
+
+#: homepages/templates/homepage/aboutus.html:95
+msgid "Claremont McKenna College"
+msgstr ""
+
+#: homepages/templates/homepage/aboutus.html:96
+msgid "Heidi Leong"
+msgstr ""
+
+#: homepages/templates/homepage/aboutus.html:96
+msgid "Warwick 🇬🇧 Business School, Glion"
+msgstr ""
+
+#: homepages/templates/homepage/aboutus.html:107
+msgid "Nikki Hon"
+msgstr ""
+
+#: homepages/templates/homepage/aboutus.html:108
+msgid "Athena Cheung, Imperial MSc"
+msgstr ""
+
+#: homepages/templates/homepage/aboutus.html:109
+msgid "Grace Tian, UPenn"
+msgstr ""
+
+#: homepages/templates/homepage/aboutus.html:110
+msgid "Gordon Ho, UPenn"
+msgstr ""
+
+#: homepages/templates/homepage/credits.html:18
+msgid "We teach our students not to plagarise. We won't either."
+msgstr ""
+
+#: homepages/templates/homepage/credits.html:21
+msgid ""
+"Red Paper Plane PNG image comes from iconspng - https://www.iconspng.com/"
+"image/134452/red-paper-plane."
+msgstr ""
+
+#: homepages/templates/homepage/credits.html:22
+msgid ""
+"Several icons were used from Font Awesome by Dave Gandy - http://fontawesome."
+"io."
+msgstr ""
+
+#: homepages/templates/homepage/credits.html:23
+msgid "Several icons were used from Icon8 - https://icons8.com."
+msgstr ""
+
+#: homepages/templates/homepage/credits.html:24
+msgid "Bootstrap and mbdbootstrap"
+msgstr ""
+
+#: homepages/templates/homepage/credits.html:25
+msgid "Special thanks to Nikki for all her localisation and translation help"
+msgstr ""
+
+#: homepages/templates/homepage/edit.html:3
+msgid "I am a student - Sign up"
+msgstr ""
+
+#: homepages/templates/homepage/how.html:17
+msgid "Who we teach"
+msgstr ""
+
+#: homepages/templates/homepage/how.html:31
+msgid "What we teach"
+msgstr ""
+
+#: homepages/templates/homepage/how.html:42
+msgid "How we teach"
+msgstr ""
+
+#: homepages/templates/homepage/how.html:46
+msgid "Lessons broken down into two week cycles"
+msgstr ""
+
+#: homepages/templates/homepage/how.html:49
+msgid ""
+"Inspired by Bloom's method of education, and the Ivy League/Oxbridge model "
+"of education, which is scientifically and proven be the most effective"
+msgstr ""
+
+#: homepages/templates/homepage/how.html:50
+msgid "Week 1: Students access our curated content"
+msgstr ""
+
+#: homepages/templates/homepage/how.html:51
+#: homepages/templates/homepage/index.html:112
+msgid "Week 2: 1-to-1 tuition with Oxbridge and Ivy League tutors"
+msgstr ""
+
+#: homepages/templates/homepage/how.html:52
+msgid ""
+"Tips for parents: on how to boost child's school, university, work and life "
+"performance. "
+msgstr ""
+
+#: homepages/templates/homepage/how.html:55
+msgid "Units of lessons on one skill"
+msgstr ""
+
+#: homepages/templates/homepage/how.html:57
+msgid ""
+"Projects and assessments to strategically build ECA portfolio for university "
+"admission"
+msgstr ""
+
+#: homepages/templates/homepage/how.html:58
+msgid ""
+"Boost student performance in exams (incl university admissions) by starting "
+"preparation early"
+msgstr ""
+
+#: homepages/templates/homepage/how.html:61
+msgid "We use big data and AI ensure success"
+msgstr ""
+
+#: homepages/templates/homepage/how.html:63
+msgid "Scoring children at the end of each lesson"
+msgstr ""
+
+#: homepages/templates/homepage/how.html:64
+msgid "Standardised and unit assessments"
+msgstr ""
+
+#: homepages/templates/homepage/how.html:65
+msgid ""
+"If the students of a tutor score and trend below the average student of the "
+"platform, we review the tutor"
+msgstr ""
+
+#: homepages/templates/homepage/how.html:66
+msgid ""
+"If the student's scores are below average, we talk to the tutor to see how "
+"to go forward (e.g. switch tutors, additional help)"
+msgstr ""
+
+#: homepages/templates/homepage/how.html:70
+msgid "Personal Profile and Parent's Report"
+msgstr ""
+
+#: homepages/templates/homepage/how.html:72
+msgid ""
+"Personal profile and reports to parents to show progress and achievement"
+msgstr ""
+
+#: homepages/templates/homepage/how.html:73
+msgid "Discover the students interests and talents"
+msgstr ""
+
+#: homepages/templates/homepage/how.html:74
+msgid ""
+"Personalised recommendations on what other ECAs, and competitions to join to "
+"boost"
+msgstr ""
+
+#: homepages/templates/homepage/index.html:57
+msgid "Work Less. Achieve More."
+msgstr ""
+
+#: homepages/templates/homepage/index.html:69
+msgid "Why Praxeum?"
+msgstr ""
+
+#: homepages/templates/homepage/index.html:72
+msgid ""
+"Success is harder than ever before. Are you certain your child can navigate "
+"all of these hurdles?"
+msgstr ""
+
+#: homepages/templates/homepage/index.html:79
+msgid ""
+"Overseas elite universities are harder to get into than ever before. Good "
+"grades are not enough."
+msgstr ""
+
+#: homepages/templates/homepage/index.html:88
+#, python-format
+msgid ""
+"Only 13%% of employers feel graduates are adequately prepared for the "
+"working world."
+msgstr ""
+
+#: homepages/templates/homepage/index.html:95
+#, python-format
+msgid "40%% of jobs will be lost to AI."
+msgstr ""
+
+#: homepages/templates/homepage/index.html:96
+#, python-format
+msgid "65%% of jobs our children will have don't exist yet."
+msgstr ""
+
+#: homepages/templates/homepage/index.html:103
+msgid "We ensure  success at school, university and life."
+msgstr ""
+
+#: homepages/templates/homepage/index.html:108
+msgid "WE ACCELERATE SUCCESS."
+msgstr ""
+
+#: homepages/templates/homepage/index.html:110
+msgid ""
+"We teach critical skills for success in university admission exams, e.g. "
+"SAT, and future of work."
+msgstr ""
+
+#: homepages/templates/homepage/index.html:111
+msgid "Week 1: Access our curated content"
+msgstr ""
+
+#: homepages/templates/homepage/index.html:116
+msgid ""
+"We teach critical skills for success in university and future of work "
+"through curated content and 1:1 tuition."
+msgstr ""
+
+#: homepages/templates/homepage/index.html:117
+msgid ""
+"We are supported by Ivy League and Oxbridge graduates, admissions and staff."
+msgstr ""
+
+#: homepages/templates/homepage/index.html:126
+msgid "WE PRIORITISE PERSONAL GROWTH."
+msgstr ""
+
+#: homepages/templates/homepage/index.html:128
+msgid ""
+"Develop interests and enable personal growth by being be guided through "
+"projects to boost university admissions performance"
+msgstr ""
+
+#: homepages/templates/homepage/index.html:130
+msgid ""
+"We develop students' talents by helping them to build a strong portfolio of "
+"extra-curriculars early, to be assured of success in university and job "
+"applications."
+msgstr ""
+
+#: homepages/templates/homepage/index.html:136
+msgid "WE ARE YOUR PARENTING PARTNER. "
+msgstr ""
+
+#: homepages/templates/homepage/index.html:138
+msgid ""
+"Get personal reports to track progress, with personalised recommendations on "
+"ECAs and competitions. etc. "
+msgstr ""
+
+#: homepages/templates/homepage/index.html:139
+msgid ""
+"No more guessing. Be aware of your children university and life readiness "
+"from day one and be notified of competitions, projects and awards necessary "
+"to clinch your child's success."
+msgstr ""
+
+#: homepages/templates/homepage/index.html:147
+msgid "Wanna know more?"
+msgstr ""
+
+#: homepages/templates/homepage/index.html:150
+msgid "How we do this?"
+msgstr ""
+
+#: homepages/templates/homepage/index.html:152
+msgid "Who are we?"
+msgstr ""
+
+#: homepages/templates/homepage/index.html:153
+msgid "Why are we doing this?"
+msgstr ""
+
+#: homepages/templates/homepage/index.html:154
+msgid "How did we get here?"
+msgstr ""
+
+#: homepages/templates/homepage/index_2.html:344
+msgid ""
+"is an EdTech platform to teach children (aged 8-14)  critical and "
+"employability skills forgotten by traditional education."
+msgstr ""
+
+#: homepages/templates/homepage/index_2.html:344
+msgid ""
+"We accelerate growth and help kids to win at school, university and life. "
+msgstr ""
+
+#: homepages/templates/homepage/index_2.html:357
+msgid "WORK LESS. ACHIEVE MORE."
+msgstr ""
+
+#: homepages/templates/homepage/index_2.html:357
+msgid "Learn secrets to success from"
+msgstr ""
+
+#: homepages/templates/homepage/index_2.html:357
+msgid "Oxbridge and Ivy Leauge graduates"
+msgstr ""
+
+#: homepages/templates/homepage/index_2.html:357
+msgid ""
+"and build a strong portfolio of your skills <i>early</i>, to optimise "
+"achievement in university, work and life."
+msgstr ""
+
+#: homepages/templates/homepage/index_2.html:358
+msgid "PRIORITISE HAPPY."
+msgstr ""
+
+#: homepages/templates/homepage/index_2.html:358
+msgid " Discover and encourage areas of interest and talent early."
+msgstr ""
+
+#: homepages/templates/homepage/index_2.html:359
+msgid "YOUR PARENTING PARTNER. "
+msgstr ""
+
+#: homepages/templates/homepage/index_2.html:359
+msgid ""
+"Track your child's talents and university and life readiness early*. Monitor "
+"their happiness**, and see parenting tips tomaximise learning and optimise "
+"the parent-child interactions."
+msgstr ""
+
+#: homepages/templates/homepage/index_2.html:362
+msgid ""
+"*AI and data analytics system in development. Tutors are also trained to "
+"discover and discourage talent."
+msgstr ""
+
+#: homepages/templates/homepage/index_2.html:363
+msgid ""
+"**Sentiment and mood tracking analysis in development. Tutors are also "
+"trained to detect and help with emotional difficulties."
+msgstr ""
+
+#: homepages/templates/homepage/index_old.html:829
+msgid ""
+"is an EdTech platform 🚀 to teach children (aged 8-14)  employability skills "
+"forgotten by traditional education."
+msgstr ""
+
+#: homepages/templates/homepage/index_old.html:831
+msgid "We help kids to win 🏆 at school, university 🎓 and life."
+msgstr ""
+
+#: homepages/templates/homepage/index_old.html:840
+msgid "LEARN the secrets to success from"
+msgstr ""
+
+#: homepages/templates/homepage/index_old.html:840
+msgid "Oxbridge and Ivy Leauge graduates, admissions staff and principals."
+msgstr ""
+
+#: homepages/templates/homepage/index_old.html:841
+msgid "IMPROVE 📈 skills like critical thinking by "
+msgstr ""
+
+#: homepages/templates/homepage/index_old.html:841
+#, python-format
+msgid ""
+"17%% in just ONE lesson, which drive university and employment decisions."
 msgstr ""
 
 #: homepages/templates/homepage/joinus.html:9
@@ -101,6 +575,166 @@ msgid ""
 "    \n"
 "    join us\n"
 "\n"
+msgstr ""
+
+#: homepages/templates/homepage/mission.html:14
+msgid "Our Mission"
+msgstr ""
+
+#: homepages/templates/homepage/mission.html:22
+msgid "Promise #1: We deliver real value."
+msgstr ""
+
+#: homepages/templates/homepage/mission.html:25
+msgid ""
+"Many consultants claim very high fees from desperate parents, without "
+"delivering real value."
+msgstr ""
+
+#: homepages/templates/homepage/mission.html:26
+msgid ""
+"We work for what we get. We track and measure student progress aggressively "
+"to prove improvements in skills, school, university and life."
+msgstr ""
+
+#: homepages/templates/homepage/mission.html:34
+msgid "Promise #2: Start young."
+msgstr ""
+
+#: homepages/templates/homepage/mission.html:36
+msgid ""
+"Parents and student start preparing last minute help for university "
+"admissions, job applications and in life."
+msgstr ""
+
+#: homepages/templates/homepage/mission.html:36
+msgid ""
+"We start teaching critical transferrable skill from age 12, so they have an "
+"extra 10 years of practice for admission tests, and ECAs."
+msgstr ""
+
+#: homepages/templates/homepage/mission.html:43
+msgid "Promise #3: We increase transparency."
+msgstr ""
+
+#: homepages/templates/homepage/mission.html:44
+msgid ""
+"Currently, you don't know if you will get into uni until age 18, get a job "
+"until age 22, or do well in life until age 60."
+msgstr ""
+
+#: homepages/templates/homepage/mission.html:45
+msgid ""
+"From day one, we give you the data to ensure track progress in school, "
+"university and life readiness."
+msgstr ""
+
+#: homepages/templates/homepage/mission.html:52
+msgid "Promise #4: Democratise access to quality mentorship."
+msgstr ""
+
+#: homepages/templates/homepage/mission.html:53
+msgid ""
+"Some parents spend millions for life curation to optimise entrance into "
+"university. Most cannot afford that."
+msgstr ""
+
+#: homepages/templates/homepage/mission.html:54
+msgid ""
+"We provide a similar quality of service, with the best students and "
+"graduates in the world, providing the most up-to-date information, first "
+"hand, tailored for you."
+msgstr ""
+
+#: homepages/templates/homepage/mission.html:60
+msgid ""
+"Promise #5: <q>Give a man a fish, and you feed him for a day; show him how "
+"to catch fish, and you feed him for a lifetime."
+msgstr ""
+
+#: homepages/templates/homepage/mission.html:63
+msgid ""
+"Some students apply for university admission advice, then job application "
+"advice ... and other consultants love it, because they keep making money. "
+"<b>We don't. We'll see you from ages 8-14, every other week. Then, "
+"afterwards, only in the news."
+msgstr ""
+
+#: homepages/templates/homepage/ourstory.html:69
+msgid "Our Story"
+msgstr ""
+
+#: homepages/templates/homepage/ourstory.html:81
+msgid "Denise gets an A"
+msgstr ""
+
+#: homepages/templates/homepage/ourstory.html:83
+msgid ""
+"Aged 15, our founder gets chalk thrown at her for getting an A, not an A+ in "
+"Chemistry. She realises she's won the ovarian lottery, as this was her "
+"biggest problem. She promises to make the world a better place when she "
+"grows up. (PS she did get an A+, her teacher made a mistake.)"
+msgstr ""
+
+#: homepages/templates/homepage/ourstory.html:95
+msgid "Disney Project"
+msgstr ""
+
+#: homepages/templates/homepage/ourstory.html:97
+msgid ""
+"Our Founder founds a charity project which Disney funds for HKD$130,000, "
+"which still runs today. She's hooked on entrepreneurship, and decides then "
+"that startups will enable her to make the world a better place."
+msgstr ""
+
+#: homepages/templates/homepage/ourstory.html:107
+msgid "Denise goes to Oxford"
+msgstr ""
+
+#: homepages/templates/homepage/ourstory.html:109
+msgid ""
+"Denise makes her way to Oxford, on full academic scholarship from the Hong "
+"Kong government."
+msgstr ""
+
+#: homepages/templates/homepage/ourstory.html:121
+msgid "Campus Capital Oxford"
+msgstr ""
+
+#: homepages/templates/homepage/ourstory.html:123
+msgid ""
+"She founds UK's first student-run VC with £2 million AUM, and sees many good "
+"startups. These technologies threaten many existing jobs today, and she "
+"realises how out of date education is."
+msgstr ""
+
+#: homepages/templates/homepage/ourstory.html:132
+msgid "Works for Access and Admissions"
+msgstr ""
+
+#: homepages/templates/homepage/ourstory.html:134
+msgid ""
+"She wins prizes from Oxford for helping underprivileged children apply to "
+"Oxbridge. She realises how important non-school smarts are, and how "
+"education has failed."
+msgstr ""
+
+#: homepages/templates/homepage/ourstory.html:146
+msgid "Denise turns down a job at a top law firm"
+msgstr ""
+
+#: homepages/templates/homepage/ourstory.html:148
+msgid ""
+"Denise turns down a job from Hong Kong's top and highest paying law firm to "
+"focus on education."
+msgstr ""
+
+#: homepages/templates/homepage/ourstory.html:158
+msgid "Denise sets up Praxeum"
+msgstr ""
+
+#: homepages/templates/homepage/ourstory.html:160
+msgid "Supported by her principal at Oxford, Denise sets up Praxeum."
 msgstr ""
 
 #: homepages/templates/homepage/register_done.html:5
@@ -115,8 +749,16 @@ msgstr ""
 msgid "log in"
 msgstr ""
 
-#: homepages/templates/homepage/signin.html:11
+#: homepages/templates/homepage/signin.html:9
+msgid "Sign in"
+msgstr ""
+
+#: homepages/templates/homepage/signin.html:13
 msgid "Login"
+msgstr ""
+
+#: homepages/templates/homepage/signup.html:8
+msgid "Create an account"
 msgstr ""
 
 #: homepages/templates/memberships/profile.html:6
@@ -135,81 +777,661 @@ msgstr ""
 msgid " No subscriptions at all."
 msgstr ""
 
-#: mysite/settings.py:123
+#: multichoice/models.py:9 multichoice/models.py:65
+msgid "Content"
+msgstr ""
+
+#: multichoice/models.py:10
+msgid "Random"
+msgstr ""
+
+#: multichoice/models.py:11
+msgid "None"
+msgstr ""
+
+#: multichoice/models.py:20
+msgid "The order in which multichoice answer options are displayed to the user"
+msgstr ""
+
+#: multichoice/models.py:23
+msgid "Answer Order"
+msgstr ""
+
+#: multichoice/models.py:53
+msgid "Multiple Choice Question"
+msgstr ""
+
+#: multichoice/models.py:54
+msgid "Multiple Choice Questions"
+msgstr ""
+
+#: multichoice/models.py:59 quiz/models.py:580 quiz/models.py:592
+#: quiz/templates/question.html:47 quiz/templates/quiz/sitting_detail.html:21
+msgid "Question"
+msgstr ""
+
+#: multichoice/models.py:63
+msgid "Enter the answer text that you want displayed"
+msgstr ""
+
+#: multichoice/models.py:69
+msgid "Is this a correct answer?"
+msgstr ""
+
+#: multichoice/models.py:70 quiz/templates/quiz/sitting_detail.html:43
+#: true_false/models.py:14
+msgid "Correct"
+msgstr ""
+
+#: multichoice/models.py:76
+msgid "Answer"
+msgstr ""
+
+#: multichoice/models.py:77
+msgid "Answers"
+msgstr ""
+
+#: mysite/local_settings.py:123 mysite/settings.py:147
 msgid "English"
 msgstr ""
 
-#: mysite/settings.py:124
+#: mysite/local_settings.py:124 mysite/settings.py:148
 msgid "Chinese"
 msgstr ""
 
-#: studentmemberships/templates/studentmemberships/futurestudentmembershiptype_list.html:5
+#: quiz/admin.py:31 quiz/admin.py:33 quiz/models.py:593
+msgid "Questions"
+msgstr ""
+
+#: quiz/models.py:32 quiz/models.py:39 quiz/models.py:55 quiz/models.py:85
+#: quiz/models.py:560 quiz/templates/progress.html:19
+#: quiz/templates/quiz/quiz_detail.html:10
+#: quiz/templates/quiz/quiz_list.html:15
+#: quiz/templates/quiz/sitting_detail.html:10
+msgid "Category"
+msgstr ""
+
+#: quiz/models.py:40
+msgid "Categories"
+msgstr ""
+
+#: quiz/models.py:50 quiz/models.py:60 quiz/models.py:566
+msgid "Sub-Category"
+msgstr ""
+
+#: quiz/models.py:61
+msgid "Sub-Categories"
+msgstr ""
+
+#: quiz/models.py:71 quiz/templates/quiz/quiz_list.html:14
+msgid "Title"
+msgstr ""
+
+#: quiz/models.py:75
+msgid "Description"
+msgstr ""
+
+#: quiz/models.py:76
+msgid "a description of the quiz"
+msgstr ""
+
+#: quiz/models.py:80
+msgid "a user friendly url"
+msgstr ""
+
+#: quiz/models.py:81
+msgid "user friendly url"
+msgstr ""
+
+#: quiz/models.py:89
+msgid "Random Order"
+msgstr ""
+
+#: quiz/models.py:90
+msgid "Display the questions in a random order or as they are set?"
+msgstr ""
+
+#: quiz/models.py:95
+msgid "Max Questions"
+msgstr ""
+
+#: quiz/models.py:96
+msgid "Number of questions to be answered on each attempt."
+msgstr ""
+
+#: quiz/models.py:100
+msgid ""
+"Correct answer is NOT shown after question. Answers displayed at the end."
+msgstr ""
+
+#: quiz/models.py:102
+msgid "Answers at end"
+msgstr ""
+
+#: quiz/models.py:106
+msgid ""
+"If yes, the result of each attempt by a user will be stored. Necessary for "
+"marking."
+msgstr ""
+
+#: quiz/models.py:109
+msgid "Exam Paper"
+msgstr ""
+
+#: quiz/models.py:113
+msgid ""
+"If yes, only one attempt by a user will be permitted. Non users cannot sit "
+"this exam."
+msgstr ""
+
+#: quiz/models.py:116
+msgid "Single Attempt"
+msgstr ""
+
+#: quiz/models.py:120
+msgid "Pass Mark"
+msgstr ""
+
+#: quiz/models.py:121
+msgid "Percentage required to pass exam."
+msgstr ""
+
+#: quiz/models.py:125
+msgid "Displayed if user passes."
+msgstr ""
+
+#: quiz/models.py:126
+msgid "Success Text"
+msgstr ""
+
+#: quiz/models.py:129
+msgid "Fail Text"
+msgstr ""
+
+#: quiz/models.py:130
+msgid "Displayed if user fails."
+msgstr ""
+
+#: quiz/models.py:134
+msgid "Draft"
+msgstr ""
+
+#: quiz/models.py:135
+msgid ""
+"If yes, the quiz is not displayed in the quiz list and can only be taken by "
+"users who can edit quizzes."
+msgstr ""
+
+#: quiz/models.py:155 quiz/models.py:376 quiz/models.py:556
+#: quiz/templates/quiz/sitting_list.html:14
+msgid "Quiz"
+msgstr ""
+
+#: quiz/models.py:156
+msgid "Quizzes"
+msgstr ""
+
+#: quiz/models.py:195 quiz/models.py:374
+#: quiz/templates/quiz/sitting_detail.html:13
+#: quiz/templates/quiz/sitting_list.html:13
+msgid "User"
+msgstr ""
+
+#: quiz/models.py:198 quiz/templates/progress.html:60
+#: quiz/templates/quiz/sitting_detail.html:15
+#: quiz/templates/quiz/sitting_list.html:16
+msgid "Score"
+msgstr ""
+
+#: quiz/models.py:204
+msgid "User Progress"
+msgstr ""
+
+#: quiz/models.py:205
+msgid "User progress records"
+msgstr ""
+
+#: quiz/models.py:265 quiz/tests.py:170
+msgid "error"
+msgstr ""
+
+#: quiz/models.py:265
+msgid "category does not exist or invalid score"
+msgstr ""
+
+#: quiz/models.py:380
+msgid "Question Order"
+msgstr ""
+
+#: quiz/models.py:385
+msgid "Question List"
+msgstr ""
+
+#: quiz/models.py:391
+msgid "Incorrect questions"
+msgstr ""
+
+#: quiz/models.py:394
+msgid "Current Score"
+msgstr ""
+
+#: quiz/models.py:397
+msgid "Complete"
+msgstr ""
+
+#: quiz/models.py:400
+msgid "User Answers"
+msgstr ""
+
+#: quiz/models.py:403
+msgid "Start"
+msgstr ""
+
+#: quiz/models.py:405
+msgid "End"
+msgstr ""
+
+#: quiz/models.py:410
+msgid "Can see completed exams."
+msgstr ""
+
+#: quiz/models.py:574
+msgid "Figure"
+msgstr ""
+
+#: quiz/models.py:578
+msgid "Enter the question text that you want displayed"
+msgstr ""
+
+#: quiz/models.py:584
+msgid "Explanation to be shown after the question has been answered."
+msgstr ""
+
+#: quiz/models.py:587 quiz/templates/question.html:32
+#: quiz/templates/result.html:21 quiz/templates/result.html:87
+msgid "Explanation"
+msgstr ""
+
+#: quiz/templates/base.html:7
+msgid "Example Quiz Website"
+msgstr ""
+
+#: quiz/templates/correct_answer.html:6
+msgid "You answered the above question incorrectly"
+msgstr ""
+
+#: quiz/templates/correct_answer.html:16
+msgid "This is the correct answer"
+msgstr ""
+
+#: quiz/templates/correct_answer.html:23
+msgid "This was your answer."
+msgstr ""
+
+#: quiz/templates/progress.html:6
+msgid "Progress Page"
+msgstr ""
+
+#: quiz/templates/progress.html:7
+msgid "User Progress Page"
+msgstr ""
+
+#: quiz/templates/progress.html:13
+msgid "Question Category Scores"
+msgstr ""
+
+#: quiz/templates/progress.html:20
+msgid "Correctly answererd"
+msgstr ""
+
+#: quiz/templates/progress.html:21
+msgid "Incorrect"
+msgstr ""
+
+#: quiz/templates/progress.html:50
+msgid "Previous exam papers"
+msgstr ""
+
+#: quiz/templates/progress.html:52
+msgid "Below are the results of exams that you have sat."
+msgstr ""
+
+#: quiz/templates/progress.html:59
+msgid "Quiz Title"
+msgstr ""
+
+#: quiz/templates/progress.html:61
+msgid "Possible Score"
+msgstr ""
+
+#: quiz/templates/question.html:13 quiz/templates/result.html:13
+msgid "The previous question"
+msgstr ""
+
+#: quiz/templates/question.html:22
+msgid "Your answer was"
+msgstr ""
+
+#: quiz/templates/question.html:47
+msgid "of"
+msgstr ""
+
+#: quiz/templates/question.html:52
+msgid "Question category"
+msgstr ""
+
+#: quiz/templates/question.html:74
+msgid "Check"
+msgstr ""
+
+#: quiz/templates/quiz/category_list.html:3
+#: quiz/templates/quiz/quiz_list.html:4 quiz/templates/quiz/sitting_list.html:3
+msgid "All Quizzes"
+msgstr ""
+
+#: quiz/templates/quiz/category_list.html:6
+msgid "Category list"
+msgstr ""
+
+#: quiz/templates/quiz/quiz_detail.html:12
+msgid "You will only get one attempt at this quiz"
+msgstr ""
+
+#: quiz/templates/quiz/quiz_detail.html:17
+msgid "Start quiz"
+msgstr ""
+
+#: quiz/templates/quiz/quiz_list.html:8
+msgid "List of quizzes"
+msgstr ""
+
+#: quiz/templates/quiz/quiz_list.html:16
+msgid "Exam"
+msgstr ""
+
+#: quiz/templates/quiz/quiz_list.html:17
+msgid "Single attempt"
+msgstr ""
+
+#: quiz/templates/quiz/quiz_list.html:33
+#: quiz/templates/quiz/sitting_list.html:42
+msgid "View details"
+msgstr ""
+
+#: quiz/templates/quiz/quiz_list.html:43
+msgid "There are no available quizzes"
+msgstr ""
+
+#: quiz/templates/quiz/sitting_detail.html:5
+msgid "Result of"
+msgstr ""
+
+#: quiz/templates/quiz/sitting_detail.html:5
+msgid "for"
+msgstr ""
+
+#: quiz/templates/quiz/sitting_detail.html:9
+msgid "Quiz title"
+msgstr ""
+
+#: quiz/templates/quiz/sitting_detail.html:14
+#: quiz/templates/quiz/sitting_list.html:15
+msgid "Completed"
+msgstr ""
+
+#: quiz/templates/quiz/sitting_detail.html:22
+msgid "User answer"
+msgstr ""
+
+#: quiz/templates/quiz/sitting_detail.html:41
+msgid "incorrect"
+msgstr ""
+
+#: quiz/templates/quiz/sitting_detail.html:49
+msgid "Toggle whether correct"
+msgstr ""
+
+#: quiz/templates/quiz/sitting_list.html:6
+msgid "List of complete exams"
+msgstr ""
+
+#: quiz/templates/quiz/sitting_list.html:28
+msgid "Filter"
+msgstr ""
+
+#: quiz/templates/quiz/sitting_list.html:52
+msgid "There are no matching quizzes"
+msgstr ""
+
+#: quiz/templates/result.html:7
+msgid "Exam Results for"
+msgstr ""
+
+#: quiz/templates/result.html:32
+msgid "Exam results"
+msgstr ""
+
+#: quiz/templates/result.html:34
+msgid "Exam title"
+msgstr ""
+
+#: quiz/templates/result.html:38
+msgid "You answered"
+msgstr ""
+
+#: quiz/templates/result.html:38
+msgid "questions correctly out of"
+msgstr ""
+
+#: quiz/templates/result.html:38
+msgid "giving you"
+msgstr ""
+
+#: quiz/templates/result.html:38
+msgid "percent correct"
+msgstr ""
+
+#: quiz/templates/result.html:48
+msgid "Review the questions below and try the exam again in the future"
+msgstr ""
+
+#: quiz/templates/result.html:52
+msgid ""
+"The result of this exam will be stored in your progress section so you can "
+"review and monitor your progression"
+msgstr ""
+
+#: quiz/templates/result.html:66
+msgid "Your session score is"
+msgstr ""
+
+#: quiz/templates/result.html:66
+msgid "out of a possible"
+msgstr ""
+
+#: quiz/templates/result.html:84
+msgid "Your answer"
+msgstr ""
+
+#: quiz/templates/single_complete.html:13
+msgid "You have already sat this exam and only one sitting is permitted"
+msgstr ""
+
+#: quiz/templates/single_complete.html:15
+msgid "This exam is only accessible to signed in users"
+msgstr ""
+
+#: quiz/templates/view_quiz_category.html:3
+msgid "Quizzes related to"
+msgstr ""
+
+#: quiz/templates/view_quiz_category.html:6
+msgid "Quizzes in the"
+msgstr ""
+
+#: quiz/templates/view_quiz_category.html:6
+msgid "category"
+msgstr ""
+
+#: quiz/templates/view_quiz_category.html:20
+msgid "There are no quizzes"
+msgstr ""
+
+#: studentmemberships/templates/studentmemberships/futurestudentmembershiptype_list.html:6
 msgid "Select a Student Membership "
 msgstr ""
 
-#: studentmemberships/templates/studentmemberships/futurestudentmembershiptype_list.html:10
-#: studentmemberships/templates/studentmemberships/studentfutpay.html:13
+#: studentmemberships/templates/studentmemberships/futurestudentmembershiptype_list.html:11
+#: studentmemberships/templates/studentmemberships/studentfutpay.html:87
 msgid "3 months"
 msgstr ""
 
-#: studentmemberships/templates/studentmemberships/futurestudentmembershiptype_list.html:17
+#: studentmemberships/templates/studentmemberships/futurestudentmembershiptype_list.html:19
 msgid "This is your current membership."
 msgstr ""
 
-#: studentmemberships/templates/studentmemberships/profile.html:6
-msgid "Profile"
+#: studentmemberships/templates/studentmemberships/profile.html:30
+msgid "Go to the"
 msgstr ""
 
-#: studentmemberships/templates/studentmemberships/profile.html:8
-msgid "Link to grades"
+#: studentmemberships/templates/studentmemberships/profile.html:30
+msgid "tab to view all available lessons"
 msgstr ""
 
-#: studentmemberships/templates/studentmemberships/profile.html:14
-msgid "Current English Membership: "
+#: studentmemberships/templates/studentmemberships/profile.html:31
+msgid "List unknown vocabulary in"
 msgstr ""
 
-#: studentmemberships/templates/studentmemberships/profile.html:28
-#: studentmemberships/templates/studentmemberships/profile.html:40
-#: studentmemberships/templates/studentmemberships/profile.html:51
-msgid "No subscription. Please consider joining us."
+#: studentmemberships/templates/studentmemberships/profile.html:31
+msgid "tab"
 msgstr ""
 
 #: studentmemberships/templates/studentmemberships/profile.html:32
-msgid "Change membership"
+msgid "Receive a WeChat/WhatsApp from"
+msgstr ""
+
+#: studentmemberships/templates/studentmemberships/profile.html:34
+msgid "to arrange the time."
+msgstr ""
+
+#: studentmemberships/templates/studentmemberships/profile.html:35
+msgid "Check your grades"
 msgstr ""
 
 #: studentmemberships/templates/studentmemberships/profile.html:36
+msgid "Repeat."
+msgstr ""
+
+#: studentmemberships/templates/studentmemberships/profile.html:51
 msgid "Current Future Membership:"
 msgstr ""
 
-#: studentmemberships/templates/studentmemberships/profile.html:46
+#: studentmemberships/templates/studentmemberships/profile.html:56
+msgid "No subscription. Upgrade now."
+msgstr ""
+
+#: studentmemberships/templates/studentmemberships/profile.html:62
 msgid "Payment began:"
 msgstr ""
 
-#: studentmemberships/templates/studentmemberships/profile.html:47
+#: studentmemberships/templates/studentmemberships/profile.html:63
 msgid "Next payment due: "
 msgstr ""
 
-#: studentmemberships/templates/studentmemberships/profile.html:55
+#: studentmemberships/templates/studentmemberships/profile.html:67
+msgid "No subscription. Please consider joining us."
+msgstr ""
+
+#: studentmemberships/templates/studentmemberships/profile.html:71
 msgid " Change membership "
 msgstr ""
 
-#: studentmemberships/templates/studentmemberships/studentfutpay.html:11
+#: studentmemberships/templates/studentmemberships/profile.html:80
+msgid "Current English Membership: "
+msgstr ""
+
+#: studentmemberships/templates/studentmemberships/profile.html:97
+msgid "Coming soon. Request alpha testing access."
+msgstr ""
+
+#: studentmemberships/templates/studentmemberships/profile.html:98
+msgid "For those with weaker English skills."
+msgstr ""
+
+#: studentmemberships/templates/studentmemberships/profile.html:99
+msgid ""
+"Native designed, linguist supported, scientifically backed learning methods "
+"to learn English faster"
+msgstr ""
+
+#: studentmemberships/templates/studentmemberships/profile.html:100
+msgid "Content + 1:1 tuition for ALL ages"
+msgstr ""
+
+#: studentmemberships/templates/studentmemberships/profile.html:104
+msgid "Change membership"
+msgstr ""
+
+#: studentmemberships/templates/studentmemberships/profile.html:112
+msgid "Current Parent Membership:"
+msgstr ""
+
+#: studentmemberships/templates/studentmemberships/profile.html:114
+msgid "Coming soon. Express interest here."
+msgstr ""
+
+#: studentmemberships/templates/studentmemberships/profile.html:115
+msgid "Monitor your child's progress"
+msgstr ""
+
+#: studentmemberships/templates/studentmemberships/profile.html:116
+msgid ""
+"Curated, targeted and short lessons to optimise your support of your children"
+msgstr ""
+
+#: studentmemberships/templates/studentmemberships/profile.html:117
+msgid "Parenting in a new, globalised world"
+msgstr ""
+
+#: studentmemberships/templates/studentmemberships/studentfutpay.html:85
 msgid "Payment"
 msgstr ""
 
-#: studentmemberships/templates/studentmemberships/studentfutpay.html:13
+#: studentmemberships/templates/studentmemberships/studentfutpay.html:87
 msgid "Price:"
 msgstr ""
 
-#: studentmemberships/templates/studentmemberships/studentfutpay.html:25
-msgid "Checkout with Stripe"
+#: studentmemberships/templates/studentmemberships/studentfutpay.html:101
+msgid "Credit or debit card, powered by Stripe"
 msgstr ""
 
-#: studentmemberships/templates/studentmemberships/studentfutpay.html:28
-msgid "Credit or debit card"
-msgstr ""
-
-#: studentmemberships/templates/studentmemberships/studentfutpay.html:38
+#: studentmemberships/templates/studentmemberships/studentfutpay.html:112
 msgid "Submit Payment"
+msgstr ""
+
+#: true_false/models.py:11
+msgid "Tick this if the question is true. Leave it blank for false."
+msgstr ""
+
+#: true_false/models.py:42
+msgid "True/False Question"
+msgstr ""
+
+#: true_false/models.py:43
+msgid "True/False Questions"
+msgstr ""
+
+#: vocab/templates/vocab/add.html:17
+msgid "Add word"
+msgstr ""
+
+#: vocab/templates/vocab/next.html:7 vocab/templates/vocab/vocablist.html:7
+msgid "Words"
+msgstr ""
+
+#: vocab/templates/vocab/next.html:8 vocab/templates/vocab/vocablist.html:8
+msgid ""
+"Add words you learn here, to keep track of your learning, and for us to "
+"gauge your ability. We will use data science to help you revise words more "
+"effectively. "
 msgstr ""

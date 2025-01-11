@@ -1,12 +1,13 @@
 from django.shortcuts import render
 
 from studentmemberships.models import StudentMembership
-from .models import EnglishTutors, FutureTutors
-
-from grades.models import EnglishGrades
+from .models import FutureTutor
 
 from django.http import HttpResponse,StreamingHttpResponse, HttpResponseServerError
 from django.views.decorators import gzip
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+
 
 import time
 
@@ -16,12 +17,13 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, reverse
 # Create your views here.
 
-def tutor_profile(request, slug):
-	tutor = Tutors.objects.get(slug=slug)
+@login_required
+def tutor_profile(request, user_id):
+	tutor = FutureTutor.objects.get(user_id=user_id)
 
 	context = {
 		'tutor': tutor,
-		'students': StudentMembership.objects.filter(englishtutor=tutor).all()
+		'students': StudentMembership.objects.filter(futuretutor=tutor).all()
 
 	}
 

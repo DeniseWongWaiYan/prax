@@ -4,17 +4,25 @@
 <div class="container">
     
         <h1>{{ tutor.name }}'s Profile</h1>
-        
+         <h3> From  {{ tutor.university|safe }} 🎓 </h3> <br> 
+    
+        {{ tutor.qualifications|safe }} 🤟 📑
+    
+    <br><br>
+<!--
+    
         <h3>Students</h3>
         {% for student in students %}
             <ul>{{student}}</ul>
             
         {% endfor %}
-            
+       
+    
+-->
         </div>
         
         
-</div>
+
 
 
 {% endblock %}

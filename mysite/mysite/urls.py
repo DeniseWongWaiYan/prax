@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 from django.conf import settings 
 from django.utils.translation import gettext_lazy as _
 
+
 #
 urlpatterns =[
 #    path('admin/', admin.site.urls),
@@ -30,14 +31,15 @@ urlpatterns =[
 urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
     path('rosetta/', include('rosetta.urls')),
-    path('home/', include('homepages.urls')),
+    path('', include('homepages.urls')),
     path('courses/', include('courses.urls')),
     path('studentmembership/', include('studentmemberships.urls')),
     path('tutors/', include('tutors.urls')),
-    path('parents/', include('parents.urls')),
     path('grades/', include('grades.urls')),
     path('vocab/', include('vocab.urls')),
-    path('messages/', include('postman.urls')), prefix_default_language=True)
+    prefix_default_language=True)
+    
+
 #
 #
 #urlpatterns = i18n_patterns(

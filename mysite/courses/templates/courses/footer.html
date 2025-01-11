@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+{% load static %}
+{% load i18n %}
+
+<style>
+    .footer-bar{
+    background:
+          linear-gradient(100deg, #171c53 30%, #a1c3fc 90%, #a1c3fc 0%);
+
+    
+    font-size: 32px;
+        }
+    
+    .fab{
+        color: white; 
+    }
+</style>
+
+
+
+
+<footer class="page-footer font-small unique-color-dark" style="padding-top:20px; ">
+
+  <div class="footer-bar" style="padding-top: 1px;">
+    <div class="container" >
+
+      <!-- Grid row-->
+    
+
+        <!-- Grid column -->
+        <div class="text-center">
+
+          <!-- Facebook -->
+            <a href ="https://www.instagram.com/heyprax/"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+            <a href ="https://twitter.com/heyprax"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+            
+            
+            <a href ="https://www.facebook.com/Praxeum-107168174603296">  <i class="fab fa-facebook" aria-hidden="true"></i></a>
+            
+            <a href ="https://medium.com/@heyprax"> <i class="fab fa-medium" aria-hidden="true"></i></a>
+            
+            
+<!--          </a>-->
+          <!--Linkedin -->
+          
+
+        </div>
+        <!-- Grid column -->
+
+      
+      <!-- Grid row-->
+
+    </div>
+  </div>
+
+  {% load i18n %}
+  <div class="text-center text-md-left mt-5">
+
+    <!-- Grid row -->
+          <div class="container" >
+
+    <div class="row">
+
+    
+      <div class="col-md-3">
+        <!-- Content -->
+        <h6 class="text-uppercase font-weight-bold">prax+</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 30px;">
+<!--          <p><a href="{% url 'homepages:how' %}">{% trans "Our method" %}</a></p>               -->
+          <p><a href="{% url 'homepages:aboutus' %}">{% trans "Our team" %}</a></p>
+        <p><a href="{% url 'homepages:mission' %}">{% trans "Our science" %}</a></p>
+                    
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+        <div class="col-md-3">
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">{% trans "Feedback" %}</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        
+        <p>
+          <a href="https://app.markup.io/invite/accept?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQxOTViOWZjLWIwOTQtNDJlYi04M2YzLTkxZjBhYzAwMDg3ZiIsImlhdCI6MTYwMzM3MTgzOX0.51cb1eRCWYonZ1KwAgHM-wIW434DiIUN_UbYAWBI8Q4">{% trans "Give Visual Feedback" %}</a>
+        </p>
+          
+        <p>
+          <a href="https://prax.sleekplan.app/">{% trans "Give Development Feedback" %}</a>
+        </p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">{% trans "Legal" %}</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a href="{% url 'homepages:credits'  %}">{% trans "Credits" %}</a>
+        </p>
+        <p>
+          <a href="{% url 'homepages:terms' %}">{% trans "Terms and Conditions" %}</a>
+        </p>
+        
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">{% trans "Contact" %}</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p><i class="fas fa-at"></i><a href="mailto:heyprax@gmail.com"> heyprax@gmail.com  </a></p>
+<!--        <p><img src="{% static 'wechat.png' %}" style ="width:30%;" > </p>-->
+      <p><i class="fas fa-phone" aria-hidden="true"></i>
+<a href="#"> +852 9180 0256  </a></p>
+
+        
+          
+ 
+      </div>
+
+    </div>
+
+      </div>
+  </div>
+  
+
+</footer>

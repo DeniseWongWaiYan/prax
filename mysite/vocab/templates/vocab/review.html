@@ -1,0 +1,145 @@
+{% extends "courses/base.html" %}
+
+        {% load i18n %}
+    {% load static %}
+
+
+
+
+<script type="text/javascript">
+//function onShowAnswer() {
+//    setUpGradeShortcuts();
+//    $('#answer').show()
+//    $('#showAnswerButton').hide()
+//    $('#gradeBox').show()
+//    $('#debugInfo').show()
+//}
+
+function clickButton(grade) {
+    $("#grade" + grade).click()
+}
+
+function setUpGradeShortcuts() {
+        shortcut.add("0", function() {
+            clickButton("0")
+        });
+        shortcut.add("1", function() {
+            clickButton("1")
+        });
+        shortcut.add("2", function() {
+            clickButton("2")
+        });
+        shortcut.add("3", function() {
+            clickButton("3")
+        });
+        shortcut.add("4", function() {
+            clickButton("4")
+        });
+        shortcut.add("5", function() {
+            clickButton("5")
+        });
+}
+
+shortcut.add("Ctrl+Space", function() {
+    onShowAnswer()
+});
+
+$(document).ready(function() {
+    $("#scratch").focus()
+    
+    $("#descLink").click(function () {
+        $("#descriptions").toggle()
+        return false
+    })
+});
+
+
+function delete_card(card_id) {
+    c = confirm("Are you sure you want to delete this card?");
+    if (c == true) {
+        $('#cardId').val(card_id);
+        $("#deleteForm").submit();
+    }
+}
+
+</script>
+			
+{% block content %}
+
+<div class="container">
+     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+  
+    
+    <h2>Review today's cards</h2>
+{% if user_has_no_cards %}
+    <p>You have not created any cards.  Click on the 'Vocabulary List' tab to create some cards.</p>
+{% else %}
+{% if card %}
+    <p>{{ num_cards_for_today }} card{{ num_cards_for_today|pluralize }} left for today</p>
+    <p><a href="{% url 'vocab:editvocab' word=card.new_word %}"> Edit this card</a> 
+        
+
+   <div id="question">{{ card.new_word }}</div>
+  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Show Answer
+  </button>
+
+<div class="collapse" id="collapseExample">
+  
+     Definition: {{ card.definition }}
+  
+</div>
+       
+
+
+    <div id="gradeBox">
+        <br/>
+        
+        <div id="gradeYourAnswer">Grade your answer:</div>    
+
+        <form id="gradeForm" action="{% url 'vocab:grade' %}" method="post">
+             {% csrf_token %}
+        <input type="hidden" name="cardId" value="{{ card.id }}"/>
+        <input name="grade" id="grade0" type="submit" class="btn btn-danger" value="0"/> 
+        <input name="grade" id="grade1" type="submit" class="btn btn-dark" value="1"/> 
+        |
+        <input name="grade"  id="grade2" type="submit" class="btn btn-dark" value="2"/> 
+        <input name="grade" id="grade3" type="submit" class="btn btn-dark" value="3"/> 
+        <input name="grade" id="grade4" type="submit" class="btn btn-dark" value="4"/> 
+        <input name="grade" id="grade5" type="submit" class="btn btn-success" value="5"/> 
+            
+        <br><br>
+<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#gradeDesc" aria-expanded="false" aria-controls="gradeDesc">
+    Grade Descriptions
+  </button>
+
+<div class="collapse" id="gradeDesc">
+  
+      <p>
+            0: don't know the answer yet<br/>
+            1: still don't know the answer, but it's a little more familar<br/>
+            ----<br/>
+            2: should be able to remember for one or two days<br/>
+            3: takes significant effort to remember (interval was too long)<br/>
+            4: can remember with some effort (interval was just right)<br/>
+            5: easy (interval was too short)<br/>
+            </p>
+   
+</div>
+        
+    </form>
+    <form id="deleteForm" action="/delete/" method="post">
+        <input type="hidden" name="cardId" value="{{ card.id }}"/>
+        <input type="hidden" name="fromReview" value="1"/>
+    </form>
+    </div>
+{% else %}
+    <p>There are no more cards to study today.</p>
+    <p>You will be scheduled to review your next card in {{ days_until_next_rep }} day{{ days_until_next_rep|pluralize }}.</p>
+    <p>Return to <a href="{% url 'vocab:vocab_list' %}">Vocabulary List</a>.</p>
+{% endif %}
+{% endif %}
+</div>
+{% endblock %}	

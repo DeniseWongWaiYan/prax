@@ -62,12 +62,3 @@ class ParentSubscription(models.Model):
     def get_next_billing_date(self):
         subscription = stripe.Subscription.retrieve(self.stripe_subscription_id)
         return datetime.datetime.fromtimestamp(subscription.current_period_end)
-
-class Parent(models.Model):
-    parentuseraccount = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    parent1 = models.CharField(max_length=50, null=True)
-    parent2 = models.CharField(max_length=50, null=True)
-    # parentmembership = 
-
-    def __str__(self):
-        return self.name

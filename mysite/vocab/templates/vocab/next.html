@@ -1,0 +1,31 @@
+{% extends 'courses/base.html' %}
+
+{% block content %}
+<div class="container">
+        {% load i18n %}
+{% include 'courses/messages.html' %}
+    <h3>{{wordcount}} {% trans "Words" %} </h3> 
+    {% trans "Add words you learn here, to keep track of your learning, and for us to gauge your ability. We will use data science to help you revise words more effectively. " %}
+    <br><br>
+    <h4><a href = '{% url 'vocab:addvocab' %}'>Add words</a></h4> <br>
+
+<!--
+<div class="card-deck">
+    
+{% for word in words %}
+
+<div class="card mb-4">
+  <div class="card-body style="width: 18rem;"">
+    <h5 class="card-title"> <a href="{% url 'vocab:editvocab' word=word.new_word %}"  >{{ word.new_word }}</a></h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ word.definition }}</h6>
+    <p class="card-text">{{ word.comments }}</p>
+  </div>
+</div>
+    
+{% endfor %}
+    </div>
+-->
+
+{{practice}}, {{item}}, {{form}} 
+    
+{% endblock content %}

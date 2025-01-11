@@ -2,9 +2,8 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.conf import settings
 import datetime
-
-from tutors.models import EnglishTutors, FutureTutors
-from parents.models import Parent
+from tutors.models import EnglishTutor, FutureTutor, IGCSETutor
+from homepages.models import Group
 
 import stripe
 
@@ -13,11 +12,7 @@ import stripe
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 # Create your models here.
-STUDENT_ENGLISH_MEMBERSHIP_CHOICES = (
-    ('Smile School English Full', 'English Full'),
-    ('Smile School English Basic', 'English Basic'),
-    ('No Smile School English', 'English No')
-)
+
 
 STUDENT_FUTURE_MEMBERSHIP_CHOICES = (
     ('Smile School Future Full', 'Future Full'),
@@ -25,36 +20,27 @@ STUDENT_FUTURE_MEMBERSHIP_CHOICES = (
     ('No Smile School Future', 'Future No')
 )
 
-class EnglishStudentMembershipType(models.Model):
-    slug = models.SlugField()
-    english_membership_type = models.CharField(choices=STUDENT_ENGLISH_MEMBERSHIP_CHOICES, default='No Smile School English', max_length=30)
-    price = models.IntegerField(default=15)
-    stripe_plan_id = models.CharField(max_length=40)
-
-    def __str__(self):
-        return self.english_membership_type
     
 class FutureStudentMembershipType(models.Model):
     slug = models.SlugField()
     future_membership_type = models.CharField(choices=STUDENT_FUTURE_MEMBERSHIP_CHOICES, default='No Smile School Future', max_length=30)
     price = models.IntegerField(default=15)
     stripe_plan_id = models.CharField(max_length=40)
+    description = models.TextField(null=True)
 
     def __str__(self):
         return self.future_membership_type
 
+    
 class StudentMembership(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     stripe_customer_id = models.CharField(max_length=40)
-    englishmembership = models.ForeignKey(
-        EnglishStudentMembershipType, on_delete=models.SET_NULL, null=True)
     futuremembership = models.ForeignKey(
         FutureStudentMembershipType, on_delete=models.SET_NULL, null=True)
-    englishtutor = models.ForeignKey(
-        EnglishTutors, on_delete=models.SET_NULL, null=True)
     futuretutor = models.ForeignKey(
-        FutureTutors, on_delete=models.SET_NULL, null=True)
-    videoslug = models.SlugField()
+        FutureTutor, on_delete=models.SET_NULL, null=True, blank=True)
+    group = models.ForeignKey(
+        Group, on_delete=models.SET_NULL, null=True)
     
     def __str__(self):
         return self.user.username
@@ -117,4 +103,4 @@ class StudentFutureSubscription(models.Model):
     def get_begin_billing_date(self):
         subscription = stripe.Subscription.retrieve(self.stripe_subscription_id)
         return datetime.datetime.fromtimestamp(subscription.current_period_start)
-
+    

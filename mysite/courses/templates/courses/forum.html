@@ -1,0 +1,80 @@
+{% extends 'courses/base.html' %}
+
+{% block content %}
+<div class="container">
+    <head><title>Future Course List</title></head>
+
+<style>
+
+    .lessoncontent{
+        padding-bottom:15px;
+        padding-top: 5px;
+    }
+    
+    .vertical-center {
+      min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+      min-height: 100vh; /* These two lines are counted as one :-)       */
+      
+      display: flex;
+      align-items: center;
+    
+    }   
+    
+    form.comment {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+    
+    textarea, button {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+}
+    div.comment{
+    background-color: #eee;
+    padding: 8px 20px 1px 20px;
+    margin: 8px 0px 1px 8px;
+    border-left: 5px solid #a1c3fc;
+        
+    }
+
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        
+   {% load static %}
+    {% load i18n %}
+        
+    <h1>{{forum.topic}} </h1>
+    <p class="float-right"> {{forum.group}} | <a href='{% url "courses:futurelessondetail" lesson_slug=forum.lesson.slug course_slug=forum.lesson.course.slug %}'> {{forum.lesson}}</a>  
+    </p> 
+        <br> <br>
+    <h3>{{forum.description.as_p}} </h3>
+  
+    
+    {% for d in discussion %} 
+    <div class="comment">
+    
+    <div class="float-right">{{d.date_created}} by {{d.student}}</div> 
+    <p style="font-size:20px;">{{d.discuss|linebreaks}}</p>
+     </div>     
+    {% endfor %}
+    
+    <br><br><br>
+  
+  <form class="comment"  action="" method="POST" align="center">
+      {% csrf_token %}
+      
+      
+      {{form.discuss }}
+      <br>
+        <button type="submit" class="btn btn-success" value="register">Submit </button>
+    </form>
+
+<br> <br>
+{% endblock %}
+

@@ -1,19 +1,10 @@
-"""
-WSGI config for mysite project.
+import os, sys
 
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/3.0/howto/deployment/wsgi/
-"""
-
-import os
+# edit your username below
+sys.path.append("/home/denisewo/mysite/")
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite.settings')
+os.environ['DJANGO_SETTINGS_MODULE'] = "mysite.settings"
 
 application = get_wsgi_application()
-
-from whitenoise.django import DjangoWhiteNoise
-application = DjangoWhiteNoise(application)

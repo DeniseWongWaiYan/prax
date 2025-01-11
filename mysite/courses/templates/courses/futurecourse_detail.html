@@ -4,11 +4,11 @@
 <div class="container">
     <head><title>Future Course Detail</title></head>
     <body>
-        <h1> {{ object.title }} </h1>
-
+        <h1> {{ object.title |safe }} </h1>
+            <h3>{{ object.description|safe }} </h3><br><br>
 
             {% for lesson in object.futurelessons %}
-             <ul><h2> <a href="{{ lesson.url }}"> {{lesson.title}}</a> </h2>   </ul>
+             <h2> <a href="{{ lesson.url }}"> {{lesson.title|safe}}</a> </h2>  
             {{ lesson.lesson_url }}
             {% endfor %}
     

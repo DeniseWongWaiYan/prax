@@ -1,13 +1,95 @@
 {% extends 'courses/base.html' %}
 {% block content %}
-<html>
-    <h1>Create an account</h1>
-<p>Please, sign up as a child using the following form:</p>
+{% load i18n %}
+
+<div class="container">
+<!--<div class="form-group d-flex justify-content-center align-middle">-->
+<div class="signup" style="">
+<h1>{% trans "Create an account" %}</h1>
 <form action="" method="POST">
 {{ create_user_form.as_p }}
+{{ referform.as_p }}
 {% csrf_token %}
-<input type="submit" value="register">
+<input type="submit" value="Register"  class="btn btn-success">
 </form>
+    
+</div>
+    </div>
+<style>
+    
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
-</html>
+* {
+	box-sizing: border-box;
+}
+
+h1 {
+	font-weight: bold;
+	margin: 0;
+}
+
+h2 {
+	text-align: center;
+}
+
+p {
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin: 20px 0 30px;
+}
+
+span {
+	font-size: 12px;
+}
+
+form.signup {
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+}
+
+input {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+}
+
+.sign-up-container {
+	left: 0;
+	width: 50%;
+	opacity: 0;
+	z-index: 1;
+}
+
+
+@keyframes show {
+	0%, 49.99% {
+		opacity: 0;
+		z-index: 1;
+	}
+	
+	50%, 100% {
+		opacity: 1;
+		z-index: 5;
+	}
+}
+
+
+.container.right-panel-active .overlay-container{
+	transform: translateX(-100%);
+}
+
+    
+</style>    
+    
+    
 {% endblock %}

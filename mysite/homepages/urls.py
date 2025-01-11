@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from .views import index, joinus, aboutus, studentsignup, signin, signout, parentsignup
+from .views import index, joinus, aboutus, studentsignup, signin, signout,  terms, credits, mission, ourstory, how
+from django.views.generic import TemplateView
 
 app_name = 'homepages'
 
@@ -25,8 +26,13 @@ urlpatterns = [
     path('joinus/', joinus, name='joinus'),
     path('aboutus', aboutus, name='aboutus'),
     path('signup', studentsignup, name='signup'),
-    path('parentsignup', parentsignup, name='parentsignup'),
+    path('mission/', mission, name='mission'),
+    path('ourstory/', ourstory, name='ourstory'),
+    path('how/', how, name='how'),
     path('signin', signin, name='signin'),
-    path('signout', signout, name='signout')
+    path('signout', signout, name='signout'),
+    path('terms', terms, name='terms'),
+    path('credits', credits, name='credits'),
+    path('book', TemplateView.as_view(template_name="homepage/book.html"), name='book'),
     
 ]

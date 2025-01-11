@@ -1,0 +1,16 @@
+{% extends "wiki/base_site.html" %}
+{% load static %}
+
+{% block wiki_site_title %} - Wiki{% endblock %}
+
+{% block wiki_header_branding %}
+			<a href = "{% url 'homepages:index' %}"><img src="{% static 'logo.png' %}"  style="height:40px;"></a>
+
+{% endblock %}
+
+{% block wiki_header_navlinks %}
+<ul class="ml-auto nav navbar-nav">
+  <li class="active"><a href="{% url 'wiki:root' %}">Main page</a></li>
+</ul>
+
+{% endblock %}

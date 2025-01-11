@@ -3,11 +3,15 @@ from django.conf import settings
 from django.contrib import messages
 from django.urls import reverse
 from django.http import HttpResponseRedirect
+from django.db.models import Avg
 
 from django.views.generic import ListView, View
 
+from studentmemberships.models import StudentMembership
 from .models import ParentMembershipType, ParentMembership, ParentSubscription 
- 
+from grades.models import EnglishGrades, FutureGrades, FutCert
+from grades.views import grades
+
 import stripe 
 
 
@@ -17,11 +21,68 @@ import time
 def profile_view(request):
     parent_mem = get_parent_mem(request)
     parent_sub = get_parent_subscription(request)
+    parent = ParentMembership.objects.filter(user=request.user)
+    children = StudentMembership.objects.filter(parents__in=parent).all()
+    
+    futgrades = []
+#    futgrades = [[] for i in range(children.count())]
+    certs = []
+    creativity = []
+    critical_thinking = []
+    communication = []
+    collaboration = []
+    leadership = []
+    social_cultural_awareness = []
+    
+    for child in children:
+        futgrades.extend(FutureGrades.objects.filter(student = child.user).all())
+        certs.append(FutCert.objects.filter(student=child.user).all())
+
+        creativity.append(FutureGrades.objects.filter(student = child.user).aggregate(Avg('creativity'))['creativity__avg'])
+
+        critical_thinking.append(FutureGrades.objects.filter(student = child.user).aggregate(Avg('critical_thinking'))['critical_thinking__avg'])
+
+        communication.append(FutureGrades.objects.filter(student = child.user).aggregate(Avg('communication'))['communication__avg'])
+
+        collaboration.append(FutureGrades.objects.filter(student = child.user).aggregate(Avg('collaboration'))['collaboration__avg'])
+
+        leadership.append(FutureGrades.objects.filter(student = child.user).aggregate(Avg('leadership'))['leadership__avg'])
+        
+        social_cultural_awareness.append(FutureGrades.objects.filter(student = child.user).aggregate(Avg('social_cultural_awareness'))['social_cultural_awareness__avg'])
+
+    avgcreativity = FutureGrades.objects.all().aggregate(Avg('creativity'))['creativity__avg']
+
+    avgct = FutureGrades.objects.all().aggregate(Avg('critical_thinking'))['critical_thinking__avg']
+
+    
+    avcomm = FutureGrades.objects.all().aggregate(Avg('communication'))['communication__avg']
+
+    avcollab = FutureGrades.objects.all().aggregate(Avg('collaboration'))['collaboration__avg']
+
+    avlead = FutureGrades.objects.all().aggregate(Avg('leadership'))['leadership__avg']
+
+    avaware = FutureGrades.objects.all().aggregate(Avg('social_cultural_awareness'))['social_cultural_awareness__avg']
+    
     
     context = {
-        'parent_mem': parent_mem,
-        'parent_sub': parent_sub,
-        
+    'parent_mem': parent_mem,
+    'parent_sub': parent_sub,
+    'children': children,
+    'futuregrades': futgrades,
+    'creativity': creativity,
+    'critical_thinking': critical_thinking,
+    'communication': communication,
+    'collaboration': collaboration,
+    'leadership': leadership,
+    'social_cultural_awareness': social_cultural_awareness,
+    'avgcreativity': avgcreativity,
+    'avgct':avgct, 
+    'avcomm':avcomm,
+    'avcollab':avcollab,
+    'avlead':avlead,
+    'avaware': avaware,
+    'certs': certs,
+    
     }
     
     return render(request, "parents/profile.html", context)

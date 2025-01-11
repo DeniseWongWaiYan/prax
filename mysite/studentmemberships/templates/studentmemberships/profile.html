@@ -1,54 +1,80 @@
 {% extends 'courses/base.html' %}
  {% load i18n %} 
+{% load static %}
 {% block content %}
-<div class="container">
+
+  
+
+<div class="container">       
     
-        <h1>{{request.user }}'s {% trans "Profile" %} </h1> <h2 class="float-right"> 
+        <h1>{{request.user }}'s {% trans "Profile" %} </h1> 
+             
+{% if fut_comment.comments %}
     
- {% if request.user.studentmembership is not None or request.user.studentmembership.futuretutor is not None %}
-    Your tutor is <a href="{% url 'tutors:profile' request.user.studentmembership.futuretutor  %}">{{request.user.studentmembership.futuretutor }}  </a> </h2>
-{% endif %}
+    <div class="alert alert-success warning alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <h4 class="alert-heading">Well done!</h4>
+      
+<hr>
+  <p class="mb-0">{{fut_comment.comments}} </p>
+</div>
     
-        <small> <a href="{% url 'grades:grades' %}"> {% trans "Link to grades" %}  </a>  </small>
-        <br><br>
-    <div class="row">    
-        
-        <div class="col-sm-6 col-md-6">
-        
-            <h4>{% trans "Current English Membership: " %} </h4>
-            {% if user_eng_sub != None %}
-                {% if user_eng.englishmembership.english_membership_type == 'No Smile School English' %}
-            <h4>
-                <p style="color:red">No subscription. Please consider joining us. </p>
-                {% else %}
-                {{ user_eng.englishmembership.english_membership_type }} </h4>
-            <small>Since {{user_eng_sub.get_created_date}} </small>
-            
-            {% if user_eng_sub.active != False %}
-                <p>Next payment due: {{ user_eng_sub.get_next_billing_date}} </p>
-            {% endif %}
-            {% endif %}
-            {% else %}
-                <p style="color:red"> {% trans "No subscription. Please consider joining us." %}  </p>
-            <br> 
-            
-        {% endif %}
-            <a href="{% url 'studentmemberships:selectengstudentmem' %}"> {% trans "Change membership" %}  </a>
-            
+    {% endif %}
+    
+    
+    <br> 
+    <h3 style="padding-bottom:5px;"> {{rank}} | Clan {{ request.user.studentmembership.group }} </h3>
+    <h3>{{points}} points 🚀 </h3>  <h4 style="padding-left:10px;"> 📈 {{left}} points left  to the next level</h4> 
+    
+    
+   <br><br> <hr>
+    <div class="row" >
+ 
+  <div class="col-sm-4">    
+      
+      <a href = '{% url 'courses:futurelist' %}' class="link" ><h1 style="text-align:center;">Mission </h1>
+      <p style="text-align:center;">    <img src="{% static "1.gif" %}" style="width:100%"></p></a> 
+        <p class="desc" style="text-align:center;">Your course content created and curated.</p>
+
+      </div>
+ 
+        <div class="col-sm-4 "><a href = '{% url 'courses:forumlist' %}' ><h1 style="text-align:center;" class="heading"> {% trans "Forum List" %}  </h1>
+      <p style="text-align:center;"><img src="{% static "2.gif" %}" style="width:100%"></p></a> 
+        <p class="desc" style="text-align:center;">Check out the forums and chat with your cohort members.</p>
+      
         </div>
-        <div class="col-sm-6 col-md-6">
-        <h4>{% trans "Current Future Membership:" %}  </h4>
-            {% if user_future_sub != None %}
+        
+  <div class="col-sm-4 "><a href = '{% url 'vocab:vocab_list' %}'><h1 style="text-align:center;" class="heading"> {% trans "Grades" %}  </h1>
+      <p style="text-align:center;"><img src="{% static "2.gif" %}" style="width:100%"></p></a> 
+        <p class="desc" style="text-align:center;">Check out your grades.</p>
+      
+        </div>
+    
+        
+        
+    
+    </div>    
+    
+
+    
+<!--
+<div class="card-columns">
+        <div class="card">
+
+    <blockquote class="mb-0 card-body">
+      <p>{% trans "Current Future Membership:" %} <span class="badge badge-danger badge-secondary">Beta</span></p>
+        <small class="text-muted">
+         {% if user_future_sub != None %}
                 {% if user_future.futuremembership.future_membership_type == 'No Smile School English' %}
-            <h4>
-                <p style="color:red"> {% trans "No subscription. Please consider joining us." %}  </p>
+            
+                <p style="color:red"> {% trans "No subscription. Upgrade now." %}  </p>
                 {% else %}
-                {{ user_future.futuremembership.future_membership_type }} </h4>
-            <small>Since {{user_future_sub.get_created_date}} </small>
+            <br> {{ user_future.futuremembership.future_membership_type }}
+            since {{user_future_sub.get_created_date}}
             
             {% if user_future_sub.active != False %}
-            <p>{% trans "Payment began:" %}  {{ user_future_sub.get_begin_billing_date}} </p>    
-            <p> {% trans "Next payment due: " %}{{ user_future_sub.get_next_billing_date}} </p>
+            <p>{% trans "Payment began:" %}  {{ user_future_sub.get_begin_billing_date}} 
+            {% trans "Next payment due: " %}{{ user_future_sub.get_next_billing_date}} </p>
             {% endif %}
             {% endif %}
             {% else %}
@@ -57,12 +83,61 @@
             
         {% endif %}   
             <a href="{% url 'studentmemberships:selectfutstudentmem' %}">{% trans " Change membership " %}</a>
-            
+        </small>
+    </blockquote>
         </div>
-    </div>
+    
+    
+    <div class="card">
 
+    <blockquote class="mb-0 card-body">
+      <p>{% trans "Current English Membership: " %}  </p>
+        <small class="text-muted">
+         
+         {% if user_eng_sub != None %}
+                {% if user_eng.englishmembership.english_membership_type == 'No Smile School English' %}
+            <h4>
+                <p style="color:red"> Coming soon. </p>
+                {% else %}
+                
+                {{ user_eng.englishmembership.english_membership_type }} </h4>
+            <small>Since {{user_eng_sub.get_created_date}} </small>
+            
+            {% if user_eng_sub.active != False %}
+                <p>Next payment due: {{ user_eng_sub.get_next_billing_date}} </p>
+            {% endif %}
+            {% endif %}
+            {% else %}
+                {% trans "Coming soon. Request alpha testing access." %} 
+                <li>{% trans "For those with weaker English skills." %} </li>
+                <li>{% trans "Native designed, linguist supported, scientifically backed learning methods to learn English faster" %}</li>
+                <li>{% trans "Content + 1:1 tuition for ALL ages" %}</li>
+            <br> 
+            
+        {% endif %}
+        </small>
+    </blockquote>
+        </div>
+        
+        <div class="card">
+
+    <blockquote class="mb-0 card-body">
+      <p> {% trans "Current Parent Membership:" %}  </p>
+        <small class="text-muted">
+         {% trans "Coming soon. Express interest here." %}  
+            <li>{% trans "Monitor your child's progress" %}</li>
+            <li>{% trans "Curated, targeted and short lessons to optimise your support of your children" %}</li>
+            <li>{% trans "Parenting in a new, globalised world" %}</li>
+            
+        </small>
+    </blockquote>
+        </div>        
+
+    
 
 </div>
-
-
+-->
+</div>
+    
+{% include 'courses/footer.html' %}
 {% endblock %}

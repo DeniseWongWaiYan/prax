@@ -1,0 +1,81 @@
+{% extends 'courses/base.html' %}
+ {% load i18n %} 
+{% block content %}
+<head>
+<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+<script type="text/javascript">window.$sleek=[];window.SLEEK_PRODUCT_ID=111;(function(){d=document;s=d.createElement("script");s.src="https://client.sleekplan.com/sdk/e.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>                
+</head>
+    
+
+{% load static %} 
+
+    <div class="container">
+
+    <h1>{% trans "Our Mission" %}</h1> 
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+
+        <div class="row">
+        <div class="col">
+            <img src="https://img.icons8.com/fluent/96/000000/diamond-care-1.png"/>
+        </div>
+            <div class="col-10">
+        <h2>{% trans "Promise #1: We deliver real value." %} </h2>
+        <blockquote>
+            
+        <h3>{% trans "Many consultants claim very high fees from desperate parents, without delivering real value." %}  
+        <b>{% trans "We work for what we get. We track and measure student progress aggressively to prove improvements in skills, school, university and life." %} </b> <br>
+            </h3>
+        </blockquote>
+                </div></div> 
+        <div class="row">
+        <div class="col">
+<img src="https://img.icons8.com/color/96/000000/time-machine--v1.png"/>        </div>
+            <div class="col-10">
+        <h2>{% trans "Promise #2: Start young." %} </h2>
+        <blockquote>
+        {% trans "Parents and student start preparing last minute help for university admissions, job applications and in life." %} <b> {% trans "We start teaching critical transferrable skill from age 12, so they have an extra 10 years of practice for admission tests, and ECAs." %} </b>
+                </blockquote></div></div>
+        <div class="row">
+<div class="col">
+           <img src="https://img.icons8.com/cotton/128/000000/search--v2.png"/>
+        </div>
+            <div class="col-10">
+         <h2>{% trans "Promise #3: We increase transparency." %} </h2>
+        <blockquote><h3>{% trans "Currently, you don't know if you will get into uni until age 18, get a job until age 22, or do well in life until age 60." %} 
+        <b> {% trans "From day one, we give you the data to ensure track progress in school, university and life readiness." %}     </b>
+            </h3></blockquote></div></div>
+                <div class="row">    
+
+        <div class="col">
+<img src="https://img.icons8.com/fluent/96/000000/personal-growth.png"/>        </div>
+        <div class="col-10">
+          <h2>{% trans "Promise #4: Democratise access to quality mentorship." %} </h2>
+        <blockquote><h3>{% trans "Some parents spend millions for life curation to optimise entrance into university. Most cannot afford that." %} <br>
+        <b>{% trans "We provide a similar quality of service, with the best students and graduates in the world, providing the most up-to-date information, first hand, tailored for you." %} </b>
+            </h3></blockquote></div></div>
+       <div class="row">    
+<div class="col"><img src="https://img.icons8.com/color/96/000000/fishing-pole.png"/>
+        </div>
+            <div class="col-10">
+        <h2>{% trans "Promise #5: <q>Give a man a fish, and you feed him for a day; show him how to catch fish, and you feed him for a lifetime." %}</q> </h2>
+        <blockquote>
+            
+            <h3> {% trans "Some students apply for university admission advice, then job application advice ... and other consultants love it, because they keep making money. <b>We don't. We'll see you from ages 8-14, every other week. Then, afterwards, only in the news." %} </b>
+            
+            </h3></blockquote></div></div>
+        
+        <br>
+       
+        
+
+
+</div>
+        
+        
+
+<!-- Footer -->
+{% include 'courses/footer.html' %}
+
+{% endblock %}
+
+

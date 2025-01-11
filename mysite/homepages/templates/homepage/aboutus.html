@@ -1,19 +1,123 @@
 {% extends 'courses/base.html' %}
  {% load i18n %} 
 {% block content %}
+<head>
+<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+<script type="text/javascript">window.$sleek=[];window.SLEEK_PRODUCT_ID=111;(function(){d=document;s=d.createElement("script");s.src="https://client.sleekplan.com/sdk/e.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>                
+</head>
+
+
+<style>
+.card{
+    display: inline-block;  
+    }
+    
+
+</style>
 <div class="container">
     
 
-{% load i18n %} 
+{% load static %} 
+<h1>{% trans "Advisors and Mentors" %}</h1> 
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
 
-    {% blocktrans %}
+  <div class="card-columns">
+  <div class="card">
+<!--      <img src="..." class="card-img-top" alt="...">-->
+      <blockquote class="mb-0 card-body">
+      <p> <i class='fas fa-crown'></i>
+ {% trans "Baroness Janet Royall of Blaisdon " %}<span class="badge badge-danger badge-secondary">Star Mentor</span></p>
+        <small class="text-muted">
+         <li>{% trans "Principal of Oxford University (Somerville College)" %} </li>
+            <li>{% trans "Ex-Leader of the House of Lords" %}</li>
+            <li>{% trans "Ex-Lord President of the Council" %}  </li>
+        </small>
+    </blockquote>
+  </div>
+  <div class="card">
+      
+    <blockquote class="mb-0 card-body">
+      <p> Dr Kathy Shum </p>
+        <small class="text-muted">
+          <li>{% trans "Hons.B.Sc., Human Biology; M.Sc., Physiology (University of Toronto), PCEd; PCPsy; Ph.D., Educational Psychology (University of Hong Kong" %} </li>        
+        </small>
+    </blockquote>
+  </div>
     
-    about us
 
-{% endblocktrans %}
+    </div>
+
        
-</div>
+    
 
+<!--
+    <h1>{% trans "Core Team and Tutors" %}</h1>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+-->
+
+<!--
+<div class="card-columns">
+  <div class="card">
+      <img src="{% static "pp.jpeg" %}" class="card-img-top">
+      <blockquote class="mb-0 card-body">
+      <p>{% trans "Denise Wong" %} <span class="badge badge-danger badge-secondary">Founder and Tutor</span></p>
+           <a href="https://www.linkedin.com/in/denise-wai-yan-wong-4a3a71129/" > <img src="https://img.icons8.com/color/48/000000/linkedin.png"/ style="height:30px;"> </a>
+        <small class="text-muted">
+         <li>{% trans "Oxford 🇬🇧 Law, Hong Kong Scholarship for Excellence Scholar (government scholar)" %}   </li>
+        <li> {% trans "Youngest founder, of the first faculty-independent, student run venture capital in the UK" %}   </li> 
+         <li>{% trans "Oxford University Student Union Access and Outreach Certificate of Recognition (for university admission work) " %}  </li>
+        <li> {% trans "3+ years experience in tutoring" %}   </li>
+           
+        </small>
+    </blockquote>
+  </div>
+-->
+        
+<!--
+    <div class="card">
+    <blockquote class="card-body">
+      <p>Elinor Lamrick <span class="badge">Tutor</span> </p>
+        <small class="text-muted">
+            <li> {% trans "Oxford French and Italian" %} </li>
+            <li> {% trans "2+ years tutoring languages" %} </li>
+            <li> {% trans "First in her school to attend Oxford in a decade" %} </li>
+        </small>
+    </blockquote>
+  </div>
+-->
+<!--
+    
+     <div class="card">
+      <img src="..." class="card-img-top" alt="...">
+      <blockquote class="mb-0 card-body">
+      <p><span class="badge badge-success badge-secondary">Marketing Strategy</span></p>
+          <small class="text-muted">
+           <li>  Annette Wong  {% trans "Claremont McKenna College" %}   </li>
+              <li>  {% trans "Heidi Leong" %} {% trans "Warwick 🇬🇧 Business School, Glion" %}   </li>
+          </small>
+    </blockquote>
+  </div>
+-->
+  
+<!--
+    <div class="card">
+    <blockquote class="card-body">
+      <p> <span class="badge badge-success">China Growth</span> </p>
+        <small class="text-muted">
+        <li>{% trans "Nikki Hon" %}</li>
+        <li>{% trans "Athena Cheung, Imperial MSc" %}</li>
+        <li>{% trans "Grace Tian, UPenn" %}</li>
+        <li>{% trans "Gordon Ho, UPenn" %}</li>
+        </small>
+    </blockquote>
+  </div>
+
+  </div>
+-->
+   
+</div>
+<!-- Footer -->
+{% include 'courses/footer.html' %}
 
 {% endblock %}
 

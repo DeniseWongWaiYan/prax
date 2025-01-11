@@ -15,6 +15,7 @@
                 {% if object.future_membership_type != current_membership %}
                     <button class="btn btn-warning">Select</button>
                 {% else %}
+                    {{object.description|safe}}
                     <small> {% trans "This is your current membership." %} </small>
                 {% endif %}
                 <input type="hidden" name="future_membership_type" value="{{object.future_membership_type}}">

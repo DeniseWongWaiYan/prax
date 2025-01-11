@@ -4,17 +4,17 @@
 <div class="container">
     <head><title>English Course Detail</title></head>
     <body>
-                <h1>English Course Detail</h1>
-        
-         <h3>{{ object.title }}</h3>  
+        <h1> {{ object.title |safe }} </h1>
+            <h3>{{ object.description|safe }} </h3><br><br>
+
             {% for lesson in object.englishlesson %}
-        <ul> <a href="{{ lesson.url }}"> {{lesson.title}}</a></ul>
+             <h2> <a href="{{ lesson.url }}"> {{lesson.title|safe}}</a> </h2>  
             {{ lesson.lesson_url }}
             {% endfor %}
     
+{% endblock %}
         </div>
     </body>    
+
     
 </html>
-
-{% endblock %}

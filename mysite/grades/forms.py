@@ -1,10 +1,3 @@
 from django import forms
-from .models import EnglishGrades
+from .models import FutureGrades
 
-
-class DocumentForm(forms.ModelForm):
-    class Meta:
-        model = EnglishGrades
-        fields = ('lesson', 'upload')
-        
-    

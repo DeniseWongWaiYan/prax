@@ -1,12 +1,14 @@
 from django.urls import path
 
-from .views import model_form_upload, grades
+from .views import grades, peer
 app_name = 'grades'
 
 urlpatterns = [
     path('grades/', grades, name="grades"),
-    path('enghwupload/', model_form_upload, name="enghwupload"),
-    path('futurehwupload/', model_form_upload, name="futurehwupload"),
+    path('peer/<username>', peer, name="peer"),
+    
+    
+
 #    path('/')
     
 #    path('', StudentMembershipFutureSelectView.as_view(), name='selectfuturestudentmem')

@@ -1,0 +1,36 @@
+{% extends 'courses/base.html' %}
+
+{% block content %}
+<div class="container">
+    <head><title>English Course List</title></head>
+    <body>
+        
+        {% if object is not None %}
+        <h1> {{ object.title }}</h1>
+        {{object.position}}/<small>52</small> <br> 
+    {{ object.description }}   <br>   
+        <iframe src='{{object.video_url}}'> </iframe> <br> 
+        
+<!--        {{object.video_url}} <br> -->
+        <a href ="{{object.readinglist_url}}">Reading list: <small>read this for more resources</small> </a> <br>
+        
+        <a href='{% url 'vocab:addvocab' %}'> Add vocab</a> <br>
+        
+        {{ object.assignment }} <br>
+        
+        <a href='{% url 'grades:enghwupload' %}'>Hand in</a> <br>
+        <a href='{% url 'grades:englishgrades' %}'>Grades</a> <br>
+        
+        
+        
+        {% else %}
+            <h3> Upgrade membership </h3>
+        
+        {% endif %}
+        
+{% endblock %}
+
+        </div>
+    </body>    
+    
+</html>

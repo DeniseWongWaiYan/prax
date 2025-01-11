@@ -1,9 +1,9 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import EnglishCourse, EnglishLesson, FutureCourse, FutureLesson
+from .models import FutureCourse, FutureLesson, Forum, Discussion
 
-admin.site.register(EnglishCourse)
-admin.site.register(EnglishLesson)
 admin.site.register(FutureCourse)
+admin.site.register(Forum)
+admin.site.register(Discussion)
 admin.site.register(FutureLesson)

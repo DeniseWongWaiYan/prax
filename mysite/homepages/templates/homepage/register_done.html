@@ -4,9 +4,9 @@
 {% load i18n %}
 <h1>{% trans "Welcome" %}  {{ new_user.first_name }}!</h1>
 
+<div class="container">
+<h1>{% trans "Your account has been successfully created. Now you can" %}  <a href="{% url "homepages:signin" %}"> {% trans "log in" %} </a></h1>
 
-<p>{% trans "Your account has been successfully created. Now you can" %}  <a href="{% url "homepages:signin" %}"> {% trans "log in" %} </a></p>
-
-
+</div>
 
 {% endblock %}

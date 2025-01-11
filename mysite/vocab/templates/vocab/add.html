@@ -1,17 +1,20 @@
 {% extends 'courses/base.html' %}
 
 {% block content %}
+{% load i18n %}
 <div class="container"> 
     <h3 align="center">Add Words</h3>
 
-
+    
 <form action="" method="POST" align="center">{% csrf_token %}
-New word <br> {{ form.new_word }} <br> 
-Definition <br> {{ form.definition }} <br> 
-Comments <br> {{ form.comments }} <br> 
+ Word <br>{{ form.new_word }} {% if wordedit %} <br>   Edit: {{ wordedit.new_word}} <br>  {% endif %} <br> 
+    
+
+Definition <br> {{ form.definition }} <br> {% if wordedit %}  Edit: {{ wordedit.definition}} <br>  {% endif %}  <br> 
+Comments <br> {{ form.comments }} {% if wordedit %} <br>   Edit: {{ wordedit.comments}} <br>  {% endif %}  <br> 
 
     
-<button type="submit" class="btn btn-success" value="register">Add word</button>
+<button type="submit" class="btn btn-success" value="register">{% trans "Add word" %} </button>
     </form>
     </div>
                                                    

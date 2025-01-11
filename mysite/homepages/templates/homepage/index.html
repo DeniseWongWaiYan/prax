@@ -1,15 +1,279 @@
 {% extends 'courses/base.html' %}
 
+
 {% block content %}
+<meta name="description" content="prax+ homepage - learn your IGCSEs faster, better quicker and faster. Get more A*s. Spaced repetition. AI quizzes. Chunking. Learning.">
+
+{% load static %}
+<script type="text/javascript">
+$(document).ready(function() {
+  //Set the carousel options
+  $('#quote-carousel').carousel({
+    pause: true,
+    interval: 10,
+  });
+});
+</script>
+
+<style>
+    
+.landing {
+  background: 
+      url({% static 'red-paper-plane.png' %}),
+      linear-gradient(100deg, #171353 0%, #98B3F0 50%, #98B3F0 36%);
+background-position: 90% 30%, top;
+background-size: 50px 50px, 100% 100%;
+background-repeat:no-repeat, no-repeat, no-repeat;
+  margin-top: -30px;
+  padding-top: 30px;
+  height: 30%;
+  width: 100%;
+}
+
+.row:before, .row:after {display: none !important;}
+
+    .desc{
+        font-size:15px;
+    } 
+    
+	#mc_embed_signup{
+        width: 90%;
+        position: relative;
+        padding-bottom: 10px;
+
+    }
+.highlight {
+     background-color: #98B3F0;
+    }
+.button{
+    
+}
+    
+span.line {
+  display: inline-block;
+}
+    
+.timeline {
+  background: white; 
+  counter-reset: section;
+  padding-left: 20%;
+  padding-top: 20px;
+}
+
+.timeline .col-xs-12 {
+  border-left: solid 4px #171353;
+  padding-bottom: 40px;
+  padding-left: 40px;
+}
+
+.timeline .col-xs-12:before {
+  /* counter */
+  counter-increment: section;
+  content: counter(section);
+  /* position */
+  position: absolute;
+  left: -22px; /* = (width + border-left) / 2 */
+  top: -30px;
+  /* form & size */
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  /* colors & text */
+  background: #171353;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 40px;
+  text-align: center;
+}
+
+
+/* images */
+.timeline img {
+  margin-top: 20px;
+  width: 100%;
+
+
+    
+    
+</style>
+ 
+
+
+{% load i18n %}   
+
+
+
+<div class="landing" >  
+    
+     
+    
+        <div class="row">
+
+    
+                
+        <div class="ml-auto col-lg-7 " style="color:white;">
+    
+            <b><h1 class="float-right"  style="font-size:30px; margin-right:34px;"> prax+future  </h1></b>
+
+        </div>
+   
+        
+   
+                <div class="ml-auto col-lg-7" style="color:white; padding-top:180px; text-align:right;">
+
+    
+                    <h1 class="float-end" style="width:90%; font-size: 35px;"><span class="line">Work Less. </span> <span class="line">Achieve More. </span></h1>
+                    <h2 style="width:90%; color:black">Learn 🧠 through play 🎮.  </h2> 
+                    <h2 style="width:90%; color:black">Join the global 🌏 elite 🏆. </h2>
+
+            </div>
+            <br></div>
+    
+<div class="row">
+<!-- Begin Mailchimp Signup Form -->
+<link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+<div class="ml-auto col-lg-7">
+
+
+<div id="mc_embed_signup">
+<form action="https://gmail.us7.list-manage.com/subscribe/post?u=ea58291a905d8b0997841058f&amp;id=8bcc22e595" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll" class="float-right" >
+	<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="drop your email to hear more about us" required >
+    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -3000px;" aria-hidden="true"><input type="text" name="b_ea58291a905d8b0997841058f_8bcc22e595" tabindex="-1" value=""></div>
+    <div class="clear"><input type="submit" value="hey prax" name="subscribe" id="mc-embedded-subscribe" class="button" style="background-color:#fe5549"></div>
+    </div>
+</form>
+    </div></div>
+</div>
+<!--End mc_embed_signup-->
+         <br><br>
+            
+      
+        </div> 
+    
+
+
+    
+    
 <div class="container">
- {% load i18n %}   
-    <a href="{% url 'homepages:aboutus' %}">{% trans "About our team" %}</a><br>
-    <a href="{% url 'homepages:joinus' %}">{% trans "Join our team" %} <br></a>
+     
     
     
-    <a href="{% url 'homepages:signup' %}">{% trans "I am a student - Sign up" %}  <br></a>
-    <a href="{% url 'homepages:signin' %}"> {% trans "Sign in" %} <br></a>
-    </div>    
+    <div class="why">
+    
+        <div class="row align-items-center" style="padding-top: 20px;">
+  <div class="col-sm-6" >      
+      <h1 style="text-align:center;" class="align-middle"> <span class="highlight"> Play-based</span>  learning 🎮 </h1>   <br>
+        <p class="desc align-middle" style="text-align:center;">   
+            Built with game-design principles, each lesson is designed to feel like a game. Never be bored in class again. 
+        </p>
+  
+        </div>
+            
+            <div class="col-sm-6" >      
+      <p style="text-align:center;">    <img src="{% static "play.gif" %}" style="height:350px;">  </p>    
+    
 
+      
+  
+            </div> 
+        </div>
 
+        <div class="row align-items-center">
+     
+  
+            
+        <div class="col-sm-6 order-sm-12">    
+      
+      <h1 style="text-align:center;"> <span class="highlight">Future-proofing</span> education 🚀 </h1>
+        <p style="text-align:center;" class="desc">   
+            Our learning experience is designed to mimic the future of work - from the choice of global peers, content, delivery method and heavy use of technology, we prepare your child for success - now and later.
+        </p>
+      </div>
+            <div class="col-sm-6 order-sm-1">    
+      
+
+      <p style="text-align:center;"><img src="{% static "future.gif" %}" style="height:350px"></p>
+
+      </div>
+            
+        </div>
+        <div class="row align-items-center">
+            <div class="col-sm-6"><h1 style="text-align:center;">Built to <span class="highlight"> win</span> 🏆</h1>
+          <p style="text-align:center;" class="desc">
+          With students from Ivy League and Oxbridge, and mentored by Oxford principals, we take your long term success seriously. More than just an after-school activity, more than a chance to build projects for your CVs, we're your first guide to success. 
+ </p> <br>
+        </div>
+            
+            <div class="col-sm-6">
+ 
+      <p style="text-align:center;"><img src="{% static "grad.gif" %}" style="height:350px"></p>
+
+        </div>
+    </div>
+    
+      
+    </div>
+      
+
+   
+
+    <div align="center" style="padding-top:80px;">
+              <h1 style="text-align:center;" class="align-middle"> How it works </h1>
+</div>
+                <div class="row">
+                <div class="col-xs-12 col-sm-11 col-sm-offset-1">
+                    <form class="form-horizontal" role="form" id="form1">
+					
+                                <div id="div1" class="form-group"> 
+                                <div class="timeline">
+                                <div class="col-xs-12 col-sm-12 col-sm-offset-2">
+                                    <h4 >👋 Sign up for a course  </h4>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-sm-offset-2">
+                                    <h4>🌏 Join a global cohort of 6</h4>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-sm-offset-2">
+                                    <h4>📚 Watch and read online course material (for week 1)</h4>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-sm-offset-2">
+                                     <h4>💬 Discuss with peers in discussion forum, in free time </h4>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-sm-offset-2">
+                                    <h4 >🎮 Join game-based lesson led by Oxbridge/Ivy League tutor</h4>
+                                </div>
+                                    <div class="col-xs-12 col-sm-12 col-sm-offset-2">
+                                    <h4 >✅ Get graded by tutor and learn from weaknesses</h4>
+                                </div>
+                                    <div class="col-xs-12 col-sm-12 col-sm-offset-2">
+                                    <h4 >👍 (Get recommendations and mentorship for university applications based on tutor feedback) </h4>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-sm-offset-2">
+                                    <h4 >🚀 Work on end-of-course projects directed by tutor, designed to boost university acceptance</h4>
+                                </div>
+                                    <div class="col-xs-12 col-sm-12 col-sm-offset-2">
+                                    <h4 >🎖 Get a certificate and a recommendation letter</h4>
+                                </div>
+                                </div>
+                                </div>
+                                
+                <!--</div>-->
+                </form>
+                </div>
+            </div>
+
+         
+    <br><br>
+    <a href="{% url 'homepages:aboutus' %}"> <h1 style="text-align:center; color:black"> Meet the team 👋 </h1></a>
+</div>
+    
+<br><br><br>
+                
+<!-- Footer -->
+{% include 'courses/footer.html' %}
+<!-- Footer -->  
 {% endblock %}
+
+

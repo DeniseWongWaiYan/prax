@@ -1,0 +1,82 @@
+
+{% extends 'courses/base.html' %}
+<!--Start of Tawk.to Script-->
+
+<!--End of Tawk.to Script-->
+
+{% block content %}
+
+{% load static %}
+<head>
+<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+<script type="text/javascript">window.$sleek=[];window.SLEEK_PRODUCT_ID=111;(function(){d=document;s=d.createElement("script");s.src="https://client.sleekplan.com/sdk/e.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>                
+</head>
+
+{% load i18n %}   
+<div class="container">
+    <h1>{% trans "Who we teach" %}</h1>
+            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+    <h2>Two streams of age and ability</h2>
+<div class="row">
+    <div class="col"> <p align="center"><img src="{% static 'girl.png' %}" style="height:200px;"></p>
+        <h4 align="center"> Age 8-11 </h4>
+    <h4 align="center">Build a strong foundation and basic transferrable skills</h4>
+    </div>
+        <div class="col"><p align="center"><img src="{% static 'teen.png' %}" style="height:200px;"></p> <h4 align="center">Age 12-15 </h4>
+    <h4 align="center">Practical lessons and guidance for school,  university admissions and future of work</h4>
+    </div>
+</div>
+
+    <br>
+    <h1>{% trans "What we teach" %}</h1>
+            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+    <h2>Critical skills for school, university and the future of work, as inspired from an amalgamation of science backed education frameworks</h2>
+
+    <div class="row">
+        <div class="col"><p align="center"><img src="{% static "ct.png" %}" style="height:200px;"></p> <h3 align="center">Critical thinking</h3></div>
+        <div class="col"><p align="center"><img src="{% static "create.png" %}" style="height:200px;"></p> <h3 align="center">Creativity</h3></div>
+        <div class="col"><p align="center"><img src="{% static "lead.png" %}" style="height:200px;"></p> <h3 align="center">Leadership</h3></div>
+</div>
+    
+    <br>
+<h1>{% trans "How we teach" %}</h1>
+            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+<div class="row">
+<div class="col">
+    <h2>{% trans "Lessons broken down into two week cycles" %}</h2>
+    <p align="center"><img src="{% static "lesson.png" %}" style="height:200px;"></p>
+
+    <p class="text-muted"> {% trans "Inspired by Bloom's method of education, and the Ivy League/Oxbridge model of education, which is scientifically and proven be the most effective" %} </p> 
+    <p>{% trans "Week 1: Students access our curated content" %} </p>
+    <p>{% trans "Week 2: 1-to-1 tuition with Oxbridge and Ivy League tutors" %}</p>
+    <p>{% trans "Tips for parents: on how to boost child's school, university, work and life performance. " %}   </p>
+</div>
+    <div class="col">
+  <h2>{% trans "Units of lessons on one skill" %}</h2>
+    <p align="center"><img src="{% static "unit.png" %}" style="height:200px;"></p>
+    <p>{% trans "Projects and assessments to strategically build ECA portfolio for university admission" %}</p> 
+    <p>{% trans "Boost student performance in exams (incl university admissions) by starting preparation early" %}</p> 
+    </div>
+    <div class="col">
+    <h2>{% trans "We use big data and AI ensure success" %}</h2>
+    <p align="center"><img src="{% static "track.png" %}" style="height:200px;"></p>
+    <p>{% trans "Scoring children at the end of each lesson" %}</p> 
+    <p>{% trans "Standardised and unit assessments" %}</p> 
+    <p>{% trans "If the students of a tutor score and trend below the average student of the platform, we review the tutor" %}</p> 
+    <p>{% trans "If the student's scores are below average, we talk to the tutor to see how to go forward (e.g. switch tutors, additional help)" %}</p> 
+    </div>
+    
+    <div class="col">
+    <h2>{% trans "Personal Profile and Parent's Report" %}</h2>
+            <p align="center"><img src="{% static "stats.png" %}" style="height:200px;"></p>
+    <p>{% trans "Personal profile and reports to parents to show progress and achievement" %}</p> 
+    <p>{% trans "Discover the students interests and talents" %}</p> 
+    <p>{% trans "Personalised recommendations on what other ECAs, and competitions to join to boost" %}</p> 
+    </div></div>
+</div>
+
+<!-- Footer -->
+{% include 'courses/footer.html' %}
+<!-- Footer -->  
+{% endblock %}
+

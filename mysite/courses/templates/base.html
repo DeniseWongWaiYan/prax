@@ -1,124 +1,126 @@
 <!DOCTYPE html>
+    {% load i18n %}
+{% load static %}
 
 <html>
-	<head><title> Smile School</title>
+	<head>
+
+        <link rel="shortcut icon" type="image/png" href="{% static 'red-paper-plane.png' %}"/>
+        <title>Praxeum</title>
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	
-        
-    {% load i18n %}
+<!--	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
+
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
 
-    <style>
-/*
-.flag {
+<style>
+       
+button.flag {
   background: none!important;
   border: none;
   padding: 0!important;
-  color: black;
+  color: none;
 }
+ ol.breadcrumb li{
+        color: #000000;   
+         font-size:20px; 
+         background-color:transparent;
+    }
+    
+ol.breadcrumb li a {
+         color: #778899;   
+         font-size:20px; 
+         background-color:transparent;
+        }
+
+.breadcrumb > li + li:before {
+/*
+    color: #ccc;
+    content: " ";
+    padding: 0 5px;
 */
+}
 
+   
+</style> 
+<script type="text/javascript">window.$sleek=[];window.SLEEK_PRODUCT_ID=111;(function(){d=document;s=d.createElement("script");s.src="https://client.sleekplan.com/sdk/e.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>                
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-    </style> 
     </head>
+    
+    
 
 <body>
 	{% include 'courses/messages.html' %}
     
 <!-- navigation bar -->
 	
-<script src="https://use.fontawesome.com/ebae4c6b9c.js"></script>
+<!--<script src="https://use.fontawesome.com/ebae4c6b9c.js"></script>-->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
 
 
-<ol class="breadcrumb" style="font-size:20px">
+<ol class="breadcrumb" >
+			<li><a href = "{% url 'homepages:index' %}"><img src="{% static 'logo.png' %}"  style="height:40px;"></a><span class="badge badge-danger badge-secondary">Beta</span> 
+                </li>
 
- 
-            
-			<li><a href = '{% url 'homepages:index' %}'> <i class="fa fa-home" style="color:black;"></i>  {% trans "Home" %} </a></li>
-            
-            
+<!--   <li> <a href="{% url 'homepages:joinus' %}">{% trans "Join our team" %} </li></a>-->
             {% if request.user.is_authenticated %}
-<!--			<li><a href = '{% url 'studentmemberships:profile' %}'>Profile</a></li>-->
-            <li><a href = '{% url 'courses:futurelist' %}'><i class="fa fa-rocket" style="color:black"></i> {% trans " Future Courses" %} </a></li>
-                <li><i class="fa fa-bookmark" aria-hidden="true"></i>
- <a href = '{% url 'vocab:vocab_list' %}'> {% trans "Vocabulary List" %} </a></li>
-
-<!--
-            <li><a href = '{% url 'courses:englishlist' %}'><i class="fa fa-leanpub" style="color:blue"></i> English Courses</a></li>
-            
--->
+<!--        <i class="fa fa-rocket"></i> -->
+    <li ><a href = '{% url 'studentmemberships:profile' %}'>{% trans "Profile" %}</a>  </li>
+            <li><img src="{% static 'red-paper-plane.png' %}" style="height:20px;">  <a href = '{% url 'courses:futurelist' %}'>{% trans "Courses" %}</a></li>
+    
+<!--                <li><i class="fa fa-bookmark" aria-hidden="true"></i>-->
+ <li><a href = '{% url 'vocab:vocab_list' %}'> {% trans "Vocabulary List" %} </a></li>
+    
             
 <!--
 			{% block post_detail_link %}
 			{% endblock %}
 -->
-            <li class='ml-auto'> <a href = '{% url 'postman:inbox' %}'><i class="fa fa-comments" style="color:black" aria-hidden="true"></i>
- {% trans " Messages " %}  </a></li>    
-			<li align='ml-auto'> {% trans " Hello" %}  <a href = '{% url 'studentmemberships:profile' %}'>{{request.user}}</a>! <i class="fa fa-grav fa-grav fa-grav"></i>
+			
 
- </li>
 
-            <li align='ml-auto'><a href='{% url 'homepages:signout' %}'> {% trans "Sign Out" %} </a></li>
+
+
+            <li class='ml-auto'><a href='{% url 'homepages:signout' %}'> <i class="fa fa-sign-out" aria-hidden="true"></i>
+ </a></li>
             
             {% else %}
-			<li class='ml-auto'><a href='{% url 'homepages:signup' %}'> {% trans " Register" %} </a></li>
-			<li class='ml-auto'><a href='{% url 'homepages:signin' %}'> {% trans " Sign In " %} </a></li>
+			<li class='ml-auto'><a href='{% url 'homepages:signin' %}'> {% trans " Sign In " %} </a> 
+     or <a href="{% url 'homepages:signup' %}">{% trans "REGISTER FOR A FREE TRIAL" %}  </a></li>
 			{% endif %}
+<!--        <li ><a href=#>🇬🇧 🇨🇳</a></li>-->
 
     <form action="{% url 'set_language' %}" method="post" style="padding-left:10px;">
             
     {% csrf_token %}
                 
-            <li class='flag ml-auto'>
-                <button type="submit", name="language"
+            <li class='ml-auto'>
+                <button class="flag"  type="submit" name="language"
                         value="en">
                    🇬🇧
                 </button>
+                
             </li>
         
     
 </form>
-    <form action="{% url 'set_language' %}" method="post" style="padding-left:10px;">
+    
+<form action="{% url 'set_language' %}" method="post" style="padding-left:10px;">
             
     {% csrf_token %}
                 
-            <li class='flag ml-auto'>
-                <button type="submit", name="language"
-                        value="zh-hans">
+            <li class='ml-auto'>
+                <button class="flag" type="submit" name="language" value="zh-hans">
                    🇨🇳
                 </button>
             </li>
         
     
 </form>
-    
-        
-<!--
-        <form action="{% url 'set_language' %}" method="post" style="padding-left:10px; font-size: 5px;">
-            
-    {% csrf_token %}
-    
-        {% get_current_language as LANGUAGE_CODE %}
-        {% get_available_languages as LANGUAGES %}
-        {% get_language_info_list for LANGUAGES as languages %}
-        {% for language in languages %}
-            
-            <li class='ml-auto'>
-                <button type="submit", name="language"
-                        value="{{ language.code }}"
-                        class="{% if language.code == LANGUAGE_CODE %}selected{% endif %}"
-                        >
-                    {{ language.name_local }}
-                </button>
-            </li>
-        {% endfor %}
-    
-</form>
--->
 
 		</ol>
     
@@ -126,6 +128,7 @@
 
 {% endblock %}  
 
+    
 <!-- block content -->
 	{% block content %}
 	{% endblock content %}
@@ -134,13 +137,18 @@
 
     
 <!-- jquery + Bootstrap -->
+    
+
+    
 	<script
 	  src="https://code.jquery.com/jquery-3.4.1.js"
 	  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	  crossorigin="anonymous"></script>
 
-	<!-- Latest compiled and minified JavaScript -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript  -->
+<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+        <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" >
 
 
 
